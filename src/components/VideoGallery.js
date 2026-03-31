@@ -4,9 +4,9 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 const videos = [
-  { src: "/videos/video1.mp4", label: "Dış Cephe & Çevre" },
-  { src: "/videos/video2.mp4", label: "İç Mekan & Detaylar" },
-  { src: "/videos/video3.mp4", label: "Göl & Konum Görünümü" },
+  { src: "/videos/video1.mp4", label: "Kanal İstanbul Sonrası" },
+  { src: "/videos/video2.mp4", label: "Proje Konumu" },
+  { src: "/videos/video3.mp4", label: "Proje Tanıtımı" },
 ];
 
 export default function VideoGallery() {
