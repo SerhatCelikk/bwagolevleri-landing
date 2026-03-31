@@ -3,18 +3,18 @@
 import { motion } from "framer-motion";
 
 const distances = [
-  { place: "Kanal İstanbul Güzergahı", dist: "Üzerinde", icon: "🌊", highlight: true, detail: "Güzergah boyunca konum avantajı" },
+  { place: "Kanal İstanbul Güzergahı", dist: "Üzerinde", icon: "🌊", highlight: true, detail: "Köprü bağlantı yolu proje önünden geçiyor" },
   { place: "Küçükçekmece Gölü", dist: "Kıyısında", icon: "🏞️", highlight: true, detail: "Göl manzaralı cephe" },
-  { place: "Metrobüs · Avcılar", dist: "Yürüme", icon: "🚌", detail: "İstanbul'un her noktasına direkt bağlantı" },
-  { place: "E-5 (D-100) Otoyolu", dist: "2 dk", icon: "🛣️", detail: "Avrupa ve Asya yakasına hızlı erişim" },
-  { place: "TEM Otoyolu", dist: "7 dk", icon: "🛤️", detail: "Havalimanı ve kuzey bağlantısı" },
-  { place: "Avcılar Merkez", dist: "5 dk", icon: "🏙️", detail: "Alışveriş, kafe ve sosyal hayat" },
-  { place: "Mall of İstanbul", dist: "10 dk", icon: "🛍️", detail: "Türkiye'nin en büyük AVM'lerinden biri" },
-  { place: "Capacity AVM", dist: "7 dk", icon: "🏬", detail: "Küçükçekmece alışveriş merkezi" },
-  { place: "Başakşehir Şehir Hastanesi", dist: "18 dk", icon: "🏥", detail: "Avrupa'nın en büyük hastane kompleksi" },
-  { place: "Medipol Mega Üni. Hastanesi", dist: "15 dk", icon: "⚕️", detail: "Uluslararası akredite tam teşekküllü" },
-  { place: "İstanbul Kültür Üniversitesi", dist: "8 dk", icon: "🎓", detail: "Avcılar kampüsü · Yürüme mesafesi" },
-  { place: "İstanbul Havalimanı", dist: "30 dk", icon: "✈️", detail: "TEM üzerinden direkt bağlantı" },
+  { place: "Sazlıbosna Köprüsü", dist: "3 dk", icon: "🌉", highlight: true, detail: "Bağlantı yolu proje önünden geçiyor" },
+  { place: "TEM Otoyolu", dist: "3 dk", icon: "🛤️", detail: "Havalimanı ve kuzey bağlantısı" },
+  { place: "Avcılar Gişeleri", dist: "5 dk", icon: "🛣️", detail: "E-5 ve şehir merkezi" },
+  { place: "Okul", dist: "5 dk", icon: "🏫", detail: "Yürüme mesafesinde" },
+  { place: "Çam Sakura Hastanesi", dist: "10 dk", icon: "🏥", detail: "Modern sağlık tesisi" },
+  { place: "Akbatı Mall of AVM", dist: "10 dk", icon: "🛍️", detail: "Büyük alışveriş ve eğlence merkezi" },
+  { place: "Olimpiyat Stadyumu", dist: "10 dk", icon: "🏟️", detail: "Spor ve etkinlik merkezi" },
+  { place: "Halkalı Tren Garı", dist: "15 dk", icon: "🚂", detail: "Banliyö tren hattı bağlantısı" },
+  { place: "İstanbul Havalimanı", dist: "20 dk", icon: "✈️", detail: "TEM üzerinden direkt bağlantı" },
+  { place: "Metro Hattı", dist: "Yakında", icon: "🚇", highlight: true, detail: "Planlanan metro hattına erişim" },
 ];
 
 export default function LocationSection() {
@@ -133,8 +133,8 @@ export default function LocationSection() {
           <div className="flex flex-wrap justify-center gap-8">
             {[
               { val: "Güzergah Üzerinde", lbl: "Kanal İstanbul" },
-              { val: "Göl Kıyısı", lbl: "Küçükçekmece Gölü" },
-              { val: "Bilgi için arayın", lbl: "Proje Teslim Tarihi" },
+              { val: "3 dk", lbl: "Sazlıbosna Köprüsü" },
+              { val: "Yakında", lbl: "Metro Hattı" },
             ].map((item) => (
               <div key={item.lbl} className="text-center">
                 <div className="text-gold-400 font-heading text-xl font-black">{item.val}</div>

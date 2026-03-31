@@ -13,7 +13,7 @@ const HTMLFlipBook = dynamic(() => import("react-pageflip").then((m) => m.defaul
   ),
 });
 
-// ─── Single PDF page — exact fit, no cropping, no white bars ─────────────────
+// ─── Single PDF page ──────────────────────────────────────────────────────────
 function PdfPage({ pdfDoc, pageNum, width, height, pdfW }) {
   const canvasRef = useRef(null);
   const [rendered, setRendered] = useState(false);
@@ -51,36 +51,46 @@ function PdfPage({ pdfDoc, pageNum, width, height, pdfW }) {
 
 // ─── Main Viewer ──────────────────────────────────────────────────────────────
 export default function CatalogViewer() {
-  const [pdfDoc,    setPdfDoc]    = useState(null);
-  const [numPages,  setNumPages]  = useState(0);
-  const [pdfNative, setPdfNative] = useState(null);
+  const [pdfDoc,      setPdfDoc]      = useState(null);
+  const [numPages,    setNumPages]    = useState(0);
+  const [pdfNative,   setPdfNative]   = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const [loading,   setLoading]   = useState(true);
-  const [error,     setError]     = useState(false);
+  const [loading,     setLoading]     = useState(true);
+  const [error,       setError]       = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Normal-mode responsive page width (per page, 2 pages shown side by side)
+  const [pageW, setPageW] = useState(380);
   const bookRef    = useRef(null);
   const sectionRef = useRef(null);
 
-  // Responsive page width
-  const [vpW, setVpW] = useState(380);
-  useEffect(() => {
-    const calc = () => {
-      const vw = window.innerWidth;
-      setVpW(Math.max(Math.min(Math.floor((vw - 80) / 2), 460), 200));
-    };
-    calc();
-    window.addEventListener("resize", calc);
-    return () => window.removeEventListener("resize", calc);
+  // Recalculate page width for both normal and fullscreen
+  const calcSizes = useCallback((fullscreen, native) => {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    if (fullscreen && native) {
+      // Height-constrained: subtract toolbar (56px) + top padding (24px)
+      const availH = vh - 56 - 40;
+      const ratio  = native.w / native.h;
+      const byH    = Math.floor(availH * ratio);
+      const byW    = Math.floor(vw / 2) - 60; // 60px margin + side buttons
+      setPageW(Math.max(Math.min(byH, byW, 560), 160));
+    } else {
+      setPageW(Math.max(Math.min(Math.floor((vw - 80) / 2), 460), 200));
+    }
   }, []);
 
-  // In fullscreen use more of the screen
-  const effectiveW = isFullscreen
-    ? Math.min(Math.floor((window?.innerWidth ?? 800) / 2) - 20, 600)
-    : vpW;
+  useEffect(() => {
+    const onResize = () => calcSizes(isFullscreen, pdfNative);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [isFullscreen, pdfNative, calcSizes]);
 
   const pageSize = pdfNative
-    ? { w: effectiveW, h: Math.round(effectiveW * (pdfNative.h / pdfNative.w)) }
-    : { w: effectiveW, h: Math.round(effectiveW * 1.414) };
+    ? { w: pageW, h: Math.round(pageW * (pdfNative.h / pdfNative.w)) }
+    : { w: pageW, h: Math.round(pageW * 1.414) };
 
   // Load PDF
   useEffect(() => {
@@ -89,9 +99,9 @@ export default function CatalogViewer() {
       try {
         const pdfjsLib = await import("pdfjs-dist");
         pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
-        const doc  = await pdfjsLib.getDocument("/catalog.pdf").promise;
+        const doc = await pdfjsLib.getDocument("/catalog.pdf").promise;
         if (destroyed) return;
-        const vp1  = (await doc.getPage(1)).getViewport({ scale: 1 });
+        const vp1 = (await doc.getPage(1)).getViewport({ scale: 1 });
         setPdfDoc(doc);
         setNumPages(doc.numPages);
         setPdfNative({ w: Math.round(vp1.width), h: Math.round(vp1.height) });
@@ -119,45 +129,193 @@ export default function CatalogViewer() {
     }
   }, []);
 
-  // onFlip: e.data = left-page 0-indexed; pages go 0,2,4,6...
   const onFlip   = useCallback((e) => setCurrentPage(e.data), []);
   const prevPage = () => bookRef.current?.pageFlip().flipPrev();
   const nextPage = () => bookRef.current?.pageFlip().flipNext();
 
-  // Display: page index is 0-based; show as "1–2 / 32"
   const displayLeft  = currentPage + 1;
   const displayRight = Math.min(currentPage + 2, numPages);
 
-  return (
-    <section
-      id="katalog"
-      ref={sectionRef}
-      className="py-24 bg-navy-950 overflow-hidden"
-      style={isFullscreen ? { padding: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh", background: "#060e1a" } : {}}
+  // ── Toolbar (shared between modes) ────────────────────────────────────────
+  const Toolbar = () => (
+    <div
+      className="flex items-center gap-1 rounded-2xl px-3 py-2"
+      style={{ background: "rgba(10,22,40,0.92)", backdropFilter: "blur(16px)", border: "1px solid rgba(201,168,76,0.22)" }}
     >
-      <div className={isFullscreen ? "w-full h-full flex flex-col items-center justify-center" : "max-w-7xl mx-auto px-6"}>
+      <ToolBtn onClick={prevPage} label="Önceki"><ChevronLeft /></ToolBtn>
 
-        {/* Header — hidden in fullscreen */}
-        {!isFullscreen && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-14"
-          >
-            <span className="text-gold-500/65 text-xs font-bold tracking-[0.3em] uppercase block mb-4">
-              Dijital Katalog
-            </span>
-            <h2 className="font-heading text-3xl md:text-5xl font-black text-white mb-4">
-              Projeyi <span className="text-gradient-gold">Sayfa Sayfa İnceleyin</span>
-            </h2>
-            <div className="section-divider mb-4" />
-            <p className="text-white/40 text-sm max-w-xl mx-auto">
-              Sayfaya tıklayın veya sürükleyin. Daire planları, fiyat listesi ve proje detaylarının tamamı burada.
-            </p>
-          </motion.div>
+      <div className="flex items-center gap-2 px-4 py-1.5 rounded-xl bg-white/5 mx-1">
+        <BookIcon />
+        <span className="text-white/60 text-xs font-semibold tabular-nums whitespace-nowrap">
+          {displayLeft}{displayLeft < displayRight ? `–${displayRight}` : ""}
+          <span className="text-white/25 mx-1">/</span>{numPages}
+        </span>
+      </div>
+
+      <ToolBtn onClick={nextPage} label="Sonraki"><ChevronRight /></ToolBtn>
+
+      <Separator />
+
+      <ToolBtn onClick={toggleFullscreen} label={isFullscreen ? "Küçült" : "Tam Ekran"} active={isFullscreen}>
+        {isFullscreen ? <ExitFullscreenIcon /> : <FullscreenIcon />}
+      </ToolBtn>
+
+      <Separator />
+
+      <ToolBtn href="/catalog.pdf" download="BWA-Gol-Evleri-Katalog.pdf" label="PDF İndir">
+        <DownloadIcon />
+      </ToolBtn>
+    </div>
+  );
+
+  // ── Flipbook stage (shared) ────────────────────────────────────────────────
+  const BookStage = () => (
+    <div className="flex items-center justify-center gap-3">
+      {/* Prev */}
+      <button
+        onClick={prevPage}
+        aria-label="Önceki"
+        className="hidden md:flex shrink-0 w-11 h-11 rounded-full border items-center justify-center transition-all"
+        style={{ background: "rgba(10,22,40,0.80)", borderColor: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.55)" }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)"; e.currentTarget.style.color = "#c9a84c"; }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "rgba(255,255,255,0.55)"; }}
+      >
+        <ChevronLeft />
+      </button>
+
+      {/* Flipbook */}
+      <div style={{ filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.7))" }}>
+        <HTMLFlipBook
+          ref={bookRef}
+          width={pageSize.w}
+          height={pageSize.h}
+          size="fixed"
+          minWidth={160}
+          maxWidth={600}
+          minHeight={100}
+          maxHeight={900}
+          showCover={false}
+          mobileScrollSupport
+          onFlip={onFlip}
+          flippingTime={650}
+          style={{ margin: "0 auto" }}
+          startPage={0}
+          drawShadow
+          usePortrait={false}
+          startZIndex={0}
+          autoSize={false}
+          maxShadowOpacity={0.5}
+          showPageCorners
+          disableFlipByClick={false}
+        >
+          {Array.from({ length: numPages }, (_, i) => (
+            <div key={i} style={{ width: pageSize.w, height: pageSize.h, overflow: "hidden" }}>
+              <PdfPage
+                pdfDoc={pdfDoc}
+                pageNum={i + 1}
+                width={pageSize.w}
+                height={pageSize.h}
+                pdfW={pdfNative.w}
+              />
+            </div>
+          ))}
+        </HTMLFlipBook>
+      </div>
+
+      {/* Next */}
+      <button
+        onClick={nextPage}
+        aria-label="Sonraki"
+        className="hidden md:flex shrink-0 w-11 h-11 rounded-full border items-center justify-center transition-all"
+        style={{ background: "rgba(10,22,40,0.80)", borderColor: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.55)" }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)"; e.currentTarget.style.color = "#c9a84c"; }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "rgba(255,255,255,0.55)"; }}
+      >
+        <ChevronRight />
+      </button>
+    </div>
+  );
+
+  // ── FULLSCREEN RENDER ──────────────────────────────────────────────────────
+  if (isFullscreen) {
+    return (
+      <section
+        id="katalog"
+        ref={sectionRef}
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          background: "#060e1a",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "16px",
+          overflow: "hidden",
+        }}
+      >
+        {/* Exit button — top right corner */}
+        <button
+          onClick={toggleFullscreen}
+          aria-label="Tam ekrandan çık"
+          style={{
+            position: "absolute",
+            top: 16,
+            right: 16,
+            zIndex: 50,
+            width: 40,
+            height: 40,
+            borderRadius: "50%",
+            background: "rgba(10,22,40,0.90)",
+            border: "1px solid rgba(201,168,76,0.35)",
+            color: "#c9a84c",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+          }}
+        >
+          <ExitFullscreenIcon />
+        </button>
+
+        {/* Flipbook */}
+        {!loading && !error && pdfDoc && pdfNative && <BookStage />}
+
+        {/* Toolbar — bottom center */}
+        {!loading && !error && pdfDoc && (
+          <div style={{ position: "absolute", bottom: 16, left: "50%", transform: "translateX(-50%)" }}>
+            <Toolbar />
+          </div>
         )}
+      </section>
+    );
+  }
+
+  // ── NORMAL RENDER ──────────────────────────────────────────────────────────
+  return (
+    <section id="katalog" ref={sectionRef} className="py-24 bg-navy-950 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <span className="text-gold-500/65 text-xs font-bold tracking-[0.3em] uppercase block mb-4">
+            Dijital Katalog
+          </span>
+          <h2 className="font-heading text-3xl md:text-5xl font-black text-white mb-4">
+            Projeyi <span className="text-gradient-gold">Sayfa Sayfa İnceleyin</span>
+          </h2>
+          <div className="section-divider mb-4" />
+          <p className="text-white/40 text-sm max-w-xl mx-auto">
+            Sayfaya tıklayın veya sürükleyin. Daire planları, fiyat listesi ve proje detaylarının tamamı burada.
+          </p>
+        </motion.div>
 
         {/* Loading */}
         {loading && (
@@ -180,103 +338,15 @@ export default function CatalogViewer() {
 
         {/* Book */}
         {!loading && !error && pdfDoc && pdfNative && (
-          <div className="flex flex-col items-center">
-
-            {/* Stage */}
-            <div
-              className="relative w-full flex justify-center"
-              style={{
-                padding: isFullscreen ? "20px 0 0" : "40px 0 0",
-                background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%)",
-              }}
-            >
-              {/* Side prev */}
-              <button onClick={prevPage} aria-label="Önceki"
-                className="hidden md:flex absolute left-4 top-1/2 -translate-y-8 z-20 w-11 h-11 rounded-full glass-dark border border-white/10 items-center justify-center text-white/55 hover:text-gold-400 hover:border-gold-500/40 transition-all">
-                <ChevronLeft />
-              </button>
-
-              {/* Flipbook — showCover=false ensures strict 2-page spreads */}
-              <div style={{ filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.6))" }}>
-                <HTMLFlipBook
-                  ref={bookRef}
-                  width={pageSize.w}
-                  height={pageSize.h}
-                  size="fixed"
-                  minWidth={160}
-                  maxWidth={600}
-                  minHeight={100}
-                  maxHeight={900}
-                  showCover={false}
-                  mobileScrollSupport
-                  onFlip={onFlip}
-                  flippingTime={650}
-                  style={{ margin: "0 auto" }}
-                  startPage={0}
-                  drawShadow
-                  usePortrait={false}
-                  startZIndex={0}
-                  autoSize={false}
-                  maxShadowOpacity={0.5}
-                  showPageCorners
-                  disableFlipByClick={false}
-                >
-                  {Array.from({ length: numPages }, (_, i) => (
-                    <div key={i} style={{ width: pageSize.w, height: pageSize.h, overflow: "hidden" }}>
-                      <PdfPage
-                        pdfDoc={pdfDoc}
-                        pageNum={i + 1}
-                        width={pageSize.w}
-                        height={pageSize.h}
-                        pdfW={pdfNative.w}
-                      />
-                    </div>
-                  ))}
-                </HTMLFlipBook>
-              </div>
-
-              {/* Side next */}
-              <button onClick={nextPage} aria-label="Sonraki"
-                className="hidden md:flex absolute right-4 top-1/2 -translate-y-8 z-20 w-11 h-11 rounded-full glass-dark border border-white/10 items-center justify-center text-white/55 hover:text-gold-400 hover:border-gold-500/40 transition-all">
-                <ChevronRight />
-              </button>
+          <div className="flex flex-col items-center gap-6">
+            {/* Glow bg */}
+            <div style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%)", width: "100%", paddingTop: 8 }}>
+              <BookStage />
             </div>
 
-            {/* Toolbar */}
-            <div className="mt-6 flex items-center gap-1 rounded-2xl px-3 py-2"
-              style={{ background: "rgba(10,22,40,0.90)", backdropFilter: "blur(16px)", border: "1px solid rgba(201,168,76,0.18)" }}>
+            <Toolbar />
 
-              {/* Mobile prev */}
-              <ToolBtn onClick={prevPage} label="Önceki" className="md:hidden"><ChevronLeft /></ToolBtn>
-
-              {/* Page counter */}
-              <div className="flex items-center gap-2 px-4 py-1.5 rounded-xl bg-white/5 mx-1">
-                <BookIcon />
-                <span className="text-white/60 text-xs font-semibold tabular-nums whitespace-nowrap">
-                  {displayLeft}{displayLeft < displayRight ? `–${displayRight}` : ""}
-                  <span className="text-white/25 mx-1">/</span>{numPages}
-                </span>
-              </div>
-
-              {/* Mobile next */}
-              <ToolBtn onClick={nextPage} label="Sonraki" className="md:hidden"><ChevronRight /></ToolBtn>
-
-              <Separator />
-
-              {/* Fullscreen */}
-              <ToolBtn onClick={toggleFullscreen} label={isFullscreen ? "Küçült" : "Tam Ekran"} active={isFullscreen}>
-                {isFullscreen ? <ExitFullscreenIcon /> : <FullscreenIcon />}
-              </ToolBtn>
-
-              <Separator />
-
-              {/* Download */}
-              <ToolBtn href="/catalog.pdf" download="BWA-Gol-Evleri-Katalog.pdf" label="PDF İndir">
-                <DownloadIcon />
-              </ToolBtn>
-            </div>
-
-            <p className="text-white/20 text-[11px] mt-3 tracking-wide">
+            <p className="text-white/20 text-[11px] tracking-wide">
               Sayfaları çevirmek için tıklayın veya sürükleyin
             </p>
           </div>
@@ -294,10 +364,10 @@ function Spinner({ small }) {
 function Separator() {
   return <div className="w-px h-5 bg-white/10 mx-1" />;
 }
-function ToolBtn({ onClick, href, download, label, active, children, className = "" }) {
-  const cls = `relative flex items-center justify-center w-9 h-9 rounded-xl transition-all duration-200 group ${
+function ToolBtn({ onClick, href, download, label, active, children }) {
+  const cls = `relative flex items-center justify-center w-9 h-9 rounded-xl transition-all duration-200 group cursor-pointer ${
     active ? "bg-gold-500/20 text-gold-400 border border-gold-500/30" : "text-white/50 hover:text-gold-400 hover:bg-white/8"
-  } ${className}`;
+  }`;
   const tooltip = (
     <span className="absolute -top-9 left-1/2 -translate-x-1/2 bg-navy-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
       {label}

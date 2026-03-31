@@ -6,59 +6,89 @@ import { motion } from "framer-motion";
 const apartments = [
   {
     type: "1+1",
-    size: "50–65 m²",
-    price: "3.450.000 ₺",
+    netArea: "43,05 m²",
+    brutArea: "51,42 m²",
     badge: "Yatırım İçin İdeal",
     features: [
-      "Göl manzaralı balkon",
-      "Açık mutfak konsepti",
-      "Yerden ısıtma sistemi",
-      "Akıllı ev teknolojisi",
-      "Güvenlik ve kamera sistemi",
-      "1 araçlık kapalı otopark",
+      "Salon + Mutfak: 24,39 m²",
+      "Yatak odası: 13,80 m²",
+      "Balkon: 1,89 m²",
+      "Kapalı otopark",
+      "Çift asansör",
+      "7/24 kamera güvenlik",
     ],
-    desc: "Hem kiralık hem satılık yatırım için mükemmel seçenek. Göl manzaralı balkon ile huzurlu bir yaşam.",
+    desc: "Yatırım amaçlı veya çalışan çiftler için kompakt ve tam donanımlı yaşam alanı.",
     accentColor: "#1e6fa8",
     headerBg: "from-lake-700 to-lake-600",
   },
   {
     type: "2+1",
-    size: "90–110 m²",
-    price: "4.785.000 ₺",
+    netArea: "71,00 m²",
+    brutArea: "85,50 m²",
     badge: "En Çok Tercih Edilen",
     popular: true,
     features: [
-      "Panoramik göl ve kanal manzarası",
-      "Geniş oturma odası",
-      "Master yatak odası + ikinci oda",
-      "2 banyo (1 ebeveyn banyolu)",
-      "Yerden ısıtma sistemi",
-      "Akıllı ev teknolojisi",
-      "Güvenlik ve kamera sistemi",
-      "1 araçlık kapalı otopark",
+      "Salon: 16,90 m² + Mutfak: 9,77 m²",
+      "Ebeveyn odası: 14,71 m²",
+      "2 balkon (3,81 m² + 3,27 m²)",
+      "Kiler + hol + WC",
+      "Kapalı otopark",
+      "7/24 kamera güvenlik",
     ],
-    desc: "Aileler için geniş yaşam alanı. Göl manzaralı panoramik cephesiyle en çok talep gören daire tipi.",
+    desc: "Aile yaşamı için tasarlanmış, geniş ve ferah plan anlayışıyla projenin en çok tercih edilen tipi.",
     accentColor: "#c9a84c",
     headerBg: "from-navy-800 to-gold-600",
   },
   {
     type: "3+1",
-    size: "130–160 m²",
-    price: "5.900.000 ₺",
-    badge: "Ultra Prestij",
+    netArea: "89,34 m²",
+    brutArea: "107,73 m²",
+    badge: "Geniş Aile",
     features: [
-      "360° göl ve şehir panoraması",
-      "Geniş teras balkon",
-      "3 tam banyo",
-      "Ebeveyn banyolu master suite",
-      "Açık plan mutfak & salon",
-      "Yerden ısıtma + klima (tüm odalar)",
-      "Akıllı ev paketi (tam donanım)",
-      "2 araçlık kapalı otopark",
+      "Salon: 18,44 m² + Mutfak: 10,95 m²",
+      "3 yatak odası (ebeveyn dahil)",
+      "2 balkon (4,46 m² + 4,04 m²)",
+      "Kiler + hol + WC",
+      "Kapalı otopark",
+      "7/24 kamera güvenlik",
     ],
-    desc: "Geniş aileler ve üst segment yaşam arayanlar için. Teras balkon, panoramik manzara ve tam donanım.",
+    desc: "Geniş aileler için ferah ve işlevsel tasarım. Kanal İstanbul güzergahında 3+1 ayrıcalığı.",
     accentColor: "#0a1628",
     headerBg: "from-navy-900 to-navy-700",
+  },
+  {
+    type: "Dubleks 2+1",
+    netArea: "83,99 m²",
+    brutArea: "101,87 m²",
+    badge: "Teras Kullanımlı",
+    features: [
+      "Alt kat: salon + mutfak + balkon",
+      "Üst kat: 2 yatak odası + banyo",
+      "Özel teras: 8,28 m²",
+      "İki katlı özel yaşam alanı",
+      "Kapalı otopark",
+      "7/24 kamera güvenlik",
+    ],
+    desc: "İki katlı özel yaşam konforu. Üst katta geniş teras ile göl manzarasının tamamı sizin.",
+    accentColor: "#7c6128",
+    headerBg: "from-gold-600 to-navy-800",
+  },
+  {
+    type: "Dubleks 4+1",
+    netArea: "123,61 m²",
+    brutArea: "149,45 m²",
+    badge: "Ultra Prestij",
+    features: [
+      "4 yatak odası, iki tam kat",
+      "Alt kat: yatak odası + salon + mutfak",
+      "Üst kat: 3 yatak + banyo + teras",
+      "Maksimum göl manzarası",
+      "Kapalı otopark",
+      "7/24 kamera güvenlik",
+    ],
+    desc: "Projede en geniş ve en prestijli daire tipi. İki katlı özel yaşam alanı ve geniş teras.",
+    accentColor: "#0a1628",
+    headerBg: "from-navy-950 to-gold-700",
   },
 ];
 
@@ -84,19 +114,20 @@ export default function ApartmentTypes() {
           </h2>
           <div className="section-divider mb-5" />
           <p className="text-white/45 text-base max-w-xl mx-auto">
-            Tüm daireler Küçükçekmece Gölü manzaralı, akıllı ev sistemli ve üst segment iç mekan tasarımlıdır.
+            64 daireli projede 1+1'den dubleks 4+1'e kadar geniş seçenek yelpazesi.
+            Bahçe kullanımlı ve göl manzaralı daireler de mevcuttur.
           </p>
         </motion.div>
 
         {/* Grid — items-stretch ensures equal height */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {apartments.map((apt, i) => (
             <motion.div
               key={apt.type}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 0.55 }}
+              transition={{ delay: i * 0.1, duration: 0.55 }}
               onClick={() => setActive(i)}
               className={`relative rounded-2xl overflow-hidden cursor-pointer flex flex-col transition-all duration-400 ${
                 active === i
@@ -117,17 +148,21 @@ export default function ApartmentTypes() {
                 <span className="inline-block text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase bg-white/15 px-2.5 py-1 rounded-full mb-3">
                   {apt.badge}
                 </span>
-                <div className="text-white font-heading text-5xl font-black mb-0.5">{apt.type}</div>
-                <div className="text-white/60 text-sm font-medium">{apt.size}</div>
+                <div className="text-white font-heading text-4xl font-black mb-1">{apt.type}</div>
+                <div className="flex gap-3 text-white/65 text-xs font-medium">
+                  <span>Net: <strong className="text-white/90">{apt.netArea}</strong></span>
+                  <span>·</span>
+                  <span>Brüt: <strong className="text-white/90">{apt.brutArea}</strong></span>
+                </div>
               </div>
 
               {/* Body — flex-grow ensures cards stretch equally */}
               <div className="bg-white px-7 py-7 flex flex-col flex-grow">
-                {/* Price */}
+                {/* Area info */}
                 <div className="mb-5 pb-5 border-b border-navy-900/8">
                   <div className="text-navy-900/40 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">Fiyat</div>
-                  <div className="font-heading text-2xl font-black" style={{ color: apt.accentColor }}>
-                    {apt.price}
+                  <div className="font-heading text-base font-black text-navy-900/50 italic">
+                    Satış ekibimizle iletişime geçin
                   </div>
                 </div>
 
@@ -160,13 +195,35 @@ export default function ApartmentTypes() {
           ))}
         </div>
 
+        {/* Bahçe katı note */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-8 glass-gold rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <div>
+            <div className="text-gold-400 font-bold text-sm tracking-wide mb-1">🌿 Bahçe Katı Daireler</div>
+            <p className="text-white/50 text-xs leading-relaxed">
+              1+1 (69,51 m²), 2+1 (102,87–116,10 m²) ve 3+1 (136,29 m²) bahçe kullanımlı özel daireler de mevcuttur.
+              Geniş özel bahçe ve teras alanlarıyla farklı bir yaşam deneyimi sunar.
+            </p>
+          </div>
+          <button
+            onClick={() => document.querySelector("#talep")?.scrollIntoView({ behavior: "smooth" })}
+            className="btn-outline-gold shrink-0 px-5 py-2.5 rounded-xl text-xs font-black tracking-wider uppercase"
+          >
+            Bilgi Alın
+          </button>
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-white/25 text-xs mt-8 tracking-wide"
+          className="text-center text-white/25 text-xs mt-6 tracking-wide"
         >
-          Fiyatlar kata ve cepheye göre değişkenlik gösterebilir. Kesin bilgi için satış ekibimizle iletişime geçin.
+          Fiyatlar kata, cepheye ve ödeme planına göre değişkenlik gösterebilir. Kesin bilgi için satış ekibimizle iletişime geçin.
         </motion.p>
       </div>
     </section>

@@ -5,38 +5,38 @@ import { motion } from "framer-motion";
 const features = [
   {
     icon: "🌊",
-    title: "Kanal İstanbul Güvencesi",
-    desc: "İstanbul'un yeni boğazı Kanal İstanbul'un tam güzergahında. Tamamlandığında bu konum katlanarak değer kazanacak.",
+    title: "Kanal İstanbul Güzergahı",
+    desc: "İstanbul'un yeni boğazı Kanal İstanbul güzergahında. Proje önünden geçen Sazlıbosna Köprüsü bağlantı yoluyla konum avantajı katlanıyor.",
     color: "from-lake-700 to-lake-600",
   },
   {
     icon: "🏞️",
-    title: "Küçükçekmece Gölü Manzarası",
-    desc: "Her sabah balkonunuzdan Küçükçekmece Gölü'nün muhteşem manzarasını izleyin. Göl kıyısı yaşam ayrıcalığı.",
+    title: "Göl Manzaralı Daireler",
+    desc: "Küçükçekmece Gölü'ne nazır dairelerde sakin ve huzurlu bir atmosfer. Göl kıyısı yaşam ayrıcalığı.",
     color: "from-navy-700 to-lake-600",
   },
   {
-    icon: "📈",
-    title: "Yüksek Yatırım Getirisi",
-    desc: "Kanal İstanbul bölgesindeki gayrimenkuller tamamlanma öncesinde %40-80 değer artışı potansiyeli taşıyor.",
+    icon: "🏡",
+    title: "Teras & Bahçe Daireler",
+    desc: "Teras kullanımlı dubleks ve bahçe kullanımlı dairelerle geniş, ferah ve özel yaşam alanları. Ailelere ekstra konfor.",
     color: "from-gold-600 to-gold-500",
   },
   {
-    icon: "🏗️",
-    title: "BWA GYO Kalite Güvencesi",
-    desc: "Barsan, Winn4 ve Adproje'nin güçlü ortaklığıyla inşa edilen, kalite ve güvenilirlik standartlarının en yükseği.",
+    icon: "🔒",
+    title: "Tam Donanımlı Altyapı",
+    desc: "Kapalı otopark, çift asansör, 7/24 kamera güvenlik sistemi ve özel peyzaj alanlarıyla eksiksiz yaşam konforu.",
     color: "from-navy-800 to-navy-600",
   },
   {
     icon: "🚇",
-    title: "Mükemmel Ulaşım",
-    desc: "E-5, TEM otoyolları ve metro bağlantısı ile tüm İstanbul'a kolay erişim. Havalimanına 20 dakika.",
+    title: "Mükemmel Ulaşım Bağlantısı",
+    desc: "TEM'e 3 dk, Sazlıbosna Köprüsü'ne 3 dk, İstanbul Havalimanı'na 20 dk. Yakın zamanda açılacak metro hattına erişim avantajı.",
     color: "from-lake-700 to-navy-700",
   },
   {
-    icon: "🌳",
-    title: "Yeşil Yaşam Alanları",
-    desc: "Göl kıyısında bol yeşil alan, bisiklet yolları ve yürüyüş parkurlarıyla doğayla iç içe bir yaşam.",
+    icon: "🏫",
+    title: "Günlük Yaşama Yakınlık",
+    desc: "Okullara yürüme mesafesinde, Çam Sakura Hastanesi'ne 10 dk, Akbatı AVM'ye 10 dk. Her şey elinizin altında.",
     color: "from-navy-700 to-lake-700",
   },
 ];
@@ -63,9 +63,9 @@ export default function ProjectOverview() {
           </h2>
           <div className="section-divider mb-6" />
           <p className="text-navy-700/70 text-lg max-w-3xl mx-auto leading-relaxed">
-            Küçükçekmece Gölü kıyısında Kanal İstanbul güzergahında yer alan bu proje,
-            hem yaşam kalitesi hem de yatırım getirisi açısından İstanbul'un en stratejik
-            noktasında bulunuyor. Denizin altındaki değeri bugünden yakalayın.
+            BWA GYO imzasıyla hayata geçirilen 64 daireli BWA Göl Evleri; 1+1, 2+1, 3+1 ve
+            dubleks seçenekleriyle modern mimari, merkezi konum ve aile yaşamını ön planda
+            tutan tasarımıyla konforlu bir yaşam sunuyor.
           </p>
         </motion.div>
 
@@ -122,9 +122,9 @@ export default function ProjectOverview() {
             </p>
             <div className="flex flex-wrap justify-center gap-8 text-center">
               {[
-                { val: "45 km", lbl: "Kanal Uzunluğu" },
-                { val: "1,000+", lbl: "Geçiş/Gün Tahmin" },
-                { val: "Bilgi için arayın", lbl: "Proje Teslim Tarihi" },
+                { val: "64 Daire", lbl: "Toplam Konut" },
+                { val: "3 dk", lbl: "Sazlıbosna Köprüsü" },
+                { val: "Yakında", lbl: "Metro Hattı Erişimi" },
               ].map((item) => (
                 <div key={item.lbl}>
                   <div className="text-gold-400 font-heading text-2xl font-black">{item.val}</div>

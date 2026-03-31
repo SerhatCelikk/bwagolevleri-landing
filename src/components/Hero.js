@@ -109,7 +109,7 @@ export default function Hero() {
           className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-10 font-medium leading-relaxed"
         >
           Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında BWA GYO güvencesiyle
-          prestijli 1+1, 2+1, 3+1 daireler.
+          1+1, 2+1, 3+1 ve dubleks daireler. 64 konutluk seçkin proje.
         </motion.p>
 
         {/* CTA Buttons */}
