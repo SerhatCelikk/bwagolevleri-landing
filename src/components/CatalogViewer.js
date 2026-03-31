@@ -14,8 +14,6 @@ const HTMLFlipBook = dynamic(() => import("react-pageflip").then((m) => m.defaul
 });
 
 // ─── Single PDF page ──────────────────────────────────────────────────────────
-// renderScale: canvas is rendered at (width * renderScale) pixels but displayed
-// at (width) CSS pixels → crisp HiDPI / fullscreen quality without changing layout
 function PdfPage({ pdfDoc, pageNum, width, height, pdfW, renderScale = 1 }) {
   const canvasRef = useRef(null);
   const [rendered, setRendered] = useState(false);
@@ -44,7 +42,6 @@ function PdfPage({ pdfDoc, pageNum, width, height, pdfW, renderScale = 1 }) {
           <Spinner small />
         </div>
       )}
-      {/* canvas pixel size = width*renderScale, CSS display size = 100% of container */}
       <canvas
         ref={canvasRef}
         style={{ display: rendered ? "block" : "none", width: "100%", height: "100%" }}
@@ -62,6 +59,7 @@ export default function CatalogViewer() {
   const [loading,      setLoading]      = useState(true);
   const [error,        setError]        = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [zoomFactor,   setZoomFactor]   = useState(1.0);
 
   // pageW never changes on fullscreen toggle → HTMLFlipBook props stay stable
   const [pageW, setPageW] = useState(380);
@@ -79,27 +77,33 @@ export default function CatalogViewer() {
     return () => window.removeEventListener("resize", calc);
   }, []);
 
+  // Reset zoom when leaving fullscreen
+  useEffect(() => {
+    if (!isFullscreen) setZoomFactor(1.0);
+  }, [isFullscreen]);
+
   const pageSize = pdfNative
     ? { w: pageW, h: Math.round(pageW * (pdfNative.h / pdfNative.w)) }
     : { w: pageW, h: Math.round(pageW * 1.414) };
 
-  // CSS scale factor for fullscreen (book visually enlarged, props unchanged)
-  const fsScale = useMemo(() => {
+  // Base fit-to-screen scale
+  const fsScaleBase = useMemo(() => {
     if (!isFullscreen || !pdfNative) return 1;
     const bookW = pageSize.w * 2;
     const bookH = pageSize.h;
     const maxW  = window.innerWidth  - 160;
-    const maxH  = window.innerHeight - 90;
+    const maxH  = window.innerHeight - 100;
     return Math.min(maxW / bookW, maxH / bookH);
   }, [isFullscreen, pdfNative, pageSize.w, pageSize.h]);
 
-  // renderScale: how many extra pixels to render per CSS pixel.
-  // In fullscreen we need at least fsScale worth of pixels to stay sharp.
-  // We round up to the next integer and cap at 3 to limit memory usage.
-  const renderScale = useMemo(() => {
-    if (!isFullscreen) return 1;
-    return Math.min(Math.max(Math.ceil(fsScale), 2), 3);
-  }, [isFullscreen, fsScale]);
+  // Effective scale = base × user zoom
+  const effectiveScale = fsScaleBase * zoomFactor;
+
+  // renderScale: render canvases at higher res so CSS scale looks sharp
+  const renderScale = isFullscreen ? 2 : 1;
+
+  const zoomIn  = useCallback(() => setZoomFactor(z => Math.min(+(z + 0.15).toFixed(2), 2.0)), []);
+  const zoomOut = useCallback(() => setZoomFactor(z => Math.max(+(z - 0.15).toFixed(2), 0.4)), []);
 
   // Load PDF
   useEffect(() => {
@@ -145,13 +149,12 @@ export default function CatalogViewer() {
   const displayLeft  = currentPage + 1;
   const displayRight = Math.min(currentPage + 2, numPages);
 
-  const overlayBtn = {
-    position: "fixed",
-    zIndex: 9999,
-    top: "50%",
-    transform: "translateY(-50%)",
-    width: 52,
-    height: 52,
+  // Shared button style for fullscreen overlays (absolute inside section)
+  const fsBtn = (extra = {}) => ({
+    position: "absolute",
+    zIndex: 10,
+    width: 46,
+    height: 46,
     borderRadius: "50%",
     background: "rgba(6,14,26,0.88)",
     border: "1.5px solid rgba(201,168,76,0.50)",
@@ -161,239 +164,286 @@ export default function CatalogViewer() {
     justifyContent: "center",
     cursor: "pointer",
     backdropFilter: "blur(8px)",
-  };
+    ...extra,
+  });
 
   return (
-    <>
-      {/* ── Fullscreen fixed overlays ── */}
+    <section
+      id="katalog"
+      ref={sectionRef}
+      className={isFullscreen ? "" : "py-24 bg-navy-950 overflow-hidden"}
+      style={isFullscreen ? {
+        position: "relative",          // needed for absolute children
+        width: "100%",
+        height: "100vh",
+        background: "#060e1a",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+      } : {}}
+    >
+      {/* ════════════════════════════════════════════════════════
+          FULLSCREEN OVERLAY CONTROLS — inside section so they
+          appear within the fullscreen context
+          ════════════════════════════════════════════════════════ */}
       {isFullscreen && (
         <>
           {/* Exit — top right */}
           <button
             onClick={toggleFullscreen}
             aria-label="Tam ekrandan çık"
-            style={{
-              position: "fixed", top: 16, right: 16, zIndex: 9999,
-              width: 44, height: 44, borderRadius: "50%",
-              background: "rgba(6,14,26,0.90)",
-              border: "1.5px solid rgba(201,168,76,0.55)",
-              color: "#c9a84c", cursor: "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              backdropFilter: "blur(8px)",
-            }}
+            title="Küçült"
+            style={fsBtn({ top: 16, right: 16 })}
           >
             <ExitFullscreenIcon />
           </button>
 
-          {/* Prev */}
-          <button onClick={prevPage} aria-label="Önceki sayfa" style={{ ...overlayBtn, left: 16 }}>
+          {/* Prev — left center */}
+          <button
+            onClick={prevPage}
+            aria-label="Önceki sayfa"
+            title="Önceki"
+            style={fsBtn({ top: "50%", left: 16, transform: "translateY(-50%)" })}
+          >
             <ChevronLeft size={20} />
           </button>
 
-          {/* Next */}
-          <button onClick={nextPage} aria-label="Sonraki sayfa" style={{ ...overlayBtn, right: 16 }}>
+          {/* Next — right center */}
+          <button
+            onClick={nextPage}
+            aria-label="Sonraki sayfa"
+            title="Sonraki"
+            style={fsBtn({ top: "50%", right: 16, transform: "translateY(-50%)" })}
+          >
             <ChevronRight size={20} />
           </button>
 
-          {/* Toolbar — bottom center */}
+          {/* Bottom toolbar */}
           <div style={{
-            position: "fixed", bottom: 16, left: "50%",
-            transform: "translateX(-50%)", zIndex: 9999,
-            display: "flex", alignItems: "center", gap: 4,
-            borderRadius: 16, padding: "6px 12px",
+            position: "absolute",
+            bottom: 18,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 10,
+            display: "flex",
+            alignItems: "center",
+            gap: 4,
+            borderRadius: 16,
+            padding: "6px 10px",
             background: "rgba(6,14,26,0.92)",
             backdropFilter: "blur(16px)",
             border: "1px solid rgba(201,168,76,0.25)",
+            whiteSpace: "nowrap",
           }}>
-            <div className="flex items-center gap-2 px-4 py-1.5 rounded-xl bg-white/5 mx-1">
+            {/* Page counter */}
+            <div style={{
+              display: "flex", alignItems: "center", gap: 6,
+              padding: "4px 14px", borderRadius: 10,
+              background: "rgba(255,255,255,0.05)",
+            }}>
               <BookIcon />
-              <span className="text-white/60 text-xs font-semibold tabular-nums whitespace-nowrap">
+              <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, fontWeight: 600, fontVariantNumeric: "tabular-nums" }}>
                 {displayLeft}{displayLeft < displayRight ? `–${displayRight}` : ""}
-                <span className="text-white/25 mx-1">/</span>{numPages}
+                <span style={{ color: "rgba(255,255,255,0.25)", margin: "0 4px" }}>/</span>
+                {numPages}
               </span>
             </div>
-            <Separator />
-            <ToolBtn href="/catalog.pdf" download="BWA-Gol-Evleri-Katalog.pdf" label="PDF İndir">
+
+            <FsSep />
+
+            {/* Zoom out */}
+            <FsToolBtn onClick={zoomOut} title="Uzaklaştır" disabled={zoomFactor <= 0.4}>
+              <ZoomOutIcon />
+            </FsToolBtn>
+
+            {/* Zoom label */}
+            <span style={{
+              color: "rgba(201,168,76,0.9)", fontSize: 11, fontWeight: 700,
+              minWidth: 36, textAlign: "center",
+            }}>
+              {Math.round(effectiveScale * 100)}%
+            </span>
+
+            {/* Zoom in */}
+            <FsToolBtn onClick={zoomIn} title="Yaklaştır" disabled={zoomFactor >= 2.0}>
+              <ZoomInIcon />
+            </FsToolBtn>
+
+            <FsSep />
+
+            {/* Download */}
+            <FsToolBtn href="/catalog.pdf" download="BWA-Gol-Evleri-Katalog.pdf" title="PDF İndir">
               <DownloadIcon />
-            </ToolBtn>
+            </FsToolBtn>
           </div>
         </>
       )}
 
-      {/* ── Section ── */}
-      <section
-        id="katalog"
-        ref={sectionRef}
-        className={isFullscreen ? "" : "py-24 bg-navy-950 overflow-hidden"}
-        style={isFullscreen ? {
-          width: "100%", height: "100vh",
-          background: "#060e1a",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          overflow: "hidden",
-        } : {}}
-      >
-        <div className={isFullscreen ? "" : "max-w-7xl mx-auto px-6"}>
+      {/* ════════════════════════════════════════════════════════
+          MAIN CONTENT
+          ════════════════════════════════════════════════════════ */}
+      <div className={isFullscreen ? "" : "max-w-7xl mx-auto px-6"}>
 
-          {/* Header — normal mode only */}
-          {!isFullscreen && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-14"
+        {/* Header — normal mode only */}
+        {!isFullscreen && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-14"
+          >
+            <span className="text-gold-500/65 text-xs font-bold tracking-[0.3em] uppercase block mb-4">
+              Dijital Katalog
+            </span>
+            <h2 className="font-heading text-3xl md:text-5xl font-black text-white mb-4">
+              Projeyi <span className="text-gradient-gold">Sayfa Sayfa İnceleyin</span>
+            </h2>
+            <div className="section-divider mb-4" />
+            <p className="text-white/40 text-sm max-w-xl mx-auto">
+              Sayfaya tıklayın veya sürükleyin. Daire planları, fiyat listesi ve proje detaylarının tamamı burada.
+            </p>
+          </motion.div>
+        )}
+
+        {loading && (
+          <div className="flex flex-col items-center gap-4 py-24">
+            <Spinner />
+            <p className="text-white/40 text-sm tracking-wider">Katalog yükleniyor…</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="text-center py-16">
+            <p className="text-white/40 mb-5 text-sm">Katalog yüklenemedi.</p>
+            <a href="/catalog.pdf" download="BWA-Gol-Evleri-Katalog.pdf"
+              className="btn-gold px-7 py-3 rounded-lg text-sm font-bold tracking-wider inline-block">
+              PDF Olarak İndir
+            </a>
+          </div>
+        )}
+
+        {!loading && !error && pdfDoc && pdfNative && (
+          <div className={isFullscreen ? "flex flex-col items-center" : "flex flex-col items-center gap-6"}>
+
+            {/* Book row */}
+            <div
+              className="flex items-center justify-center gap-3"
+              style={!isFullscreen ? {
+                background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%)",
+                paddingTop: 8,
+              } : {}}
             >
-              <span className="text-gold-500/65 text-xs font-bold tracking-[0.3em] uppercase block mb-4">
-                Dijital Katalog
-              </span>
-              <h2 className="font-heading text-3xl md:text-5xl font-black text-white mb-4">
-                Projeyi <span className="text-gradient-gold">Sayfa Sayfa İnceleyin</span>
-              </h2>
-              <div className="section-divider mb-4" />
-              <p className="text-white/40 text-sm max-w-xl mx-auto">
-                Sayfaya tıklayın veya sürükleyin. Daire planları, fiyat listesi ve proje detaylarının tamamı burada.
-              </p>
-            </motion.div>
-          )}
+              {/* Prev — normal mode only (fullscreen has absolute overlay) */}
+              {!isFullscreen && (
+                <button
+                  onClick={prevPage}
+                  aria-label="Önceki"
+                  className="hidden md:flex shrink-0 w-11 h-11 rounded-full border items-center justify-center transition-all"
+                  style={{ background: "rgba(10,22,40,0.82)", borderColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.55)" }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)"; e.currentTarget.style.color = "#c9a84c"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; e.currentTarget.style.color = "rgba(255,255,255,0.55)"; }}
+                >
+                  <ChevronLeft />
+                </button>
+              )}
 
-          {loading && (
-            <div className="flex flex-col items-center gap-4 py-24">
-              <Spinner />
-              <p className="text-white/40 text-sm tracking-wider">Katalog yükleniyor…</p>
-            </div>
-          )}
-
-          {error && (
-            <div className="text-center py-16">
-              <p className="text-white/40 mb-5 text-sm">Katalog yüklenemedi.</p>
-              <a href="/catalog.pdf" download="BWA-Gol-Evleri-Katalog.pdf"
-                className="btn-gold px-7 py-3 rounded-lg text-sm font-bold tracking-wider inline-block">
-                PDF Olarak İndir
-              </a>
-            </div>
-          )}
-
-          {!loading && !error && pdfDoc && pdfNative && (
-            <div className={isFullscreen ? "flex flex-col items-center" : "flex flex-col items-center gap-6"}>
-
-              {/* Book row */}
-              <div
-                className="flex items-center justify-center gap-3"
-                style={!isFullscreen ? {
-                  background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%)",
-                  paddingTop: 8,
-                } : {}}
-              >
-                {/* Prev — normal mode only */}
-                {!isFullscreen && (
-                  <button
-                    onClick={prevPage}
-                    aria-label="Önceki"
-                    className="hidden md:flex shrink-0 w-11 h-11 rounded-full border items-center justify-center transition-all"
-                    style={{ background: "rgba(10,22,40,0.82)", borderColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.55)" }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)"; e.currentTarget.style.color = "#c9a84c"; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; e.currentTarget.style.color = "rgba(255,255,255,0.55)"; }}
-                  >
-                    <ChevronLeft />
-                  </button>
-                )}
-
-                {/* Flipbook wrapper — CSS scale in fullscreen, stable props always */}
-                <div style={{
-                  filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.65))",
-                  transform: isFullscreen ? `scale(${fsScale})` : "none",
-                  transformOrigin: "center center",
-                  ...(isFullscreen ? { width: pageSize.w * 2, height: pageSize.h } : {}),
-                }}>
-                  <HTMLFlipBook
-                    ref={bookRef}
-                    width={pageSize.w}
-                    height={pageSize.h}
-                    size="fixed"
-                    minWidth={160}
-                    maxWidth={600}
-                    minHeight={100}
-                    maxHeight={900}
-                    showCover={false}
-                    mobileScrollSupport
-                    onFlip={onFlip}
-                    flippingTime={650}
-                    style={{ margin: "0 auto" }}
-                    startPage={0}
-                    drawShadow
-                    usePortrait={false}
-                    startZIndex={0}
-                    autoSize={false}
-                    maxShadowOpacity={0.5}
-                    showPageCorners
-                    disableFlipByClick={false}
-                  >
-                    {Array.from({ length: numPages }, (_, i) => (
-                      <div key={i} style={{ width: pageSize.w, height: pageSize.h, overflow: "hidden" }}>
-                        <PdfPage
-                          pdfDoc={pdfDoc}
-                          pageNum={i + 1}
-                          width={pageSize.w}
-                          height={pageSize.h}
-                          pdfW={pdfNative.w}
-                          renderScale={renderScale}
-                        />
-                      </div>
-                    ))}
-                  </HTMLFlipBook>
-                </div>
-
-                {/* Next — normal mode only */}
-                {!isFullscreen && (
-                  <button
-                    onClick={nextPage}
-                    aria-label="Sonraki"
-                    className="hidden md:flex shrink-0 w-11 h-11 rounded-full border items-center justify-center transition-all"
-                    style={{ background: "rgba(10,22,40,0.82)", borderColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.55)" }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)"; e.currentTarget.style.color = "#c9a84c"; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; e.currentTarget.style.color = "rgba(255,255,255,0.55)"; }}
-                  >
-                    <ChevronRight />
-                  </button>
-                )}
+              {/* Flipbook — CSS scale in fullscreen; props never change */}
+              <div style={{
+                filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.65))",
+                transform: isFullscreen ? `scale(${effectiveScale})` : "none",
+                transformOrigin: "center center",
+                ...(isFullscreen ? { width: pageSize.w * 2, height: pageSize.h } : {}),
+              }}>
+                <HTMLFlipBook
+                  ref={bookRef}
+                  width={pageSize.w}
+                  height={pageSize.h}
+                  size="fixed"
+                  minWidth={160}
+                  maxWidth={600}
+                  minHeight={100}
+                  maxHeight={900}
+                  showCover={false}
+                  mobileScrollSupport
+                  onFlip={onFlip}
+                  flippingTime={650}
+                  style={{ margin: "0 auto" }}
+                  startPage={0}
+                  drawShadow
+                  usePortrait={false}
+                  startZIndex={0}
+                  autoSize={false}
+                  maxShadowOpacity={0.5}
+                  showPageCorners
+                  disableFlipByClick={false}
+                >
+                  {Array.from({ length: numPages }, (_, i) => (
+                    <div key={i} style={{ width: pageSize.w, height: pageSize.h, overflow: "hidden" }}>
+                      <PdfPage
+                        pdfDoc={pdfDoc}
+                        pageNum={i + 1}
+                        width={pageSize.w}
+                        height={pageSize.h}
+                        pdfW={pdfNative.w}
+                        renderScale={renderScale}
+                      />
+                    </div>
+                  ))}
+                </HTMLFlipBook>
               </div>
 
-              {/* Toolbar — normal mode only */}
+              {/* Next — normal mode only */}
               {!isFullscreen && (
-                <>
-                  <div
-                    className="flex items-center gap-1 rounded-2xl px-3 py-2"
-                    style={{ background: "rgba(10,22,40,0.92)", backdropFilter: "blur(16px)", border: "1px solid rgba(201,168,76,0.22)" }}
-                  >
-                    <ToolBtn onClick={prevPage} label="Önceki" className="md:hidden"><ChevronLeft /></ToolBtn>
-
-                    <div className="flex items-center gap-2 px-4 py-1.5 rounded-xl bg-white/5 mx-1">
-                      <BookIcon />
-                      <span className="text-white/60 text-xs font-semibold tabular-nums whitespace-nowrap">
-                        {displayLeft}{displayLeft < displayRight ? `–${displayRight}` : ""}
-                        <span className="text-white/25 mx-1">/</span>{numPages}
-                      </span>
-                    </div>
-
-                    <ToolBtn onClick={nextPage} label="Sonraki" className="md:hidden"><ChevronRight /></ToolBtn>
-                    <Separator />
-                    <ToolBtn onClick={toggleFullscreen} label="Tam Ekran"><FullscreenIcon /></ToolBtn>
-                    <Separator />
-                    <ToolBtn href="/catalog.pdf" download="BWA-Gol-Evleri-Katalog.pdf" label="PDF İndir">
-                      <DownloadIcon />
-                    </ToolBtn>
-                  </div>
-
-                  <p className="text-white/20 text-[11px] tracking-wide">
-                    Sayfaları çevirmek için tıklayın veya sürükleyin
-                  </p>
-                </>
+                <button
+                  onClick={nextPage}
+                  aria-label="Sonraki"
+                  className="hidden md:flex shrink-0 w-11 h-11 rounded-full border items-center justify-center transition-all"
+                  style={{ background: "rgba(10,22,40,0.82)", borderColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.55)" }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)"; e.currentTarget.style.color = "#c9a84c"; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; e.currentTarget.style.color = "rgba(255,255,255,0.55)"; }}
+                >
+                  <ChevronRight />
+                </button>
               )}
             </div>
-          )}
-        </div>
-      </section>
-    </>
+
+            {/* Toolbar — normal mode only */}
+            {!isFullscreen && (
+              <>
+                <div
+                  className="flex items-center gap-1 rounded-2xl px-3 py-2"
+                  style={{ background: "rgba(10,22,40,0.92)", backdropFilter: "blur(16px)", border: "1px solid rgba(201,168,76,0.22)" }}
+                >
+                  <ToolBtn onClick={prevPage} label="Önceki" className="md:hidden"><ChevronLeft /></ToolBtn>
+
+                  <div className="flex items-center gap-2 px-4 py-1.5 rounded-xl bg-white/5 mx-1">
+                    <BookIcon />
+                    <span className="text-white/60 text-xs font-semibold tabular-nums whitespace-nowrap">
+                      {displayLeft}{displayLeft < displayRight ? `–${displayRight}` : ""}
+                      <span className="text-white/25 mx-1">/</span>{numPages}
+                    </span>
+                  </div>
+
+                  <ToolBtn onClick={nextPage} label="Sonraki" className="md:hidden"><ChevronRight /></ToolBtn>
+                  <Separator />
+                  <ToolBtn onClick={toggleFullscreen} label="Tam Ekran"><FullscreenIcon /></ToolBtn>
+                  <Separator />
+                  <ToolBtn href="/catalog.pdf" download="BWA-Gol-Evleri-Katalog.pdf" label="PDF İndir">
+                    <DownloadIcon />
+                  </ToolBtn>
+                </div>
+
+                <p className="text-white/20 text-[11px] tracking-wide">
+                  Sayfaları çevirmek için tıklayın veya sürükleyin
+                </p>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -404,6 +454,34 @@ function Spinner({ small }) {
 }
 function Separator() {
   return <div className="w-px h-5 bg-white/10 mx-1" />;
+}
+function FsSep() {
+  return <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)", margin: "0 2px" }} />;
+}
+function FsToolBtn({ onClick, href, download, title, disabled, children }) {
+  const style = {
+    width: 34, height: 34, borderRadius: 10,
+    display: "flex", alignItems: "center", justifyContent: "center",
+    cursor: disabled ? "not-allowed" : "pointer",
+    color: disabled ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.55)",
+    background: "transparent",
+    border: "none",
+    transition: "color 0.15s, background 0.15s",
+  };
+  if (href) return (
+    <a href={href} download={download} title={title} style={style}
+      onMouseEnter={e => { e.currentTarget.style.color = "#c9a84c"; e.currentTarget.style.background = "rgba(255,255,255,0.06)"; }}
+      onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,0.55)"; e.currentTarget.style.background = "transparent"; }}>
+      {children}
+    </a>
+  );
+  return (
+    <button onClick={disabled ? undefined : onClick} title={title} style={style}
+      onMouseEnter={e => { if (!disabled) { e.currentTarget.style.color = "#c9a84c"; e.currentTarget.style.background = "rgba(255,255,255,0.06)"; }}}
+      onMouseLeave={e => { e.currentTarget.style.color = disabled ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.55)"; e.currentTarget.style.background = "transparent"; }}>
+      {children}
+    </button>
+  );
 }
 function ToolBtn({ onClick, href, download, label, children, className = "" }) {
   const cls = `relative flex items-center justify-center w-9 h-9 rounded-xl transition-all duration-200 group cursor-pointer text-white/50 hover:text-gold-400 hover:bg-white/8 ${className}`;
@@ -429,6 +507,12 @@ function FullscreenIcon() {
 }
 function ExitFullscreenIcon() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="4 14 10 14 10 20" /><polyline points="20 10 14 10 14 4" /><line x1="10" y1="14" x2="3" y2="21" /><line x1="21" y1="3" x2="14" y2="10" /></svg>;
+}
+function ZoomInIcon() {
+  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>;
+}
+function ZoomOutIcon() {
+  return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>;
 }
 function DownloadIcon() {
   return <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>;
