@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" fill="none">
+  <!-- Rhino body -->
+  <ellipse cx="105" cy="75" rx="58" ry="32" fill="#c9a84c"/>
+  <!-- Neck -->
+  <ellipse cx="65" cy="60" rx="22" ry="26" fill="#c9a84c"/>
+  <!-- Head -->
+  <ellipse cx="42" cy="52" rx="24" ry="18" fill="#c9a84c"/>
+  <!-- Snout/muzzle -->
+  <ellipse cx="22" cy="56" rx="12" ry="10" fill="#b89038"/>
+  <!-- Horn -->
+  <ellipse cx="16" cy="44" rx="5" ry="14" fill="#a07830" transform="rotate(-15 16 44)"/>
+  <!-- Small horn bump -->
+  <ellipse cx="24" cy="42" rx="3" ry="7" fill="#a07830" transform="rotate(-10 24 42)"/>
+  <!-- Eye -->
+  <circle cx="36" cy="47" r="4" fill="#060e1a"/>
+  <circle cx="37.5" cy="46" r="1.5" fill="rgba(255,255,255,0.5)"/>
+  <!-- Ear -->
+  <ellipse cx="52" cy="36" rx="6" ry="10" fill="#c9a84c" transform="rotate(20 52 36)"/>
+  <ellipse cx="52" cy="37" rx="3.5" ry="6" fill="#a07830" transform="rotate(20 52 37)"/>
+  <!-- Legs front -->
+  <rect x="68" y="100" width="12" height="20" rx="5" fill="#b89038"/>
+  <rect x="84" y="103" width="12" height="17" rx="5" fill="#b89038"/>
+  <!-- Legs back -->
+  <rect x="130" y="100" width="12" height="20" rx="5" fill="#b89038"/>
+  <rect x="146" y="103" width="12" height="17" rx="5" fill="#b89038"/>
+  <!-- Hooves -->
+  <rect x="68" y="116" width="12" height="6" rx="3" fill="#0a1628"/>
+  <rect x="84" y="116" width="12" height="6" rx="3" fill="#0a1628"/>
+  <rect x="130" y="116" width="12" height="6" rx="3" fill="#0a1628"/>
+  <rect x="146" y="116" width="12" height="6" rx="3" fill="#0a1628"/>
+  <!-- Tail -->
+  <path d="M163 72 Q185 60 178 45 Q175 38 180 32" stroke="#c9a84c" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- Belly shading -->
+  <ellipse cx="105" cy="88" rx="45" ry="14" fill="#b89038" opacity="0.5"/>
+  <!-- Back ridge -->
+  <path d="M58 44 Q85 30 120 35 Q150 38 162 48" stroke="#b89038" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

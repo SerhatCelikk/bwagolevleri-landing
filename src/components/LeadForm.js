@@ -1,0 +1,204 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { supabase } from "@/lib/supabase";
+import Image from "next/image";
+
+const APARTMENT_TYPES = ["1+1", "2+1", "3+1", "Henüz Karar Vermedim"];
+const PAYMENT_PLANS = ["Peşinatsız Taksit", "%50 Peşinat", "Nakit Alım", "Özel Plan İstiyorum"];
+const HOW_HEARD = ["Instagram", "Google", "WhatsApp", "Tanıdık / Tavsiye", "Diğer"];
+
+export default function LeadForm() {
+  const [form, setForm] = useState({
+    name: "", phone: "", email: "",
+    apartment_type: "", payment_plan: "", how_heard: "", message: "",
+  });
+  const [status, setStatus] = useState("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.phone.trim()) {
+      setErrorMsg("Ad ve telefon numarası zorunludur.");
+      return;
+    }
+    setStatus("loading");
+    setErrorMsg("");
+    try {
+      const { error } = await supabase.functions.invoke("send-lead", {
+        body: { ...form, source: "website", created_at: new Date().toISOString() },
+      });
+      if (error) throw error;
+      setStatus("success");
+      setForm({ name: "", phone: "", email: "", apartment_type: "", payment_plan: "", how_heard: "", message: "" });
+    } catch (err) {
+      console.error(err);
+      setErrorMsg("Bir hata oluştu. Lütfen bizi arayın: 0532 546 53 54");
+      setStatus("error");
+    }
+  };
+
+  return (
+    <section id="talep" className="py-24 bg-cream overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+          {/* Left */}
+          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            <span className="text-gold-600 text-xs font-bold tracking-[0.3em] uppercase block mb-4">İletişim</span>
+            <h2 className="font-heading text-3xl md:text-4xl font-black text-navy-900 mb-5 leading-tight">
+              Hayalinizdeki Eve
+              <br /><span className="text-gradient-gold">İlk Adımı Atın</span>
+            </h2>
+            <div className="section-divider-left mb-6" />
+            <p className="text-navy-700/55 text-base leading-relaxed mb-8">
+              Formu doldurun veya bizi arayın. Uzman satış danışmanımız en kısa sürede
+              size özel ödeme planı sunar.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              {[
+                { icon: "📞", title: "Telefon", desc: "0532 546 53 54", href: "tel:05325465354" },
+                { icon: "✉️", title: "E-posta", desc: "info@winn4.com", href: "mailto:info@winn4.com" },
+                { icon: "⏱️", title: "Geri Dönüş Süresi", desc: "24 saat içinde öncelikli geri dönüş garantisi" },
+                { icon: "🔒", title: "Gizlilik", desc: "Bilgileriniz 3. şahıslarla paylaşılmaz" },
+              ].map((item) => (
+                <div key={item.title} className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-gold-100 flex items-center justify-center text-lg shrink-0">{item.icon}</div>
+                  <div>
+                    <div className="font-bold text-navy-900 text-sm">{item.title}</div>
+                    {item.href ? (
+                      <a href={item.href} className="text-gold-600 hover:text-gold-500 font-semibold text-sm transition-colors">{item.desc}</a>
+                    ) : (
+                      <div className="text-navy-700/45 text-sm">{item.desc}</div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Catalog preview */}
+            <div className="rounded-2xl overflow-hidden border border-gold-200/60 shadow-xl max-w-[260px]">
+              <Image src="/images/catalog.jpg" alt="BWA Göl Evleri Fiyat Listesi" width={260} height={350} className="w-full h-auto" />
+              <div className="bg-navy-900 px-4 py-2.5 text-center">
+                <span className="text-gold-400 text-[10px] font-bold tracking-[0.2em] uppercase">2026 Fiyat Listesi</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right — Form */}
+          <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            <div className="bg-white rounded-2xl shadow-xl border border-navy-900/5 overflow-hidden">
+              {/* Form header */}
+              <div className="bg-gradient-to-r from-navy-900 to-navy-800 px-7 py-5">
+                <h3 className="font-heading text-xl font-black text-white">Talep Formu</h3>
+                <p className="text-white/40 text-xs mt-0.5">Tüm alanları doldurun, size özel teklif hazırlayalım.</p>
+              </div>
+
+              <AnimatePresence mode="wait">
+                {status === "success" ? (
+                  <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="p-10 text-center">
+                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-3xl mx-auto mb-5">✅</div>
+                    <h4 className="font-heading text-xl font-black text-navy-900 mb-3">Talebiniz Alındı!</h4>
+                    <p className="text-navy-700/50 text-sm mb-6 leading-relaxed">
+                      En geç 24 saat içinde satış uzmanımız sizi arayacak.<br/>
+                      Telefonu kaçırmamaya dikkat edin.
+                    </p>
+                    <a href="tel:05325465354" className="btn-gold px-7 py-3 rounded-lg font-bold tracking-wide text-sm inline-block">
+                      Şimdi Arayın
+                    </a>
+                    <button onClick={() => setStatus("idle")} className="block mx-auto mt-3 text-navy-700/30 text-xs hover:text-navy-700 transition-colors">
+                      Yeni talep oluştur
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.form key="form" onSubmit={handleSubmit} className="p-7 space-y-4">
+                    {/* Name + Phone */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">Ad Soyad *</label>
+                        <input type="text" value={form.name} onChange={set("name")} placeholder="Adınız Soyadınız" required
+                          className="w-full px-3.5 py-2.5 rounded-lg border border-navy-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-100 outline-none text-sm transition-all" />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">Telefon *</label>
+                        <input type="tel" value={form.phone} onChange={set("phone")} placeholder="05xx xxx xx xx" required
+                          className="w-full px-3.5 py-2.5 rounded-lg border border-navy-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-100 outline-none text-sm transition-all" />
+                      </div>
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">E-posta</label>
+                      <input type="email" value={form.email} onChange={set("email")} placeholder="ornek@email.com"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-navy-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-100 outline-none text-sm transition-all" />
+                    </div>
+
+                    {/* Apartment type buttons */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">İlgilendiğiniz Daire Tipi</label>
+                      <div className="grid grid-cols-2 gap-2">
+                        {APARTMENT_TYPES.map((type) => (
+                          <button key={type} type="button" onClick={() => setForm((f) => ({ ...f, apartment_type: type }))}
+                            className={`px-3 py-2.5 rounded-lg text-sm font-semibold border-2 transition-all ${form.apartment_type === type ? "border-gold-500 bg-gold-50 text-gold-700" : "border-navy-100 text-navy-700/55 hover:border-gold-300"}`}>
+                            {type}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Payment plan */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">Ödeme Planı Tercihi</label>
+                      <select value={form.payment_plan} onChange={set("payment_plan")}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-navy-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-100 outline-none text-sm bg-white transition-all">
+                        <option value="">Seçiniz...</option>
+                        {PAYMENT_PLANS.map((p) => <option key={p} value={p}>{p}</option>)}
+                      </select>
+                    </div>
+
+                    {/* How heard */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">Bizi Nereden Duydunuz?</label>
+                      <select value={form.how_heard} onChange={set("how_heard")}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-navy-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-100 outline-none text-sm bg-white transition-all">
+                        <option value="">Seçiniz...</option>
+                        {HOW_HEARD.map((h) => <option key={h} value={h}>{h}</option>)}
+                      </select>
+                    </div>
+
+                    {/* Message */}
+                    <div>
+                      <label className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">Notunuz (isteğe bağlı)</label>
+                      <textarea value={form.message} onChange={set("message")} placeholder="Bütçeniz, sorularınız..." rows={3}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-navy-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-100 outline-none text-sm resize-none transition-all" />
+                    </div>
+
+                    {errorMsg && (
+                      <div className="bg-red-50 border border-red-200 text-red-600 text-xs px-4 py-3 rounded-lg">
+                        {errorMsg}
+                      </div>
+                    )}
+
+                    <button type="submit" disabled={status === "loading"}
+                      className="btn-gold w-full py-3.5 rounded-xl text-sm font-black tracking-[0.1em] uppercase disabled:opacity-60 flex items-center justify-center gap-3">
+                      {status === "loading" ? (
+                        <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Gönderiliyor...</>
+                      ) : "TALEBİMİ GÖNDER →"}
+                    </button>
+
+                    <p className="text-center text-navy-700/25 text-[11px]">
+                      Bilgileriniz gizli tutulur · Spam göndermiyoruz
+                    </p>
+                  </motion.form>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
