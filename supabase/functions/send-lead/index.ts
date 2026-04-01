@@ -16,6 +16,12 @@ serve(async (req: Request) => {
   try {
     const lead = await req.json();
 
+    // ── IP & cihaz bilgisi ────────────────────────────────────
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
+      ?? req.headers.get("x-real-ip")
+      ?? null;
+    const userAgent = req.headers.get("user-agent") ?? null;
+
     // ── 1. Save to Supabase database ─────────────────────────
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
@@ -31,6 +37,8 @@ serve(async (req: Request) => {
       how_heard: lead.how_heard || null,
       message: lead.message || null,
       source: lead.source || "website",
+      ip_address: ip,
+      user_agent: userAgent,
     }]);
 
     if (dbError) {
@@ -93,6 +101,8 @@ serve(async (req: Request) => {
                 <span class="label">Tarih</span>
                 <span class="value">${new Date().toLocaleString("tr-TR", { timeZone: "Europe/Istanbul" })}</span>
               </div>
+              ${ip ? `<div class="row"><span class="label">IP Adresi</span><span class="value">${ip}</span></div>` : ""}
+              ${userAgent ? `<div class="row"><span class="label">Cihaz</span><span class="value" style="font-size:11px;word-break:break-all">${userAgent}</span></div>` : ""}
             </div>
             <div class="cta">
               <a href="tel:${lead.phone}">📞 Şimdi Ara: ${lead.phone}</a>
