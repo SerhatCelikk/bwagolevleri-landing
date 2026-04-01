@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { trackCTAClick, trackPhoneClick } from "@/lib/analytics";
 
 const TOTAL_UNITS = 10;
 const SOLD_UNITS = 4;
@@ -120,13 +121,14 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14"
         >
           <button
-            onClick={() => document.querySelector("#talep")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => { trackCTAClick("hero_bilgi_al"); document.querySelector("#talep")?.scrollIntoView({ behavior: "smooth" }); }}
             className="btn-gold px-9 py-3.5 rounded-lg text-sm font-black tracking-[0.12em] uppercase animate-pulse-gold"
           >
             Hemen Bilgi Alın
           </button>
           <a
             href="tel:05325465354"
+            onClick={() => trackPhoneClick("hero")}
             className="btn-outline-gold px-9 py-3.5 rounded-lg text-sm font-black tracking-[0.12em] uppercase flex items-center gap-2.5"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

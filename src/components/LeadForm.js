@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/lib/supabase";
+import { trackLeadSubmit, trackPhoneClick } from "@/lib/analytics";
 import Image from "next/image";
 
 const APARTMENT_TYPES = ["1+1", "2+1", "3+1", "Henüz Karar Vermedim"];
@@ -32,6 +33,7 @@ export default function LeadForm() {
         body: { ...form, source: "website", created_at: new Date().toISOString() },
       });
       if (error) throw error;
+      trackLeadSubmit({ apartment_type: form.apartment_type, payment_plan: form.payment_plan, how_heard: form.how_heard });
       setStatus("success");
       setForm({ name: "", phone: "", email: "", apartment_type: "", payment_plan: "", how_heard: "", message: "" });
     } catch (err) {
@@ -60,7 +62,7 @@ export default function LeadForm() {
 
             <div className="space-y-4 mb-8">
               {[
-                { icon: "📞", title: "Telefon", desc: "0532 546 53 54", href: "tel:05325465354" },
+                { icon: "📞", title: "Telefon", desc: "0532 546 53 54", href: "tel:05325465354", onClick: () => trackPhoneClick("lead_form") },
                 { icon: "✉️", title: "E-posta", desc: "info@winn4.com", href: "mailto:info@winn4.com" },
                 { icon: "⏱️", title: "Geri Dönüş Süresi", desc: "24 saat içinde öncelikli geri dönüş garantisi" },
                 { icon: "🔒", title: "Gizlilik", desc: "Bilgileriniz 3. şahıslarla paylaşılmaz" },
@@ -70,7 +72,7 @@ export default function LeadForm() {
                   <div>
                     <div className="font-bold text-navy-900 text-sm">{item.title}</div>
                     {item.href ? (
-                      <a href={item.href} className="text-gold-600 hover:text-gold-500 font-semibold text-sm transition-colors">{item.desc}</a>
+                      <a href={item.href} onClick={item.onClick} className="text-gold-600 hover:text-gold-500 font-semibold text-sm transition-colors">{item.desc}</a>
                     ) : (
                       <div className="text-navy-700/45 text-sm">{item.desc}</div>
                     )}

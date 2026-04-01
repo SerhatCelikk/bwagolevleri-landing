@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import { Montserrat } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -20,7 +21,7 @@ export const metadata = {
     "Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında BWA GYO güvencesiyle 1+1, 2+1, 3+1 daireler. Peşinatsız taksit, %50 peşinat ve nakit iskonto seçenekleriyle lansmana özel kampanya. 0532 546 53 54",
   keywords:
     "BWA Göl Evleri, Kanal İstanbul daire, Küçükçekmece satılık daire, göl manzaralı konut, BWA GYO, Barsan, Winn4, Adproje, İstanbul yatırım konut, peşinatsız daire",
-  metadataBase: new URL("https://bwagol.com"),
+  metadataBase: new URL("https://bwagolevleri.webinen.com"),
   alternates: { canonical: "/" },
   openGraph: {
     title: "BWA Göl Evleri | Küçükçekmece Göl Manzaralı Daireler",
@@ -45,6 +46,9 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream">{children}</body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }

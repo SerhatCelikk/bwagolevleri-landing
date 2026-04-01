@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { trackCatalogView, trackCatalogFullscreen, trackCatalogPageTurn } from "@/lib/analytics";
 
 const HTMLFlipBook = dynamic(() => import("react-pageflip").then((m) => m.default ?? m), {
   ssr: false,
@@ -119,6 +120,7 @@ export default function CatalogViewer() {
         setNumPages(doc.numPages);
         setPdfNative({ w: Math.round(vp1.width), h: Math.round(vp1.height) });
         setLoading(false);
+        trackCatalogView();
       } catch (e) {
         console.error("PDF load error:", e);
         if (!destroyed) { setError(true); setLoading(false); }
@@ -136,13 +138,15 @@ export default function CatalogViewer() {
 
   const toggleFullscreen = useCallback(async () => {
     if (!document.fullscreenElement) {
+      trackCatalogFullscreen(true);
       await sectionRef.current?.requestFullscreen({ navigationUI: "hide" }).catch(() => {});
     } else {
+      trackCatalogFullscreen(false);
       await document.exitFullscreen().catch(() => {});
     }
   }, []);
 
-  const onFlip   = useCallback((e) => setCurrentPage(e.data), []);
+  const onFlip   = useCallback((e) => { setCurrentPage(e.data); trackCatalogPageTurn(e.data + 1); }, []);
   const prevPage = useCallback(() => bookRef.current?.pageFlip().flipPrev(), []);
   const nextPage = useCallback(() => bookRef.current?.pageFlip().flipNext(), []);
 
