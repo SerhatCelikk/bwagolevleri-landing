@@ -120,7 +120,7 @@ serve(async (req: Request) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "BWA Göl Evleri <onboarding@resend.dev>",
+          from: "BWA Göl Evleri <noreply@webinen.com>",
           to: [notificationEmail],
           subject: `🏠 Yeni Talep: ${lead.name} — ${lead.phone} ${lead.apartment_type ? `(${lead.apartment_type})` : ""}`,
           html: emailHtml,
