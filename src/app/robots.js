@@ -7,5 +7,8 @@ export default function robots() {
       },
     ],
     sitemap: "https://bwagolevleri.webinen.com/sitemap.xml",
+    other: {
+      "LLMs.txt": "https://bwagolevleri.webinen.com/llms.txt",
+    },
   };
 }
