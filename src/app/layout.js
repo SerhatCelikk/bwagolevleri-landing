@@ -16,28 +16,188 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "BWA Göl Evleri | Küçükçekmece Göl Manzaralı Konut Projesi",
+  title: {
+    default: "BWA Göl Evleri | Küçükçekmece Göl Manzaralı Konut Projesi | BWA GYO",
+    template: "%s | BWA Göl Evleri",
+  },
   description:
-    "Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında BWA GYO güvencesiyle 1+1, 2+1, 3+1 daireler. Peşinatsız taksit, %50 peşinat ve nakit iskonto seçenekleriyle lansmana özel kampanya. 0532 546 53 54",
-  keywords:
-    "BWA Göl Evleri, Kanal İstanbul daire, Küçükçekmece satılık daire, göl manzaralı konut, BWA GYO, Barsan, Winn4, Adproje, İstanbul yatırım konut, peşinatsız daire",
+    "BWA Göl Evleri, Barsan Winn4 Adproje ortaklığı olan BWA GYO güvencesiyle Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir. 1+1, 2+1, 3+1 ve dubleks daireler. Peşinatsız taksit, %50 peşinat ve nakit iskonto seçenekleriyle lansmana özel kampanya. 0532 546 53 54",
+  keywords: [
+    "BWA Göl Evleri",
+    "BWA Gölevleri",
+    "BWA GYO",
+    "BWA nedir",
+    "Barsan Winn4 Adproje",
+    "Barsan Winn4 Adproje ortaklığı",
+    "Göl Evleri",
+    "Gölevleri",
+    "Kanal İstanbul daire",
+    "Küçükçekmece satılık daire",
+    "Küçükçekmece göl manzaralı daire",
+    "göl manzaralı konut",
+    "İstanbul yatırım konut",
+    "peşinatsız daire",
+    "Küçükçekmece konut projesi",
+    "Kanal İstanbul konut",
+    "BWA GYO konut",
+    "Barsan inşaat",
+    "Winn4 yatırım",
+    "Adproje mimarlık",
+  ],
   metadataBase: new URL("https://bwagolevleri.webinen.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "BWA Göl Evleri | Küçükçekmece Göl Manzaralı Daireler",
+    title: "BWA Göl Evleri | Barsan Winn4 Adproje Ortaklığı | Küçükçekmece",
     description:
-      "Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında prestijli konut projesi. Lansmana özel 64 daire kampanyası devam ediyor.",
+      "BWA GYO (Barsan + Winn4 + Adproje) güvencesiyle Küçükçekmece Gölü kıyısında prestijli konut projesi. 64 daireli lansman kampanyası devam ediyor.",
     type: "website",
     locale: "tr_TR",
     siteName: "BWA Göl Evleri",
+    url: "https://bwagolevleri.webinen.com",
+    images: [
+      {
+        url: "/images/catalog.jpg",
+        width: 1200,
+        height: 630,
+        alt: "BWA Göl Evleri - Küçükçekmece Göl Manzaralı Konut Projesi",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "BWA Göl Evleri | Kanal İstanbul & Göl Manzarası",
-    description: "Küçükçekmece Gölü kıyısında BWA GYO güvencesiyle prestijli konut projesi.",
+    description:
+      "BWA GYO (Barsan + Winn4 + Adproje) güvencesiyle Küçükçekmece Gölü kıyısında prestijli konut projesi.",
+    images: ["/images/catalog.jpg"],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Google Search Console verification - replace with actual value after setup
+    // google: "your-google-verification-code",
+  },
+  other: {
+    "geo.region": "TR-34",
+    "geo.placename": "Küçükçekmece, İstanbul",
+    "geo.position": "41.0082;28.7806",
+    ICBM: "41.0082, 28.7806",
+  },
 };
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "BWA GYO",
+    alternateName: ["BWA", "Barsan Winn4 Adproje", "BWA Göl Evleri"],
+    url: "https://bwagolevleri.webinen.com",
+    logo: "https://bwagolevleri.webinen.com/logo.svg",
+    description:
+      "BWA GYO, Barsan, Winn4 ve Adproje firmalarının ortaklığıyla kurulan gayrimenkul yatırım şirketidir. Küçükçekmece Gölü kıyısında prestijli konut projeleri geliştirmektedir.",
+    foundingDate: "2024",
+    founders: [
+      {
+        "@type": "Organization",
+        name: "Barsan",
+        url: "https://www.barsangroup.com/",
+        description: "İnşaat & Geliştirme",
+      },
+      {
+        "@type": "Organization",
+        name: "Winn4",
+        url: "https://winn4.com/",
+        description: "Yatırım & Planlama",
+      },
+      {
+        "@type": "Organization",
+        name: "Adproje",
+        url: "https://www.adproje.com/",
+        description: "Mimari & Tasarım",
+      },
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+90-532-546-53-54",
+      contactType: "sales",
+      availableLanguage: "Turkish",
+    },
+    sameAs: ["https://www.instagram.com/bwa_gyo"],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    name: "BWA Göl Evleri Satış Ofisi",
+    image: "https://bwagolevleri.webinen.com/images/catalog.jpg",
+    url: "https://bwagolevleri.webinen.com",
+    telephone: "+90-532-546-53-54",
+    email: "info@winn4.com",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Küçükçekmece",
+      addressRegion: "İstanbul",
+      addressCountry: "TR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 41.0082,
+      longitude: 28.7806,
+    },
+    priceRange: "₺3.100.000 - ₺5.900.000",
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "09:00",
+      closes: "19:00",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ApartmentComplex",
+    name: "BWA Göl Evleri",
+    alternateName: "BWA Gölevleri",
+    description:
+      "BWA GYO (Barsan + Winn4 + Adproje ortaklığı) tarafından Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen 64 daireli prestijli konut projesi. 1+1, 2+1, 3+1 ve dubleks daire seçenekleri.",
+    url: "https://bwagolevleri.webinen.com",
+    image: "https://bwagolevleri.webinen.com/images/catalog.jpg",
+    numberOfAvailableAccommodationUnits: 17,
+    numberOfAccommodationUnits: 64,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Küçükçekmece",
+      addressRegion: "İstanbul",
+      addressCountry: "TR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 41.0082,
+      longitude: 28.7806,
+    },
+    amenityFeature: [
+      { "@type": "LocationFeatureSpecification", name: "Göl Manzarası", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Kapalı Otopark", value: true },
+      { "@type": "LocationFeatureSpecification", name: "7/24 Güvenlik", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Çift Asansör", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Peyzaj Alanı", value: true },
+    ],
+  },
+];
 
 export default function RootLayout({ children }) {
   return (
@@ -45,6 +205,15 @@ export default function RootLayout({ children }) {
       lang="tr"
       className={`${inter.variable} ${montserrat.variable} h-full antialiased`}
     >
+      <head>
+        {jsonLd.map((data, i) => (
+          <script
+            key={i}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+          />
+        ))}
+      </head>
       <body className="min-h-full flex flex-col bg-cream">{children}</body>
       {process.env.NEXT_PUBLIC_GA_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
