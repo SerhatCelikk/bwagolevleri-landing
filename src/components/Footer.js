@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { trackPhoneClick } from "@/lib/analytics";
 
 export default function Footer() {
@@ -77,6 +78,24 @@ export default function Footer() {
                   </button>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/hakkimizda"
+                  className="text-white/35 hover:text-gold-400 text-sm transition-colors flex items-center gap-2 group"
+                >
+                  <span className="text-gold-500/30 group-hover:text-gold-500 transition-colors">›</span>
+                  Hakkımızda
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/sss"
+                  className="text-white/35 hover:text-gold-400 text-sm transition-colors flex items-center gap-2 group"
+                >
+                  <span className="text-gold-500/30 group-hover:text-gold-500 transition-colors">›</span>
+                  Sıkça Sorulan Sorular
+                </Link>
+              </li>
             </ul>
           </div>
 
