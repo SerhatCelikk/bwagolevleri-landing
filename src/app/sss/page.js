@@ -65,7 +65,7 @@ const faqs = [
   {
     question: "BWA Göl Evleri ile nasıl iletişime geçebilirim?",
     answer:
-      "Telefon: 0532 546 53 54, E-posta: info@winn4.com, Instagram: @bwa_gyo. Web sitemiz üzerinden de bilgi talep formu doldurabilirsiniz.",
+      "Telefon: 0532 546 53 54, E-posta: iletisim@bwagyo.com, Instagram: @bwa_gyo. Web sitemiz üzerinden de bilgi talep formu doldurabilirsiniz.",
   },
 ];
 

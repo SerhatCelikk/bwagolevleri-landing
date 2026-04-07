@@ -140,7 +140,7 @@ const jsonLd = [
     image: "https://bwagyo.com/images/catalog.jpg",
     url: "https://bwagyo.com",
     telephone: "+90-532-546-53-54",
-    email: "info@winn4.com",
+    email: "iletisim@bwagyo.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Küçükçekmece",

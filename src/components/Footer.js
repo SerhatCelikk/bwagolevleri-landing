@@ -40,8 +40,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <span className="text-gold-500 text-sm">✉️</span>
-                <a href="mailto:info@winn4.com" className="text-gold-400 hover:text-gold-300 font-semibold text-sm transition-colors">
-                  info@winn4.com
+                <a href="mailto:iletisim@bwagyo.com" className="text-gold-400 hover:text-gold-300 font-semibold text-sm transition-colors">
+                  iletisim@bwagyo.com
                 </a>
               </div>
               <div className="flex items-center gap-2.5">

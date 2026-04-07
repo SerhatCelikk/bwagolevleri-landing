@@ -63,7 +63,7 @@ export default function LeadForm() {
             <div className="space-y-4 mb-8">
               {[
                 { icon: "📞", title: "Telefon", desc: "0532 546 53 54", href: "tel:05325465354", onClick: () => trackPhoneClick("lead_form") },
-                { icon: "✉️", title: "E-posta", desc: "info@winn4.com", href: "mailto:info@winn4.com" },
+                { icon: "✉️", title: "E-posta", desc: "iletisim@bwagyo.com", href: "mailto:iletisim@bwagyo.com" },
                 { icon: "⏱️", title: "Geri Dönüş Süresi", desc: "24 saat içinde öncelikli geri dönüş garantisi" },
                 { icon: "🔒", title: "Gizlilik", desc: "Bilgileriniz 3. şahıslarla paylaşılmaz" },
               ].map((item) => (
