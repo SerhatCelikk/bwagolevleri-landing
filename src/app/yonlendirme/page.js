@@ -10,7 +10,7 @@ const WA_MSG = encodeURIComponent("İnstagramdan ulaşıyorum, bilgi almak istiy
 const links = [
   {
     id: "talep",
-    label: "Talep Oluştur",
+    label: "Ücretsiz Bilgi Talep Et",
     sub: "Size özel teklif hazırlayalım",
     href: `${SITE}/#talep`,
     icon: <FormIcon />,
