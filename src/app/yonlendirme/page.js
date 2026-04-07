@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const SITE = "https://bwagolevleri.webinen.com";
+const SITE = "https://bwagyo.com";
 const WA_NUMBER = "905325465354";
 const WA_MSG = encodeURIComponent("İnstagramdan ulaşıyorum, bilgi almak istiyorum.");
 
@@ -137,7 +137,7 @@ export default function YonlendirmePage() {
             BWA GYO · Barsan · Winn4 · Adproje
           </p>
           <p className="text-white/15 text-[10px] mt-1">
-            bwagolevleri.webinen.com
+            bwagyo.com
           </p>
         </motion.div>
       </div>
