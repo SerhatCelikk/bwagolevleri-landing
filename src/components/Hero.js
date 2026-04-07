@@ -39,6 +39,7 @@ export default function Hero() {
           autoPlay
           muted
           playsInline
+          preload="none"
           className="w-full h-full object-cover opacity-35"
         >
           <source src={videos[videoIdx]} type="video/mp4" />
@@ -106,7 +107,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          transition={{ delay: 0, duration: 0.5 }}
           className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-10 font-medium leading-relaxed"
         >
           Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında BWA GYO güvencesiyle

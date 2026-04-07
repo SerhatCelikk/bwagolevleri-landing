@@ -106,10 +106,12 @@ export default function CatalogViewer() {
   const zoomIn  = useCallback(() => setZoomFactor(z => Math.min(+(z + 0.15).toFixed(2), 2.0)), []);
   const zoomOut = useCallback(() => setZoomFactor(z => Math.max(+(z - 0.15).toFixed(2), 0.4)), []);
 
-  // Load PDF
+  // Load PDF — sadece section viewport'a girince başlat
   useEffect(() => {
+    if (!sectionRef.current) return;
     let destroyed = false;
-    (async () => {
+
+    const load = async () => {
       try {
         const pdfjsLib = await import("pdfjs-dist");
         pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
@@ -125,8 +127,14 @@ export default function CatalogViewer() {
         console.error("PDF load error:", e);
         if (!destroyed) { setError(true); setLoading(false); }
       }
-    })();
-    return () => { destroyed = true; };
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { observer.disconnect(); load(); } },
+      { rootMargin: "200px" }
+    );
+    observer.observe(sectionRef.current);
+    return () => { destroyed = true; observer.disconnect(); };
   }, []);
 
   // Fullscreen API

@@ -60,6 +60,7 @@ export default function VideoGallery() {
                 controls
                 playsInline
                 loop
+                preload="none"
                 className="w-full h-full object-contain"
               >
                 <source src={videos[active].src} type="video/mp4" />
@@ -89,27 +90,18 @@ export default function VideoGallery() {
                     : "border-transparent hover:border-gold-300"
                 }`}
               >
-                <div className="bg-navy-900 aspect-video lg:aspect-video relative">
-                  <video
-                    src={v.src}
-                    muted
-                    playsInline
-                    className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-                    onMouseEnter={(e) => e.target.play()}
-                    onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
-                  />
-                  <div className={`absolute inset-0 flex items-center justify-center transition-opacity ${active === i ? "opacity-0" : "opacity-60 bg-navy-900/40"}`}>
-                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                        <polygon points="5,3 19,12 5,21" />
-                      </svg>
-                    </div>
+                <div className="bg-navy-900 aspect-video relative">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    {active === i ? (
+                      <div className="bg-gold-500 text-[9px] font-black px-3 py-1 rounded-full text-navy-900">▶ OYNUYOR</div>
+                    ) : (
+                      <div className="w-9 h-9 rounded-full bg-white/15 group-hover:bg-white/25 flex items-center justify-center transition-colors">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="white">
+                          <polygon points="5,3 19,12 5,21" />
+                        </svg>
+                      </div>
+                    )}
                   </div>
-                  {active === i && (
-                    <div className="absolute top-2 right-2 bg-gold-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full">
-                      ▶ OYNUYOR
-                    </div>
-                  )}
                 </div>
                 <div className="px-3 py-2 bg-white text-left">
                   <span className="text-navy-900 text-xs font-semibold">{v.label}</span>

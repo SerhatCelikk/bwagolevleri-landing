@@ -153,8 +153,8 @@ export default function LeadForm() {
 
                     {/* Payment plan */}
                     <div>
-                      <label className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">Ödeme Planı Tercihi</label>
-                      <select value={form.payment_plan} onChange={set("payment_plan")}
+                      <label htmlFor="payment_plan" className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">Ödeme Planı Tercihi</label>
+                      <select id="payment_plan" value={form.payment_plan} onChange={set("payment_plan")}
                         className="w-full px-3.5 py-2.5 rounded-lg border border-navy-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-100 outline-none text-sm bg-white transition-all">
                         <option value="">Seçiniz...</option>
                         {PAYMENT_PLANS.map((p) => <option key={p} value={p}>{p}</option>)}
@@ -163,8 +163,8 @@ export default function LeadForm() {
 
                     {/* How heard */}
                     <div>
-                      <label className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">Bizi Nereden Duydunuz?</label>
-                      <select value={form.how_heard} onChange={set("how_heard")}
+                      <label htmlFor="how_heard" className="block text-[10px] font-bold text-navy-700/50 uppercase tracking-widest mb-1.5">Bizi Nereden Duydunuz?</label>
+                      <select id="how_heard" value={form.how_heard} onChange={set("how_heard")}
                         className="w-full px-3.5 py-2.5 rounded-lg border border-navy-200 focus:border-gold-400 focus:ring-2 focus:ring-gold-100 outline-none text-sm bg-white transition-all">
                         <option value="">Seçiniz...</option>
                         {HOW_HEARD.map((h) => <option key={h} value={h}>{h}</option>)}
