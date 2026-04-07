@@ -16,7 +16,7 @@ export default function StickyContact() {
 
   const scrollToForm = () => {
     trackCTAClick("sticky_talep");
-    document.querySelector("#talep")?.scrollIntoView({ behavior: "smooth" });
+    document.querySelector("#talep form")?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   return (
