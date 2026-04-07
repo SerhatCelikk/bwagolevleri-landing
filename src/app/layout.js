@@ -44,7 +44,7 @@ export const metadata = {
     "Winn4 yatırım",
     "Adproje mimarlık",
   ],
-  metadataBase: new URL("https://bwagolevleri.webinen.com"),
+  metadataBase: new URL("https://bwagyo.com"),
   alternates: { canonical: "/" },
   openGraph: {
     title: "BWA Göl Evleri | Barsan Winn4 Adproje Ortaklığı | Küçükçekmece",
@@ -53,7 +53,7 @@ export const metadata = {
     type: "website",
     locale: "tr_TR",
     siteName: "BWA Göl Evleri",
-    url: "https://bwagolevleri.webinen.com",
+    url: "https://bwagyo.com",
     images: [
       {
         url: "/images/catalog.jpg",
@@ -99,8 +99,8 @@ const jsonLd = [
     "@type": "Organization",
     name: "BWA GYO",
     alternateName: ["BWA", "Barsan Winn4 Adproje", "BWA Göl Evleri"],
-    url: "https://bwagolevleri.webinen.com",
-    logo: "https://bwagolevleri.webinen.com/logo.svg",
+    url: "https://bwagyo.com",
+    logo: "https://bwagyo.com/logo.svg",
     description:
       "BWA GYO, Barsan, Winn4 ve Adproje firmalarının ortaklığıyla kurulan gayrimenkul yatırım şirketidir. Küçükçekmece Gölü kıyısında prestijli konut projeleri geliştirmektedir.",
     foundingDate: "2024",
@@ -136,8 +136,8 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     name: "BWA Göl Evleri Satış Ofisi",
-    image: "https://bwagolevleri.webinen.com/images/catalog.jpg",
-    url: "https://bwagolevleri.webinen.com",
+    image: "https://bwagyo.com/images/catalog.jpg",
+    url: "https://bwagyo.com",
     telephone: "+90-532-546-53-54",
     email: "info@winn4.com",
     address: {
@@ -174,8 +174,8 @@ const jsonLd = [
     alternateName: "BWA Gölevleri",
     description:
       "BWA GYO (Barsan + Winn4 + Adproje ortaklığı) tarafından Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen 64 daireli prestijli konut projesi. 1+1, 2+1, 3+1 ve dubleks daire seçenekleri.",
-    url: "https://bwagolevleri.webinen.com",
-    image: "https://bwagolevleri.webinen.com/images/catalog.jpg",
+    url: "https://bwagyo.com",
+    image: "https://bwagyo.com/images/catalog.jpg",
     numberOfAvailableAccommodationUnits: 17,
     numberOfAccommodationUnits: 64,
     address: {

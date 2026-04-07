@@ -37,8 +37,8 @@ const jsonLd = {
     alternateName: ["BWA", "Barsan Winn4 Adproje"],
     description:
       "BWA GYO, Barsan (İnşaat & Geliştirme), Winn4 (Yatırım & Planlama) ve Adproje (Mimari & Tasarım) firmalarının ortaklığıyla kurulan gayrimenkul yatırım ortaklığıdır. BWA kısaltması bu üç firmanın baş harflerinden oluşmaktadır: Barsan, Winn4, Adproje.",
-    url: "https://bwagolevleri.webinen.com",
-    logo: "https://bwagolevleri.webinen.com/logo.svg",
+    url: "https://bwagyo.com",
+    logo: "https://bwagyo.com/logo.svg",
     foundingDate: "2024",
     founders: [
       { "@type": "Organization", name: "Barsan", url: "https://www.barsangroup.com/" },

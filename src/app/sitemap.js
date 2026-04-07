@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const base = "https://bwagolevleri.webinen.com";
+  const base = "https://bwagyo.com";
   return [
     {
       url: base,

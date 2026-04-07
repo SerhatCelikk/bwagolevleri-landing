@@ -6,9 +6,9 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://bwagolevleri.webinen.com/sitemap.xml",
+    sitemap: "https://bwagyo.com/sitemap.xml",
     other: {
-      "LLMs.txt": "https://bwagolevleri.webinen.com/llms.txt",
+      "LLMs.txt": "https://bwagyo.com/llms.txt",
     },
   };
 }
