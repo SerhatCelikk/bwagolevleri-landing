@@ -40,9 +40,9 @@ const plans = [
     highlight: false,
     color: "bg-navy-700",
     rows: [
-      { type: "1+1", price: "3.496.000 ₺", down: "—", monthly: "3.146.400 ₺", extra: "%10 indirim" },
-      { type: "2+1", price: "4.905.000 ₺", down: "—", monthly: "4.414.500 ₺", extra: "%10 indirim" },
-      { type: "3+1", price: "6.315.000 ₺", down: "—", monthly: "5.683.500 ₺", extra: "%10 indirim" },
+      { type: "1+1", price: "3.496.000 ₺", down: "3.146.400 ₺", monthly: "349.600 ₺", extra: "%10 indirim" },
+      { type: "2+1", price: "4.905.000 ₺", down: "4.414.500 ₺", monthly: "490.500 ₺", extra: "%10 indirim" },
+      { type: "3+1", price: "6.315.000 ₺", down: "5.683.500 ₺", monthly: "631.500 ₺", extra: "%10 indirim" },
     ],
     note: "Tamamını nakit ödeyin, %10 özel indirimden faydalanın. En avantajlı ödeme seçeneği.",
   },
