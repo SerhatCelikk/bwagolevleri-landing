@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const SITE = "https://bwagyo.com";
-const WA_NUMBER = "905325465354";
+const WA_NUMBER = "905334758499";
 const WA_MSG = encodeURIComponent("İnstagramdan ulaşıyorum, bilgi almak istiyorum.");
 
 const links = [

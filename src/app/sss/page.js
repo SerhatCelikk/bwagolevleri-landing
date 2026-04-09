@@ -20,7 +20,7 @@ const faqs = [
   {
     question: "BWA Göl Evleri daire fiyatları nedir?",
     answer:
-      "Güncel fiyatlar: 1+1 daireler 3.450.000 ₺'den, 2+1 daireler 4.785.000 ₺'den, 3+1 daireler 5.900.000 ₺'den başlamaktadır. Nakit alımlarda %10 indirim uygulanmaktadır. Detaylı fiyat bilgisi için 0532 546 53 54 numarasını arayabilirsiniz.",
+      "Güncel fiyatlar: 1+1 daireler 3.450.000 ₺'den, 2+1 daireler 4.785.000 ₺'den, 3+1 daireler 5.900.000 ₺'den başlamaktadır. Nakit alımlarda %10 indirim uygulanmaktadır. Detaylı fiyat bilgisi için 0533 475 84 99 numarasını arayabilirsiniz.",
   },
   {
     question: "Peşinatsız daire alınabilir mi?",
@@ -65,7 +65,7 @@ const faqs = [
   {
     question: "BWA Göl Evleri ile nasıl iletişime geçebilirim?",
     answer:
-      "Telefon: 0532 546 53 54, E-posta: iletisim@bwagyo.com, Instagram: @bwa_gyo. Web sitemiz üzerinden de bilgi talep formu doldurabilirsiniz.",
+      "Telefon: 0533 475 84 99, E-posta: iletisim@bwagyo.com, Instagram: @bwa_gyo. Web sitemiz üzerinden de bilgi talep formu doldurabilirsiniz.",
   },
 ];
 
@@ -174,10 +174,10 @@ export default function SSSPage() {
                 Bilgi Talep Et
               </Link>
               <a
-                href="tel:05325465354"
+                href="tel:05334758499"
                 className="btn-outline-gold px-8 py-3 rounded-lg text-sm font-black tracking-wider uppercase text-center"
               >
-                0532 546 53 54
+                0533 475 84 99
               </a>
             </div>
           </div>

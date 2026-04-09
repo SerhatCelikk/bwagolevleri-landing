@@ -38,7 +38,7 @@ export default function LeadForm() {
       setForm({ name: "", phone: "", email: "", apartment_type: "", payment_plan: "", how_heard: "", message: "" });
     } catch (err) {
       console.error(err);
-      setErrorMsg("Bir hata oluştu. Lütfen bizi arayın: 0532 546 53 54");
+      setErrorMsg("Bir hata oluştu. Lütfen bizi arayın: 0533 475 84 99");
       setStatus("error");
     }
   };
@@ -62,7 +62,7 @@ export default function LeadForm() {
 
             <div className="space-y-4 mb-8">
               {[
-                { icon: "📞", title: "Telefon", desc: "0532 546 53 54", href: "tel:05325465354", onClick: () => trackPhoneClick("lead_form") },
+                { icon: "📞", title: "Telefon", desc: "0533 475 84 99", href: "tel:05334758499", onClick: () => trackPhoneClick("lead_form") },
                 { icon: "✉️", title: "E-posta", desc: "iletisim@bwagyo.com", href: "mailto:iletisim@bwagyo.com" },
                 { icon: "⏱️", title: "Geri Dönüş Süresi", desc: "24 saat içinde öncelikli geri dönüş garantisi" },
                 { icon: "🔒", title: "Gizlilik", desc: "Bilgileriniz 3. şahıslarla paylaşılmaz" },
@@ -108,7 +108,7 @@ export default function LeadForm() {
                       En geç 24 saat içinde satış uzmanımız sizi arayacak.<br/>
                       Telefonu kaçırmamaya dikkat edin.
                     </p>
-                    <a href="tel:05325465354" className="btn-gold px-7 py-3 rounded-lg font-bold tracking-wide text-sm inline-block">
+                    <a href="tel:05334758499" className="btn-gold px-7 py-3 rounded-lg font-bold tracking-wide text-sm inline-block">
                       Şimdi Arayın
                     </a>
                     <button onClick={() => setStatus("idle")} className="block mx-auto mt-3 text-navy-700/30 text-xs hover:text-navy-700 transition-colors">

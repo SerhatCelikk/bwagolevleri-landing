@@ -76,11 +76,11 @@ export default function Navigation() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-5">
             <a
-              href="tel:05325465354"
+              href="tel:05334758499"
               className="flex items-center gap-2 text-white/60 hover:text-gold-400 transition-colors text-xs font-semibold tracking-wider"
             >
               <PhoneIcon />
-              0532 546 53 54
+              0533 475 84 99
             </a>
             <button
               onClick={() => handleLink("#talep")}
@@ -122,8 +122,8 @@ export default function Navigation() {
                 {link.label}
               </button>
             ))}
-            <a href="tel:05325465354" className="flex items-center gap-2 text-gold-400 font-semibold text-lg mt-2">
-              <PhoneIcon /> 0532 546 53 54
+            <a href="tel:05334758499" className="flex items-center gap-2 text-gold-400 font-semibold text-lg mt-2">
+              <PhoneIcon /> 0533 475 84 99
             </a>
             <button
               onClick={() => handleLink("#talep")}

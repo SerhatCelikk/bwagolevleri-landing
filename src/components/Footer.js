@@ -34,8 +34,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <span className="text-gold-500 text-sm">📞</span>
-                <a href="tel:05325465354" onClick={() => trackPhoneClick("footer")} className="text-gold-400 hover:text-gold-300 font-semibold text-sm transition-colors">
-                  0532 546 53 54
+                <a href="tel:05334758499" onClick={() => trackPhoneClick("footer")} className="text-gold-400 hover:text-gold-300 font-semibold text-sm transition-colors">
+                  0533 475 84 99
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
@@ -125,7 +125,7 @@ export default function Footer() {
               <div className="text-white/55 text-xs leading-relaxed mb-3">
                 10 özel daireden yalnızca 6'sı kaldı. Rezervasyon için hemen arayın.
               </div>
-              <a href="tel:05325465354" onClick={() => trackPhoneClick("footer_cta")} className="block btn-gold py-2 rounded-lg text-center text-xs font-black tracking-wider uppercase">
+              <a href="tel:05334758499" onClick={() => trackPhoneClick("footer_cta")} className="block btn-gold py-2 rounded-lg text-center text-xs font-black tracking-wider uppercase">
                 Hemen Ara
               </a>
             </div>
