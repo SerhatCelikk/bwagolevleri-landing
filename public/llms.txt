@@ -24,18 +24,24 @@ BWA GYO, bu üç firmanın güçlerini birleştirerek "Barsan + Winn4 + Adproje"
 
 ## Daire Fiyatları
 
-- **1+1 Daire:** 3.450.000 ₺ (50-65 m²)
-- **2+1 Daire:** 4.785.000 ₺ (90-110 m²)
-- **3+1 Daire:** 5.900.000 ₺ (130-160 m²)
+- **1+1 Daire:** 3.496.000 ₺ (50-65 m²)
+- **2+1 Daire:** 4.905.000 ₺ (90-110 m²)
+- **3+1 Daire:** 6.315.000 ₺ (130-160 m²)
 
 ## Ödeme Seçenekleri
 
-1. **Peşinatsız Taksit:** 13 aylık taksit planı (küçük peşinat + 13 eşit taksit)
-2. **%50 Peşinat:** Yarısını şimdi öde, kalan yarısını anahtar tesliminde öde
+1. **Peşinatsız Taksit:** 13 eşit taksit planı
+   - 1+1: 268.923 ₺ × 13
+   - 2+1: 377.307 ₺ × 13
+   - 3+1: 485.769 ₺ × 13
+2. **%50 Peşinat:** Yarısını şimdi öde, kalan yarısını tapuda öde
+   - 1+1: 1.748.000 ₺ + 1.748.000 ₺ tapuda
+   - 2+1: 2.452.500 ₺ + 2.452.500 ₺ tapuda
+   - 3+1: 3.157.500 ₺ + 3.157.500 ₺ tapuda
 3. **Nakit Alım:** %10 nakit iskontosu
-   - 1+1: 3.100.000 ₺
-   - 2+1: 4.300.000 ₺
-   - 3+1: 5.300.000 ₺
+   - 1+1: 3.146.400 ₺
+   - 2+1: 4.414.500 ₺
+   - 3+1: 5.683.500 ₺
 
 ## Ulaşım ve Çevre
 

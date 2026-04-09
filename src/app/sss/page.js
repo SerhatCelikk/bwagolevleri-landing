@@ -20,17 +20,17 @@ const faqs = [
   {
     question: "BWA Göl Evleri daire fiyatları nedir?",
     answer:
-      "Güncel fiyatlar: 1+1 daireler 3.450.000 ₺'den, 2+1 daireler 4.785.000 ₺'den, 3+1 daireler 5.900.000 ₺'den başlamaktadır. Nakit alımlarda %10 indirim uygulanmaktadır. Detaylı fiyat bilgisi için 0533 475 84 99 numarasını arayabilirsiniz.",
+      "Güncel fiyatlar: 1+1 daireler 3.496.000 ₺'den, 2+1 daireler 4.905.000 ₺'den, 3+1 daireler 6.315.000 ₺'den başlamaktadır. Nakit alımlarda %10 indirim uygulanmaktadır. Detaylı fiyat bilgisi için 0533 475 84 99 numarasını arayabilirsiniz.",
   },
   {
     question: "Peşinatsız daire alınabilir mi?",
     answer:
-      "Evet, BWA Göl Evleri'nde 13 aylık taksit planı ile peşinatsız daire sahibi olabilirsiniz. Bu planda küçük bir başlangıç ödemesi yaparak kalan tutarı 13 eşit taksitle ödeyebilirsiniz. Örneğin 1+1 daire için 246.500 ₺ peşinat ve 13 ay × 246.500 ₺ taksit.",
+      "Evet, BWA Göl Evleri'nde 13 eşit taksit planı ile peşinatsız daire sahibi olabilirsiniz. Örneğin 1+1 daire için 268.923 ₺ × 13 taksit, 2+1 daire için 377.307 ₺ × 13 taksit, 3+1 daire için 485.769 ₺ × 13 taksit.",
   },
   {
     question: "Nakit alımda indirim var mı?",
     answer:
-      "Evet, nakit alımlarda %10 indirim uygulanmaktadır. Nakit fiyatlar: 1+1 daire 3.100.000 ₺, 2+1 daire 4.300.000 ₺, 3+1 daire 5.300.000 ₺'dir.",
+      "Evet, nakit alımlarda %10 indirim uygulanmaktadır. Nakit fiyatlar: 1+1 daire 3.146.400 ₺, 2+1 daire 4.414.500 ₺, 3+1 daire 5.683.500 ₺'dir.",
   },
   {
     question: "Hangi ödeme seçenekleri var?",
