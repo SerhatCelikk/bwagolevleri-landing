@@ -74,7 +74,7 @@ export default function CampaignSection() {
             <br />KAÇIRMAYIN
           </h2>
           <p className="text-white/50 text-base max-w-xl mx-auto leading-relaxed">
-            64 konuttan <strong className="text-gold-400">{SOLD} tanesi satıldı</strong>, yalnızca{" "}
+            Lansmana özel fiyatta 29 konuttan <strong className="text-gold-400">{SOLD} tanesi satıldı</strong>, yalnızca{" "}
             <strong className="text-gold-400">{REMAINING} daire</strong> kaldı.
             Kanal İstanbul tamamlanana kadar bu daireler en yüksek getiriyi sunacak.
           </p>
