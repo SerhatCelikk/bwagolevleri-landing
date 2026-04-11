@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { trackCTAClick, trackPhoneClick } from "@/lib/analytics";
 
 const TOTAL_UNITS = 29;
@@ -36,18 +35,9 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-950">
-      {/* Background — video on desktop, static image on mobile */}
+      {/* Background — video on desktop, pure CSS gradient on mobile (no image fetch = instant LCP) */}
       <div className="absolute inset-0 z-0">
-        {isMobile ? (
-          <Image
-            src="/images/1.jpg"
-            alt=""
-            fill
-            priority
-            className="object-cover opacity-30"
-            sizes="100vw"
-          />
-        ) : (
+        {!isMobile && (
           <video
             ref={videoRef}
             key={videoIdx}
