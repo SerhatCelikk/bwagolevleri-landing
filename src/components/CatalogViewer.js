@@ -131,7 +131,7 @@ export default function CatalogViewer() {
 
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { observer.disconnect(); load(); } },
-      { rootMargin: "200px" }
+      { rootMargin: "800px" }
     );
     observer.observe(sectionRef.current);
     return () => { destroyed = true; observer.disconnect(); };

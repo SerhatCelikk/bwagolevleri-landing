@@ -12,7 +12,12 @@ const REMAINING = TOTAL_UNITS - SOLD_UNITS;
 export default function Hero() {
   const videoRef = useRef(null);
   const [videoIdx, setVideoIdx] = useState(0);
+  const [isMobile, setIsMobile] = useState(true); // true by default — SSR safe, avoids flash
   const videos = ["/videos/video1.mp4", "/videos/video2.mp4", "/videos/video3.mp4"];
+
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  }, []);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -31,19 +36,30 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-950">
-      {/* Video Background */}
+      {/* Background — video on desktop, static image on mobile */}
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          key={videoIdx}
-          autoPlay
-          muted
-          playsInline
-          preload="none"
-          className="w-full h-full object-cover opacity-35"
-        >
-          <source src={videos[videoIdx]} type="video/mp4" />
-        </video>
+        {isMobile ? (
+          <Image
+            src="/images/1.jpg"
+            alt=""
+            fill
+            priority
+            className="object-cover opacity-30"
+            sizes="100vw"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            key={videoIdx}
+            autoPlay
+            muted
+            playsInline
+            preload="none"
+            className="w-full h-full object-cover opacity-35"
+          >
+            <source src={videos[videoIdx]} type="video/mp4" />
+          </video>
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-navy-950/85 via-navy-900/55 to-navy-950/92" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950/50 via-transparent to-navy-950/50" />
       </div>

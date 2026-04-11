@@ -7,6 +7,7 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 const montserrat = Montserrat({
@@ -127,7 +128,7 @@ const jsonLd = [
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+90-532-546-53-54",
+      telephone: "+90-533-475-84-99",
       contactType: "sales",
       availableLanguage: "Turkish",
     },
@@ -139,7 +140,7 @@ const jsonLd = [
     name: "BWA Göl Evleri Satış Ofisi",
     image: "https://bwagyo.com/images/catalog.jpg",
     url: "https://bwagyo.com",
-    telephone: "+90-532-546-53-54",
+    telephone: "+90-533-475-84-99",
     email: "iletisim@bwagyo.com",
     address: {
       "@type": "PostalAddress",
