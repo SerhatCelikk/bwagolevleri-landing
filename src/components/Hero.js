@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { trackCTAClick, trackPhoneClick } from "@/lib/analytics";
 
 const TOTAL_UNITS = 29;
