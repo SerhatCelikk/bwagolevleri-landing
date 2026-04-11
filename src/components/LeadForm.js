@@ -62,13 +62,25 @@ export default function LeadForm() {
 
             <div className="space-y-4 mb-8">
               {[
-                { icon: "📞", title: "Telefon", desc: "0533 475 84 99", href: "tel:05334758499", onClick: () => trackPhoneClick("lead_form") },
-                { icon: "✉️", title: "E-posta", desc: "iletisim@bwagyo.com", href: "mailto:iletisim@bwagyo.com" },
-                { icon: "⏱️", title: "Geri Dönüş Süresi", desc: "24 saat içinde öncelikli geri dönüş garantisi" },
-                { icon: "🔒", title: "Gizlilik", desc: "Bilgileriniz 3. şahıslarla paylaşılmaz" },
+                {
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>,
+                  title: "Telefon", desc: "0533 475 84 99", href: "tel:05334758499", onClick: () => trackPhoneClick("lead_form"),
+                },
+                {
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
+                  title: "E-posta", desc: "iletisim@bwagyo.com", href: "mailto:iletisim@bwagyo.com",
+                },
+                {
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>,
+                  title: "Geri Dönüş Süresi", desc: "24 saat içinde öncelikli geri dönüş garantisi",
+                },
+                {
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>,
+                  title: "Gizlilik", desc: "Bilgileriniz 3. şahıslarla paylaşılmaz",
+                },
               ].map((item) => (
                 <div key={item.title} className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-gold-100 flex items-center justify-center text-lg shrink-0">{item.icon}</div>
+                  <div className="w-10 h-10 rounded-xl bg-gold-100 flex items-center justify-center text-gold-600 shrink-0">{item.icon}</div>
                   <div>
                     <div className="font-bold text-navy-900 text-sm">{item.title}</div>
                     {item.href ? (
@@ -102,7 +114,9 @@ export default function LeadForm() {
               <AnimatePresence mode="wait">
                 {status === "success" ? (
                   <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="p-10 text-center">
-                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-3xl mx-auto mb-5">✅</div>
+                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+                    </div>
                     <h4 className="font-heading text-xl font-black text-navy-900 mb-3">Talebiniz Alındı!</h4>
                     <p className="text-navy-700/50 text-sm mb-6 leading-relaxed">
                       En geç 24 saat içinde satış uzmanımız sizi arayacak.<br/>
