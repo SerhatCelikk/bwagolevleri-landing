@@ -123,7 +123,7 @@ export default function Footer() {
             <div className="mt-7 glass-gold rounded-xl p-4">
               <div className="text-gold-400 font-bold text-[10px] tracking-widest uppercase mb-1">Lansman Kampanyası</div>
               <div className="text-white/55 text-xs leading-relaxed mb-3">
-                64 konuttan yalnızca 23 daire kaldı. Rezervasyon için hemen arayın.
+                29 kampanya kontenjanından yalnızca 23 daire kaldı.
               </div>
               <a href="tel:05334758499" onClick={() => trackPhoneClick("footer_cta")} className="block btn-gold py-2 rounded-lg text-center text-xs font-black tracking-wider uppercase">
                 Hemen Ara

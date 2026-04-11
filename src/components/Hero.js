@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { trackCTAClick, trackPhoneClick } from "@/lib/analytics";
 
-const TOTAL_UNITS = 64;
-const SOLD_UNITS = 41;
+const TOTAL_UNITS = 29;
+const SOLD_UNITS = 6;
 const REMAINING = TOTAL_UNITS - SOLD_UNITS;
 
 export default function Hero() {
@@ -160,9 +160,12 @@ export default function Hero() {
               className="h-2 rounded-full bg-gradient-to-r from-gold-600 to-gold-400"
             />
           </div>
-          <p className="text-white/35 text-[11px] text-center mt-2.5 tracking-wide">
-            Yalnızca <strong className="text-gold-400">{REMAINING} daire</strong> için lansman kampanyası fiyatları geçerlidir
-          </p>
+          <div className="flex items-center justify-between mt-2.5">
+            <p className="text-white/35 text-[11px] tracking-wide">
+              <strong className="text-gold-400">{REMAINING} daire</strong> için kampanya fiyatı geçerli
+            </p>
+            <span className="text-white/30 text-[11px] tracking-wide">Teslim: <strong className="text-gold-400/70">En geç Ekim 2027</strong></span>
+          </div>
         </motion.div>
       </div>
 

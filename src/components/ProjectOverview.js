@@ -108,8 +108,9 @@ export default function ProjectOverview() {
             <div className="flex flex-wrap justify-center gap-8 text-center">
               {[
                 { val: "64 Daire", lbl: "Toplam Konut" },
+                { val: "Ekim 2027", lbl: "En Geç Teslim" },
                 { val: "3 dk", lbl: "Sazlıbosna Köprüsü" },
-                { val: "Yakında", lbl: "Metro Hattı Erişimi" },
+                { val: "Yakında", lbl: "Metro Hattı" },
               ].map((item) => (
                 <div key={item.lbl}>
                   <div className="text-gold-400 font-heading text-2xl font-black">{item.val}</div>

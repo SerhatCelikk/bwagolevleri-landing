@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const TOTAL = 64;
-const SOLD = 41;
+const TOTAL = 29;
+const SOLD = 6;
 const REMAINING = TOTAL - SOLD;
 
 const CAMPAIGN_OFFERS = [
@@ -61,7 +61,7 @@ export default function CampaignSection() {
           <div className="inline-flex items-center gap-2.5 bg-gold-500/15 border border-gold-500/35 px-5 py-2.5 rounded-full">
             <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse" />
             <span className="text-gold-300 font-black text-xs tracking-[0.25em] uppercase">
-              Lansmana Özel · 64 Konuttan Yalnızca {REMAINING} Kaldı
+              Lansmana Özel · 29 Kontenjan · Yalnızca {REMAINING} Kaldı
             </span>
             <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse" />
           </div>
