@@ -56,8 +56,7 @@ export default function LeadForm() {
             </h2>
             <div className="section-divider-left mb-6" />
             <p className="text-navy-700/55 text-base leading-relaxed mb-8">
-              Formu doldurun veya bizi arayın. Uzman satış danışmanımız en kısa sürede
-              size özel ödeme planı sunar.
+              Formu doldurun veya doğrudan arayın. Size özel ödeme planı hazırlayalım.
             </p>
 
             <div className="space-y-4 mb-8">

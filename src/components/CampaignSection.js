@@ -3,15 +3,15 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const TOTAL = 10;
-const SOLD = 4;
+const TOTAL = 64;
+const SOLD = 41;
 const REMAINING = TOTAL - SOLD;
 
 const CAMPAIGN_OFFERS = [
-  { icon: "📅", title: "Peşinatsız Taksitli Ödeme", desc: "Küçük başlangıç peşinatıyla daireyi rezerve edin. 13 eşit taksitle ödeme imkânı.", tag: "0 Faiz" },
-  { icon: "⚡", title: "%50 Peşin, Kalanı Teslimde", desc: "Yarısını şimdi ödeyin, kalan %50'yi anahtar tesliminde ödeme esnekliği.", tag: "Esnek" },
-  { icon: "💎", title: "Nakit Alımda %10 İskonto", desc: "Tamamını nakit ödeyin, özel indirimle en avantajlı fiyatı yakalayın.", tag: "%10 İndirim" },
-  { icon: "🌟", title: "Size Özel Ödeme Planı", desc: "İlk 64 alıcı arasında özel ödeme planı talep etme ayrıcalığı. Hızlı hareket edin.", tag: "Ayrıcalık" },
+  { title: "Peşinatsız Taksitli Ödeme", desc: "Küçük başlangıç peşinatıyla daireyi rezerve edin. 13 eşit taksitle ödeme imkânı.", tag: "0 Faiz" },
+  { title: "%50 Peşin, Kalanı Teslimde", desc: "Yarısını şimdi ödeyin, kalan %50'yi anahtar tesliminde ödeme esnekliği.", tag: "Esnek" },
+  { title: "Nakit Alımda %10 İskonto", desc: "Tamamını nakit ödeyin, özel indirimle en avantajlı fiyatı yakalayın.", tag: "%10 İndirim" },
+  { title: "Size Özel Ödeme Planı", desc: "Seçili alıcılara özel ödeme planı müzakeresi imkânı.", tag: "Ayrıcalık" },
 ];
 
 function useCountdown() {
@@ -61,7 +61,7 @@ export default function CampaignSection() {
           <div className="inline-flex items-center gap-2.5 bg-gold-500/15 border border-gold-500/35 px-5 py-2.5 rounded-full">
             <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse" />
             <span className="text-gold-300 font-black text-xs tracking-[0.25em] uppercase">
-              Lansmana Özel · 10 Daireden Yalnızca {REMAINING} Kaldı
+              Lansmana Özel · 64 Konuttan Yalnızca {REMAINING} Kaldı
             </span>
             <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse" />
           </div>
@@ -74,7 +74,7 @@ export default function CampaignSection() {
             <br />KAÇIRMAYIN
           </h2>
           <p className="text-white/50 text-base max-w-xl mx-auto leading-relaxed">
-            Lansmana özel 10 daireden <strong className="text-gold-400">{SOLD} tanesi satıldı</strong>, yalnızca{" "}
+            64 konuttan <strong className="text-gold-400">{SOLD} tanesi satıldı</strong>, yalnızca{" "}
             <strong className="text-gold-400">{REMAINING} daire</strong> kaldı.
             Kanal İstanbul tamamlanana kadar bu daireler en yüksek getiriyi sunacak.
           </p>
@@ -124,7 +124,7 @@ export default function CampaignSection() {
               <div className="absolute top-3 right-3 bg-gold-500 text-navy-900 text-[9px] font-black px-2 py-0.5 rounded-full tracking-wider uppercase">
                 {offer.tag}
               </div>
-              <div className="text-3xl mb-4">{offer.icon}</div>
+              <div className="w-8 h-px bg-gold-500/50 mb-4" />
               <h3 className="font-heading text-base font-bold text-white mb-2 leading-snug">{offer.title}</h3>
               <p className="text-white/45 text-xs leading-relaxed">{offer.desc}</p>
             </motion.div>

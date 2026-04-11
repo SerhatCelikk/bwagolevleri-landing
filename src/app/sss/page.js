@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "Peşinatsız daire alınabilir mi?",
     answer:
-      "Evet, BWA Göl Evleri'nde 13 eşit taksit planı ile peşinatsız daire sahibi olabilirsiniz. Örneğin 1+1 daire için 268.923 ₺ × 13 taksit, 2+1 daire için 377.307 ₺ × 13 taksit, 3+1 daire için 485.769 ₺ × 13 taksit.",
+      "Evet. 13 eşit taksit planı mevcuttur: 1+1 → 268.923 ₺ × 13, 2+1 → 377.307 ₺ × 13, 3+1 → 485.769 ₺ × 13.",
   },
   {
     question: "Nakit alımda indirim var mı?",

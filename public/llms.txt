@@ -17,7 +17,7 @@ BWA GYO, bu üç firmanın güçlerini birleştirerek "Barsan + Winn4 + Adproje"
 - **Proje Adı:** BWA Göl Evleri (diğer adıyla BWA Gölevleri)
 - **Konum:** Küçükçekmece, İstanbul, Türkiye
 - **Konum Avantajı:** Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında
-- **Toplam Daire Sayısı:** 64 konut
+- **Toplam Daire Sayısı:** 64 konut (23 daire mevcut)
 - **Daire Tipleri:** 1+1, 2+1, 3+1 ve dubleks daireler
 - **Özellikler:** Göl manzarası, teras ve bahçe kullanımlı daireler, kapalı otopark, çift asansör, 7/24 kamera güvenlik, peyzaj alanları
 - **Geliştirici:** BWA GYO (Barsan + Winn4 + Adproje ortaklığı)
@@ -73,7 +73,7 @@ BWA GYO, Barsan, Winn4 ve Adproje firmalarının ortaklığıyla kurulan bir gay
 Küçükçekmece ilçesinde, Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında yer almaktadır.
 
 ### Kaç daire var?
-Projede toplam 64 daire bulunmaktadır: 1+1, 2+1, 3+1 ve dubleks seçenekleri mevcuttur.
+Projede toplam 64 daire bulunmaktadır. Şu an itibarıyla 23 daire satışa mevcuttur. 1+1, 2+1, 3+1 ve dubleks seçenekleri mevcuttur.
 
 ### Peşinatsız alınabilir mi?
 Evet, 13 aylık taksit planı ile küçük bir peşinat ve eşit taksitlerle daire sahibi olabilirsiniz.

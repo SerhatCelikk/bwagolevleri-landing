@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { trackCTAClick, trackPhoneClick } from "@/lib/analytics";
 
-const TOTAL_UNITS = 10;
-const SOLD_UNITS = 4;
+const TOTAL_UNITS = 64;
+const SOLD_UNITS = 41;
 const REMAINING = TOTAL_UNITS - SOLD_UNITS;
 
 export default function Hero() {

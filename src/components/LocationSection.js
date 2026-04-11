@@ -3,18 +3,18 @@
 import { motion } from "framer-motion";
 
 const distances = [
-  { place: "Kanal İstanbul Güzergahı", dist: "Üzerinde", icon: "🌊", highlight: true, detail: "Köprü bağlantı yolu proje önünden geçiyor" },
-  { place: "Küçükçekmece Gölü", dist: "Kıyısında", icon: "🏞️", highlight: true, detail: "Göl manzaralı cephe" },
-  { place: "Sazlıbosna Köprüsü", dist: "3 dk", icon: "🌉", highlight: true, detail: "Bağlantı yolu proje önünden geçiyor" },
-  { place: "TEM Otoyolu", dist: "3 dk", icon: "🛤️", detail: "Havalimanı ve kuzey bağlantısı" },
-  { place: "Avcılar Gişeleri", dist: "5 dk", icon: "🛣️", detail: "E-5 ve şehir merkezi" },
-  { place: "Okul", dist: "5 dk", icon: "🏫", detail: "Yürüme mesafesinde" },
-  { place: "Çam Sakura Hastanesi", dist: "10 dk", icon: "🏥", detail: "Modern sağlık tesisi" },
-  { place: "Akbatı Mall of AVM", dist: "10 dk", icon: "🛍️", detail: "Büyük alışveriş ve eğlence merkezi" },
-  { place: "Olimpiyat Stadyumu", dist: "10 dk", icon: "🏟️", detail: "Spor ve etkinlik merkezi" },
-  { place: "Halkalı Tren Garı", dist: "15 dk", icon: "🚂", detail: "Banliyö tren hattı bağlantısı" },
-  { place: "İstanbul Havalimanı", dist: "20 dk", icon: "✈️", detail: "TEM üzerinden direkt bağlantı" },
-  { place: "Metro Hattı", dist: "Yakında", icon: "🚇", highlight: true, detail: "Planlanan metro hattına erişim" },
+  { place: "Kanal İstanbul Güzergahı", dist: "Üzerinde", highlight: true, detail: "Köprü bağlantı yolu proje önünden geçiyor" },
+  { place: "Küçükçekmece Gölü", dist: "Kıyısında", highlight: true, detail: "Göl manzaralı cephe" },
+  { place: "Sazlıbosna Köprüsü", dist: "3 dk", highlight: true, detail: "Bağlantı yolu proje önünden geçiyor" },
+  { place: "TEM Otoyolu", dist: "3 dk", detail: "Havalimanı ve kuzey bağlantısı" },
+  { place: "Avcılar Gişeleri", dist: "5 dk", detail: "E-5 ve şehir merkezi" },
+  { place: "Okul", dist: "5 dk", detail: "Yürüme mesafesinde" },
+  { place: "Çam Sakura Hastanesi", dist: "10 dk", detail: "Modern sağlık tesisi" },
+  { place: "Akbatı AVM", dist: "10 dk", detail: "Alışveriş ve eğlence merkezi" },
+  { place: "Olimpiyat Stadyumu", dist: "10 dk", detail: "Spor ve etkinlik merkezi" },
+  { place: "Halkalı Tren Garı", dist: "15 dk", detail: "Banliyö tren hattı bağlantısı" },
+  { place: "İstanbul Havalimanı", dist: "20 dk", detail: "TEM üzerinden direkt bağlantı" },
+  { place: "Metro Hattı", dist: "Yakında", highlight: true, detail: "Planlanan metro hattına erişim" },
 ];
 
 export default function LocationSection() {
@@ -33,7 +33,7 @@ export default function LocationSection() {
             Stratejik Konum
           </span>
           <h2 className="font-heading text-3xl md:text-5xl font-black text-white mb-5">
-            İstanbul'un En Değerli Lokasyonu
+            Tahtakale, Avcılar — Stratejik Konum
           </h2>
           <div className="section-divider mb-5" />
           <p className="text-white/45 text-base max-w-2xl mx-auto">
@@ -79,7 +79,7 @@ export default function LocationSection() {
             className="lg:col-span-2 flex flex-col gap-2"
           >
             <h3 className="font-heading text-lg font-bold text-white mb-3">
-              Her Şeye <span className="text-gold-400">Yakın</span>
+              Ulaşım <span className="text-gold-400">Mesafeleri</span>
             </h3>
             {distances.map((d, i) => (
               <motion.div
@@ -95,7 +95,7 @@ export default function LocationSection() {
                 }`}
               >
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <span className="text-base shrink-0">{d.icon}</span>
+                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${d.highlight ? "bg-gold-400" : "bg-white/25"}`} />
                   <div className="min-w-0">
                     <div className={`text-xs font-semibold truncate ${d.highlight ? "text-gold-300" : "text-white/70"}`}>
                       {d.place}

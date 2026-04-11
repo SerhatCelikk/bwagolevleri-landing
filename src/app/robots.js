@@ -6,9 +6,10 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://bwagyo.com/sitemap.xml",
+    sitemap: "https://bwagolevleri.webinen.com/sitemap.xml",
     other: {
-      "LLMs.txt": "https://bwagyo.com/llms.txt",
+      "LLMs.txt": "https://bwagolevleri.webinen.com/llms.txt",
+      "AI.txt": "https://bwagolevleri.webinen.com/.well-known/ai.txt",
     },
   };
 }

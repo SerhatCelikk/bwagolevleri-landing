@@ -8,7 +8,7 @@ const plans = [
     id: "taksit",
     name: "Peşinatsız Taksit",
     tagline: "Hemen Başlayın",
-    icon: "📅",
+    icon: null,
     highlight: false,
     color: "bg-lake-700",
     rows: [
@@ -22,7 +22,7 @@ const plans = [
     id: "yari",
     name: "%50 Peşinat",
     tagline: "En Esnek Seçenek",
-    icon: "⚖️",
+    icon: null,
     highlight: true,
     color: "bg-gold-500",
     rows: [
@@ -36,7 +36,7 @@ const plans = [
     id: "nakit",
     name: "Nakit Alım",
     tagline: "%10 Özel İskonto",
-    icon: "💰",
+    icon: null,
     highlight: false,
     color: "bg-navy-700",
     rows: [
@@ -74,7 +74,7 @@ export default function PricingPlans() {
           </h2>
           <div className="section-divider mb-6" />
           <p className="text-navy-700/60 text-lg max-w-2xl mx-auto">
-            Lansmana özel 3 farklı ödeme planı. İlk 10 daire için geçerli. Hızlı davranın.
+            Lansmana özel 3 farklı ödeme planı. Hızlı davranın.
           </p>
         </motion.div>
 
@@ -95,7 +95,7 @@ export default function PricingPlans() {
                   ÖNERİLEN
                 </span>
               )}
-              <span className="text-xl">{plan.icon}</span>
+              {plan.icon && <span className="text-xl">{plan.icon}</span>}
               <div className="text-left">
                 <div className={active === plan.id ? "text-navy-900 font-bold" : ""}>{plan.name}</div>
                 <div className={`text-xs ${active === plan.id ? "text-gold-600" : "text-navy-700/40"}`}>{plan.tagline}</div>
@@ -171,7 +171,7 @@ export default function PricingPlans() {
             <div className="px-8 py-6 bg-navy-900/2 flex flex-col md:flex-row items-center justify-between gap-4">
               <p className="text-navy-700/50 text-sm flex items-center gap-2">
                 <span className="text-gold-500">ℹ</span>
-                Tüm planlar lansmana özel ilk 10 daire için geçerlidir.
+                Fiyatlar lansmana özel olup değişkenlik gösterebilir.
               </p>
               <button
                 onClick={() => document.querySelector("#talep")?.scrollIntoView({ behavior: "smooth" })}
@@ -192,12 +192,12 @@ export default function PricingPlans() {
           className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
         >
           {[
-            { icon: "🤝", title: "Özel Ödeme Planı", desc: "İlk 10 kişiye özel bireysel ödeme planı müzakeresi imkânı." },
-            { icon: "🔒", title: "Güvenli Rezervasyon", desc: "Küçük bir rezervasyon bedeli ile kampanya fiyatını kilitleyin." },
-            { icon: "📞", title: "Ücretsiz Danışmanlık", desc: "Uzman satış ekibimiz size en uygun planı bulmak için hazır." },
+            { title: "Özel Ödeme Planı", desc: "Seçili alıcılara özel bireysel ödeme planı müzakeresi imkânı." },
+            { title: "Güvenli Rezervasyon", desc: "Küçük bir rezervasyon bedeli ile kampanya fiyatını kilitleyin." },
+            { title: "Ücretsiz Danışmanlık", desc: "Uzman satış ekibimiz size en uygun planı bulmak için hazır." },
           ].map((item) => (
             <div key={item.title} className="text-center bg-white rounded-2xl p-6 shadow-sm border border-navy-900/5">
-              <div className="text-3xl mb-3">{item.icon}</div>
+              <div className="w-8 h-px bg-gold-400/60 mx-auto mb-4" />
               <h4 className="font-bold text-navy-900 mb-2">{item.title}</h4>
               <p className="text-navy-700/50 text-sm">{item.desc}</p>
             </div>

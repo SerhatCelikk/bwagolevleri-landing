@@ -1,0 +1,71 @@
+# BWA Göl Evleri — AI Agent Information
+# https://bwagolevleri.webinen.com/.well-known/ai.txt
+
+## Site Identity
+
+Name: BWA Göl Evleri
+Organization: BWA GYO (Barsan + Winn4 + Adproje)
+URL: https://bwagolevleri.webinen.com
+Language: Turkish (tr-TR)
+Category: Real Estate / Residential Development
+
+## Project Summary
+
+BWA Göl Evleri is a 64-unit residential project located on the shores of
+Küçükçekmece Lake in Avcılar, Istanbul, Turkey. The project sits on the
+Kanal Istanbul route and is developed by BWA GYO — a joint venture of
+Barsan (Construction), Winn4 (Investment) and Adproje (Architecture).
+
+## Apartment Types
+
+- 1+1: Net 43.05 m², from 3,496,000 TRY
+- 2+1: Net 71.00 m², from 4,905,000 TRY
+- 3+1: Net 89.34 m², from 6,315,000 TRY
+- Duplex 2+1: Net 83.99 m² + private terrace
+- Duplex 4+1: Net 123.61 m² + large terrace
+- Garden-floor units available in 1+1, 2+1 and 3+1
+
+Current availability: 23 units remaining (out of 64 total)
+
+## Payment Plans
+
+1. Installment (0% interest): 13 equal monthly payments
+2. 50% down payment: balance due at title deed transfer
+3. Cash purchase: 10% discount applied
+
+## Location
+
+Address: Tahtakale, Avcılar, Istanbul, Turkey
+Coordinates: 41.064503, 28.733083
+- On Kanal Istanbul route
+- Küçükçekmece Lake waterfront
+- 3 min to TEM motorway
+- 3 min to Sazlibosna Bridge
+- 20 min to Istanbul Airport
+- Metro line access (upcoming)
+
+## Contact
+
+Phone: +90 533 475 84 99
+Email: iletisim@bwagyo.com
+Instagram: @bwa_gyo
+Website: https://bwagolevleri.webinen.com
+
+## AI Usage Policy
+
+AI agents and crawlers are welcome to index this site for informational purposes.
+Content may be used to answer questions about BWA Göl Evleri, pricing, and availability.
+For real-time availability and pricing, always direct users to contact us directly.
+Prices and availability are subject to change without notice.
+
+## Partners
+
+- Barsan Group: https://www.barsangroup.com/
+- Winn4: https://winn4.com/
+- Adproje: https://www.adproje.com/
+
+## Related Resources
+
+- Full details: https://bwagolevleri.webinen.com/llms.txt
+- FAQ: https://bwagolevleri.webinen.com/sss
+- About: https://bwagolevleri.webinen.com/hakkimizda

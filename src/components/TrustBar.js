@@ -9,10 +9,9 @@ const partners = [
 ];
 
 const stats = [
-  { value: "3", label: "Güçlü Ortak", suffix: "" },
-  { value: "15+", label: "Yıllık Deneyim", suffix: "" },
-  { value: "1.000+", label: "Mutlu Aile", suffix: "" },
-  { value: "₺5", label: "Milyar+ Portföy", suffix: "B" },
+  { value: "3", label: "Güçlü Ortak" },
+  { value: "21+", label: "Yıllık Deneyim" },
+  { value: "1.000+", label: "Mutlu Aile" },
 ];
 
 export default function TrustBar() {
@@ -67,7 +66,7 @@ export default function TrustBar() {
         <div className="border-t border-white/10 my-8" />
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-3 gap-6">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}

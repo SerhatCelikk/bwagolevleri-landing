@@ -4,40 +4,28 @@ import { motion } from "framer-motion";
 
 const features = [
   {
-    icon: "🌊",
     title: "Kanal İstanbul Güzergahı",
-    desc: "İstanbul'un yeni boğazı Kanal İstanbul güzergahında. Proje önünden geçen Sazlıbosna Köprüsü bağlantı yoluyla konum avantajı katlanıyor.",
-    color: "from-lake-700 to-lake-600",
+    desc: "Kanal İstanbul güzergahında stratejik konum. Sazlıbosna Köprüsü bağlantı yolu proje önünden geçiyor.",
   },
   {
-    icon: "🏞️",
     title: "Göl Manzaralı Daireler",
-    desc: "Küçükçekmece Gölü'ne nazır dairelerde sakin ve huzurlu bir atmosfer. Göl kıyısı yaşam ayrıcalığı.",
-    color: "from-navy-700 to-lake-600",
+    desc: "Küçükçekmece Gölü'ne nazır daireler. Göl kıyısında sakin yaşam ayrıcalığı.",
   },
   {
-    icon: "🏡",
     title: "Teras & Bahçe Daireler",
-    desc: "Teras kullanımlı dubleks ve bahçe kullanımlı dairelerle geniş, ferah ve özel yaşam alanları. Ailelere ekstra konfor.",
-    color: "from-gold-600 to-gold-500",
+    desc: "Teras kullanımlı dubleks ve bahçe kullanımlı daireler. Geniş özel yaşam alanı.",
   },
   {
-    icon: "🔒",
     title: "Tam Donanımlı Altyapı",
-    desc: "Kapalı otopark, çift asansör, 7/24 kamera güvenlik sistemi ve özel peyzaj alanlarıyla eksiksiz yaşam konforu.",
-    color: "from-navy-800 to-navy-600",
+    desc: "Kapalı otopark, çift asansör, 7/24 kamera güvenlik ve özel peyzaj alanları.",
   },
   {
-    icon: "🚇",
-    title: "Mükemmel Ulaşım Bağlantısı",
-    desc: "TEM'e 3 dk, Sazlıbosna Köprüsü'ne 3 dk, İstanbul Havalimanı'na 20 dk. Yakın zamanda açılacak metro hattına erişim avantajı.",
-    color: "from-lake-700 to-navy-700",
+    title: "Ulaşım Bağlantısı",
+    desc: "TEM'e 3 dk · Havalimanı'na 20 dk · Yakın zamanda açılacak metro hattına erişim.",
   },
   {
-    icon: "🏫",
     title: "Günlük Yaşama Yakınlık",
-    desc: "Okullara yürüme mesafesinde, Çam Sakura Hastanesi'ne 10 dk, Akbatı AVM'ye 10 dk. Her şey elinizin altında.",
-    color: "from-navy-700 to-lake-700",
+    desc: "Okul yürüme mesafesinde · Çam Sakura Hastanesi 10 dk · Akbatı AVM 10 dk.",
   },
 ];
 
@@ -57,39 +45,37 @@ export default function ProjectOverview() {
             Neden BWA Göl Evleri?
           </span>
           <h2 className="font-heading text-4xl md:text-5xl font-black text-navy-900 mb-6">
-            Bugün Yatırım Yapın,
+            Projenin
             <br />
-            <span className="text-gradient-gold">Yarın Kazanın</span>
+            <span className="text-gradient-gold">Öne Çıkan Özellikleri</span>
           </h2>
           <div className="section-divider mb-6" />
-          <p className="text-navy-700/70 text-lg max-w-3xl mx-auto leading-relaxed">
-            BWA GYO imzasıyla hayata geçirilen 64 daireli BWA Göl Evleri; 1+1, 2+1, 3+1 ve
-            dubleks seçenekleriyle modern mimari, merkezi konum ve aile yaşamını ön planda
-            tutan tasarımıyla konforlu bir yaşam sunuyor.
+          <p className="text-navy-700/70 text-lg max-w-2xl mx-auto leading-relaxed">
+            64 daire · 1+1'den dubleks 4+1'e · Göl kıyısı · Kanal İstanbul güzergahı
           </p>
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-navy-900/8 border border-navy-900/8 rounded-2xl overflow-hidden">
           {features.map((feat, i) => (
             <motion.div
               key={feat.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="card-hover bg-white rounded-3xl p-8 shadow-sm border border-navy-900/5 group relative overflow-hidden"
+              transition={{ delay: i * 0.08, duration: 0.5 }}
+              className="bg-white px-8 py-8 group hover:bg-gold-50/60 transition-colors duration-300 relative"
             >
-              {/* Background gradient on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${feat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
-
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feat.color} flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                {feat.icon}
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-gold-500/50 font-heading text-xs font-black tracking-[0.2em]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex-1 h-px bg-gold-400/25" />
               </div>
-              <h3 className="font-heading text-xl font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors">
+              <h3 className="font-heading text-base font-bold text-navy-900 mb-2 group-hover:text-gold-700 transition-colors leading-snug">
                 {feat.title}
               </h3>
-              <p className="text-navy-700/60 text-sm leading-relaxed">{feat.desc}</p>
+              <p className="text-navy-700/55 text-sm leading-relaxed">{feat.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -116,9 +102,8 @@ export default function ProjectOverview() {
               <span className="text-gradient-gold">Bu Lokasyon Altın Değer Taşıyacak</span>
             </h3>
             <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-              Kanal İstanbul, İstanbul Boğazı'na paralel yeni bir su yolu olarak inşa ediliyor.
-              Güzergah üzerindeki mülkler tarihsel olarak büyük değer artışı yaşadı.
-              Bugün satın alan, yarın en kazançlı yatırımcı olacak.
+              Güzergah üzerindeki mülkler tarihsel olarak %40–120 değer artışı yaşadı.
+              Bu lokasyonda doğru zamanda olmak, en kazançlı yatırımı yapmak demektir.
             </p>
             <div className="flex flex-wrap justify-center gap-8 text-center">
               {[

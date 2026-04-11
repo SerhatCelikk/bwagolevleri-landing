@@ -29,17 +29,17 @@ export default function Footer() {
             </p>
             <div className="space-y-2.5">
               <div className="flex items-center gap-2.5">
-                <span className="text-gold-500 text-sm">📍</span>
+                <svg className="text-gold-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 <span className="text-white/40 text-sm">Küçükçekmece, İstanbul, Türkiye</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <span className="text-gold-500 text-sm">📞</span>
+                <svg className="text-gold-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
                 <a href="tel:05334758499" onClick={() => trackPhoneClick("footer")} className="text-gold-400 hover:text-gold-300 font-semibold text-sm transition-colors">
                   0533 475 84 99
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <span className="text-gold-500 text-sm">✉️</span>
+                <svg className="text-gold-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 <a href="mailto:iletisim@bwagyo.com" className="text-gold-400 hover:text-gold-300 font-semibold text-sm transition-colors">
                   iletisim@bwagyo.com
                 </a>
@@ -123,7 +123,7 @@ export default function Footer() {
             <div className="mt-7 glass-gold rounded-xl p-4">
               <div className="text-gold-400 font-bold text-[10px] tracking-widest uppercase mb-1">Lansman Kampanyası</div>
               <div className="text-white/55 text-xs leading-relaxed mb-3">
-                10 özel daireden yalnızca 6'sı kaldı. Rezervasyon için hemen arayın.
+                64 konuttan yalnızca 23 daire kaldı. Rezervasyon için hemen arayın.
               </div>
               <a href="tel:05334758499" onClick={() => trackPhoneClick("footer_cta")} className="block btn-gold py-2 rounded-lg text-center text-xs font-black tracking-wider uppercase">
                 Hemen Ara

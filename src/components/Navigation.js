@@ -9,8 +9,8 @@ const navLinks = [
   { label: "Daireler", href: "#daireler" },
   { label: "Fiyatlar", href: "#fiyatlar" },
   { label: "Konum", href: "#konum" },
-  { label: "Kampanya", href: "#kampanya" },
   { label: "Katalog", href: "#katalog" },
+  { label: "Kampanya", href: "#kampanya" },
 ];
 
 export default function Navigation() {

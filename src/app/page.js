@@ -26,9 +26,9 @@ export default function Home() {
       <ApartmentTypes />
       <PricingPlans />
       <LocationSection />
-      <CampaignSection />
       <CatalogViewer />
       <LeadForm />
+      <CampaignSection />
       <Footer />
     </>
   );

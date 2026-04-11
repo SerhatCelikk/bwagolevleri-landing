@@ -25,8 +25,7 @@ const apartments = [
     type: "2+1",
     netArea: "71,00 m²",
     brutArea: "85,50 m²",
-    badge: "En Çok Tercih Edilen",
-    popular: true,
+    badge: "Aile Tipi",
     features: [
       "Salon: 16,90 m² + Mutfak: 9,77 m²",
       "Ebeveyn odası: 14,71 m²",
@@ -35,7 +34,7 @@ const apartments = [
       "Kapalı otopark",
       "7/24 kamera güvenlik",
     ],
-    desc: "Aile yaşamı için tasarlanmış, geniş ve ferah plan anlayışıyla projenin en çok tercih edilen tipi.",
+    desc: "Aile yaşamı için tasarlanmış geniş ve ferah plan. İki balkon, kiler ve ayrı WC.",
     accentColor: "#c9a84c",
     headerBg: "from-navy-800 to-gold-600",
   },
@@ -135,12 +134,6 @@ export default function ApartmentTypes() {
                   : "opacity-75 hover:opacity-95 hover:scale-[1.01]"
               }`}
             >
-              {/* Popular badge */}
-              {apt.popular && (
-                <div className="absolute top-3 right-3 z-20 bg-gold-500 text-navy-900 text-[10px] font-black px-2.5 py-1 rounded-full tracking-widest uppercase">
-                  ★ Popüler
-                </div>
-              )}
 
               {/* Header */}
               <div className={`bg-gradient-to-br ${apt.headerBg} px-7 py-7 relative overflow-hidden shrink-0`}>
@@ -203,7 +196,7 @@ export default function ApartmentTypes() {
           className="mt-8 glass-gold rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <div>
-            <div className="text-gold-400 font-bold text-sm tracking-wide mb-1">🌿 Bahçe Katı Daireler</div>
+            <div className="text-gold-400 font-bold text-sm tracking-wide mb-1">Bahçe Katı Daireler</div>
             <p className="text-white/50 text-xs leading-relaxed">
               1+1 (69,51 m²), 2+1 (102,87–116,10 m²) ve 3+1 (136,29 m²) bahçe kullanımlı özel daireler de mevcuttur.
               Geniş özel bahçe ve teras alanlarıyla farklı bir yaşam deneyimi sunar.
