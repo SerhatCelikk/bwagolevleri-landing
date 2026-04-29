@@ -15,7 +15,7 @@ const CAMPAIGN_OFFERS = [
 ];
 
 function useCountdown() {
-  const endDate = new Date("2026-05-01T23:59:59");
+  const endDate = new Date("2026-05-09T23:59:59");
   const [t, setT] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
   useEffect(() => {
     const calc = () => {
