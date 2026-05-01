@@ -25,19 +25,17 @@ function EmailRemovalInner() {
       }
 
       try {
-        // upsert + ignoreDuplicates: aynı e-posta tekrar gelirse sessizce geçer,
-        // yine de kullanıcıya başarı ekranı gösteriyoruz.
+        // Plain INSERT — duplicate gelirse PostgreSQL 23505 (unique_violation) fırlatır,
+        // bunu yakalayıp başarı sayıyoruz. Bu sayede anon'a sadece INSERT yetkisi yetiyor.
         const { error } = await supabase
           .from("email_unsubscribes")
-          .upsert(
-            {
-              email: trimmed.toLowerCase(),
-              source,
-              user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
-            },
-            { onConflict: "email", ignoreDuplicates: true }
-          );
-        if (error) throw error;
+          .insert({
+            email: trimmed.toLowerCase(),
+            source,
+            user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
+          });
+
+        if (error && error.code !== "23505") throw error;
         setStatus("success");
       } catch (err) {
         console.error(err);
