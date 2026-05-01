@@ -6,10 +6,10 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://bwagolevleri.webinen.com/sitemap.xml",
+    sitemap: "https://bwagyo.com/sitemap.xml",
     other: {
-      "LLMs.txt": "https://bwagolevleri.webinen.com/llms.txt",
-      "AI.txt": "https://bwagolevleri.webinen.com/.well-known/ai.txt",
+      "LLMs.txt": "https://bwagyo.com/llms.txt",
+      "AI.txt": "https://bwagyo.com/.well-known/ai.txt",
     },
   };
 }

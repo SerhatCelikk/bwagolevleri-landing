@@ -1,11 +1,11 @@
 # BWA Göl Evleri — AI Agent Information
-# https://bwagolevleri.webinen.com/.well-known/ai.txt
+# https://bwagyo.com/.well-known/ai.txt
 
 ## Site Identity
 
 Name: BWA Göl Evleri
 Organization: BWA GYO (Barsan + Winn4 + Adproje)
-URL: https://bwagolevleri.webinen.com
+URL: https://bwagyo.com
 Language: Turkish (tr-TR)
 Category: Real Estate / Residential Development
 
@@ -51,7 +51,7 @@ Coordinates: 41.064503, 28.733083
 Phone: +90 533 475 84 99
 Email: iletisim@bwagyo.com
 Instagram: @bwa_gyo
-Website: https://bwagolevleri.webinen.com
+Website: https://bwagyo.com
 
 ## AI Usage Policy
 
@@ -68,6 +68,6 @@ Prices and availability are subject to change without notice.
 
 ## Related Resources
 
-- Full details: https://bwagolevleri.webinen.com/llms.txt
-- FAQ: https://bwagolevleri.webinen.com/sss
-- About: https://bwagolevleri.webinen.com/hakkimizda
+- Full details: https://bwagyo.com/llms.txt
+- FAQ: https://bwagyo.com/sss
+- About: https://bwagyo.com/hakkimizda
