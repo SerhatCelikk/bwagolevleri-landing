@@ -25,11 +25,18 @@ function EmailRemovalInner() {
       }
 
       try {
-        const { error } = await supabase.from("email_unsubscribes").insert({
-          email: trimmed.toLowerCase(),
-          source,
-          user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
-        });
+        // upsert + ignoreDuplicates: aynı e-posta tekrar gelirse sessizce geçer,
+        // yine de kullanıcıya başarı ekranı gösteriyoruz.
+        const { error } = await supabase
+          .from("email_unsubscribes")
+          .upsert(
+            {
+              email: trimmed.toLowerCase(),
+              source,
+              user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
+            },
+            { onConflict: "email", ignoreDuplicates: true }
+          );
         if (error) throw error;
         setStatus("success");
       } catch (err) {

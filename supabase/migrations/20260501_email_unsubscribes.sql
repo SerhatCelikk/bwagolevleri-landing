@@ -1,18 +1,25 @@
 -- E-posta listesinden çıkmak isteyen kullanıcılar için tablo
 CREATE TABLE IF NOT EXISTS email_unsubscribes (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  email           TEXT NOT NULL,
+  email           TEXT NOT NULL UNIQUE,              -- aynı e-posta sadece bir kez
   source          TEXT,                              -- hangi kampanyadan / linkten geldi
   unsubscribed_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   ip_address      TEXT,
   user_agent      TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_email_unsubscribes_email ON email_unsubscribes (LOWER(email));
-CREATE INDEX IF NOT EXISTS idx_email_unsubscribes_at    ON email_unsubscribes (unsubscribed_at DESC);
+-- Tablo zaten varsa (eski migration sonrası) UNIQUE constraint'i ekle
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_constraint WHERE conname = 'email_unsubscribes_email_key'
+  ) THEN
+    ALTER TABLE email_unsubscribes
+      ADD CONSTRAINT email_unsubscribes_email_key UNIQUE (email);
+  END IF;
+END$$;
 
--- Aynı e-posta birden fazla defa abonelik iptali yapmaya çalışırsa engelleme yok
--- (kullanıcı butonu tekrar tıklarsa hata vermesin diye); tekilleştirme rapor sırasında yapılır.
+CREATE INDEX IF NOT EXISTS idx_email_unsubscribes_at ON email_unsubscribes (unsubscribed_at DESC);
 
 ALTER TABLE email_unsubscribes ENABLE ROW LEVEL SECURITY;
 
