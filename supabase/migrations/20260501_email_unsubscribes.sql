@@ -21,18 +21,11 @@ END$$;
 
 CREATE INDEX IF NOT EXISTS idx_email_unsubscribes_at ON email_unsubscribes (unsubscribed_at DESC);
 
-ALTER TABLE email_unsubscribes ENABLE ROW LEVEL SECURITY;
+-- Bu tabloda RLS yerine column-level GRANT'ler kullanılıyor:
+-- anon → SADECE INSERT (kayıt ekleyebilir, listeyi çekemez)
+-- service_role → otomatik tüm yetkiler (rapor için)
+ALTER TABLE email_unsubscribes DISABLE ROW LEVEL SECURITY;
 
--- anon ve authenticated rollerine INSERT izni veriliyor (RLS bunun üzerine ek bir kapı)
+REVOKE ALL ON TABLE email_unsubscribes FROM anon, authenticated;
 GRANT INSERT ON TABLE email_unsubscribes TO anon, authenticated;
 GRANT USAGE ON SCHEMA public TO anon, authenticated;
-
--- Anonim kullanıcılar abonelikten çıkabilsin (insert)
-DROP POLICY IF EXISTS "Anyone can unsubscribe"             ON email_unsubscribes;
-DROP POLICY IF EXISTS "anon_insert_email_unsubscribes"     ON email_unsubscribes;
-
-CREATE POLICY "anon_insert_email_unsubscribes"
-  ON email_unsubscribes
-  FOR INSERT
-  TO anon, authenticated
-  WITH CHECK (true);
