@@ -15,27 +15,27 @@ const faqs = [
   {
     question: "BWA Göl Evleri'nde kaç daire var?",
     answer:
-      "Projede toplam 64 daire bulunmaktadır. 1+1 (50-65 m²), 2+1 (90-110 m²), 3+1 (130-160 m²) ve dubleks daire seçenekleri mevcuttur. Teras kullanımlı dubleks daireler ve bahçe kullanımlı daireler de bulunmaktadır.",
+      "Projede toplam 64 daire bulunmaktadır. 1+1, 2+1, 3+1, 2+1 Loft ve dubleks daire seçenekleri mevcuttur. Teras kullanımlı dubleks daireler ve bahçe kullanımlı daireler de bulunmaktadır.",
   },
   {
     question: "BWA Göl Evleri daire fiyatları nedir?",
     answer:
-      "Güncel fiyatlar: 1+1 daireler 3.496.000 ₺'den, 2+1 daireler 4.905.000 ₺'den, 3+1 daireler 6.315.000 ₺'den başlamaktadır. Nakit alımlarda %10 indirim uygulanmaktadır. Detaylı fiyat bilgisi için 0533 475 84 99 numarasını arayabilirsiniz.",
+      "Güncel liste fiyatları: 1+1 daireler 3.730.000 ₺, 2+1 daireler 5.250.000 ₺, 3+1 daireler 6.750.000 ₺, 2+1 Loft daireler 7.280.000 ₺'dir. Nakit alımlarda %12,7 özel indirim uygulanmaktadır. Detaylı fiyat ve müsaitlik için 0533 475 84 99 numarasını arayabilirsiniz.",
   },
   {
     question: "Peşinatsız daire alınabilir mi?",
     answer:
-      "Evet. 13 eşit taksit planı mevcuttur: 1+1 → 268.923 ₺ × 13, 2+1 → 377.307 ₺ × 13, 3+1 → 485.769 ₺ × 13.",
+      "Evet. \"13 Ay Taksit\" planı ile ilk ayı peşin, kalan tutarı 13 eşit, 0 faiz taksitle ödeyebilirsiniz: 1+1 → 13 × 286.920 ₺, 2+1 → 13 × 403.840 ₺, 3+1 → 13 × 519.230 ₺, 2+1 Loft → 13 × 560.000 ₺.",
   },
   {
     question: "Nakit alımda indirim var mı?",
     answer:
-      "Evet, nakit alımlarda %10 indirim uygulanmaktadır. Nakit fiyatlar: 1+1 daire 3.146.400 ₺, 2+1 daire 4.414.500 ₺, 3+1 daire 5.683.500 ₺'dir.",
+      "Evet, nakit alımlarda %12,7 özel indirim uygulanmaktadır. Nakit fiyatlar: 1+1 → 3.256.290 ₺, 2+1 → 4.583.250 ₺, 3+1 → 5.892.750 ₺, 2+1 Loft → 6.355.440 ₺.",
   },
   {
     question: "Hangi ödeme seçenekleri var?",
     answer:
-      "Üç farklı ödeme seçeneği sunulmaktadır: (1) Peşinatsız Taksit — 13 aylık eşit taksit planı, (2) %50 Peşinat — yarısını şimdi öde, kalanını anahtar tesliminde öde, (3) Nakit Alım — %10 nakit iskontosu ile toplam fiyattan indirim.",
+      "Dört farklı ödeme seçeneği sunulmaktadır: (1) %50 Peşinat — kalan %50 tapu tesliminde (31.12.2026), (2) %50 Peşin + 12 Ay 0 Faiz — yarısı şimdi, kalanı 12 ay sıfır faiz taksit, (3) 13 Ay Taksit — ilk ay peşin, kalan tutar 13 eşit 0 faiz taksit, (4) Nakit Alım — %12,7 özel indirim.",
   },
   {
     question: "Göl manzaralı daire var mı?",

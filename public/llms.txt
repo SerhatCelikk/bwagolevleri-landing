@@ -18,31 +18,43 @@ BWA GYO, bu üç firmanın güçlerini birleştirerek "Barsan + Winn4 + Adproje"
 - **Konum:** Küçükçekmece, İstanbul, Türkiye
 - **Konum Avantajı:** Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında
 - **Toplam Daire Sayısı:** 64 konut (29 kampanya kontenjanından 23 daire mevcut)
-- **Tahmini Teslim:** En geç Ekim 2027
-- **Daire Tipleri:** 1+1, 2+1, 3+1 ve dubleks daireler
+- **Tahmini Teslim:** En geç Ekim 2027 (Tapu Teslim: 31.12.2026)
+- **Daire Tipleri:** 1+1, 2+1, 3+1, 2+1 Loft ve dubleks daireler
 - **Özellikler:** Göl manzarası, teras ve bahçe kullanımlı daireler, kapalı otopark, çift asansör, 7/24 kamera güvenlik, peyzaj alanları
 - **Geliştirici:** BWA GYO (Barsan + Winn4 + Adproje ortaklığı)
 
-## Daire Fiyatları
+## Daire Fiyatları (Liste Fiyatı)
 
-- **1+1 Daire:** 3.496.000 ₺ (50-65 m²)
-- **2+1 Daire:** 4.905.000 ₺ (90-110 m²)
-- **3+1 Daire:** 6.315.000 ₺ (130-160 m²)
+- **1+1 Daire:** 3.730.000 ₺
+- **2+1 Daire:** 5.250.000 ₺
+- **3+1 Daire:** 6.750.000 ₺
+- **2+1 Loft:** 7.280.000 ₺
 
 ## Ödeme Seçenekleri
 
-1. **Peşinatsız Taksit:** 13 eşit taksit planı
-   - 1+1: 268.923 ₺ × 13
-   - 2+1: 377.307 ₺ × 13
-   - 3+1: 485.769 ₺ × 13
-2. **%50 Peşinat:** Yarısını şimdi öde, kalan yarısını tapuda öde
-   - 1+1: 1.748.000 ₺ + 1.748.000 ₺ tapuda
-   - 2+1: 2.452.500 ₺ + 2.452.500 ₺ tapuda
-   - 3+1: 3.157.500 ₺ + 3.157.500 ₺ tapuda
-3. **Nakit Alım:** %10 nakit iskontosu
-   - 1+1: 3.146.400 ₺
-   - 2+1: 4.414.500 ₺
-   - 3+1: 5.683.500 ₺
+1. **%50 Peşinat (Tapu Teslim 31.12.2026):** Yarısını şimdi, kalan %50'yi tapu tesliminde öde
+   - 1+1: 1.865.000 ₺ + 1.865.000 ₺ tapuda
+   - 2+1: 2.625.000 ₺ + 2.625.000 ₺ tapuda
+   - 3+1: 3.375.000 ₺ + 3.375.000 ₺ tapuda
+   - 2+1 Loft: 3.640.000 ₺ + 3.640.000 ₺ tapuda
+
+2. **%50 Peşin + 12 Ay 0 Faiz:** %50 peşinat, kalan tutar 12 ay 0 faiz taksit
+   - 1+1: 1.865.000 ₺ peşin + 12 × 155.417 ₺
+   - 2+1: 2.625.000 ₺ peşin + 12 × 218.750 ₺
+   - 3+1: 3.375.000 ₺ peşin + 12 × 281.250 ₺
+   - 2+1 Loft: 3.640.000 ₺ peşin + 12 × 303.333 ₺
+
+3. **13 Ay Taksit (İlk Ay Peşin, 0 Faiz):** İlk ayı peşin, kalan tutar 13 eşit taksit
+   - 1+1: 13 × 286.920 ₺
+   - 2+1: 13 × 403.840 ₺
+   - 3+1: 13 × 519.230 ₺
+   - 2+1 Loft: 13 × 560.000 ₺
+
+4. **Nakit Alım:** %12,7 nakit iskontosu
+   - 1+1: 3.256.290 ₺ (473.710 ₺ tasarruf)
+   - 2+1: 4.583.250 ₺ (666.750 ₺ tasarruf)
+   - 3+1: 5.892.750 ₺ (857.250 ₺ tasarruf)
+   - 2+1 Loft: 6.355.440 ₺ (924.560 ₺ tasarruf)
 
 ## Ulaşım ve Çevre
 
@@ -77,10 +89,10 @@ Küçükçekmece ilçesinde, Küçükçekmece Gölü kıyısında, Kanal İstanb
 Projede toplam 64 daire bulunmaktadır. Şu an itibarıyla 23 daire satışa mevcuttur. 1+1, 2+1, 3+1 ve dubleks seçenekleri mevcuttur.
 
 ### Peşinatsız alınabilir mi?
-Evet, 13 aylık taksit planı ile küçük bir peşinat ve eşit taksitlerle daire sahibi olabilirsiniz.
+Evet, "13 Ay Taksit" planı ile yalnızca ilk ay peşinatla 13 eşit, 0 faiz taksitle daire sahibi olabilirsiniz.
 
 ### Nakit alımda indirim var mı?
-Evet, nakit alımlarda %10 indirim uygulanmaktadır.
+Evet, nakit alımlarda %12,7 indirim uygulanmaktadır.
 
 ### Göl manzaralı daire var mı?
 Evet, projede Küçükçekmece Gölü'ne nazır göl manzaralı daireler bulunmaktadır.

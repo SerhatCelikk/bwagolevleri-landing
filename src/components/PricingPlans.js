@@ -5,51 +5,66 @@ import { motion } from "framer-motion";
 
 const plans = [
   {
-    id: "taksit",
-    name: "Peşinatsız Taksit",
-    tagline: "Hemen Başlayın",
-    icon: null,
-    highlight: false,
+    id: "yari_tapu",
+    name: "%50 Peşinat",
+    tagline: "Tapu Teslim Avantajı",
     color: "bg-lake-700",
+    headers: { down: "%50 Peşin", monthly: "Tapu Tesliminde" },
     rows: [
-      { type: "1+1", price: "3.496.000 ₺", down: "268.923 ₺", monthly: "268.923 ₺ × 13", extra: "13 ay" },
-      { type: "2+1", price: "4.905.000 ₺", down: "377.307 ₺", monthly: "377.307 ₺ × 13", extra: "13 ay" },
-      { type: "3+1", price: "6.315.000 ₺", down: "485.769 ₺", monthly: "485.769 ₺ × 13", extra: "13 ay" },
+      { type: "1+1",      price: "3.730.000 ₺", down: "1.865.000 ₺", monthly: "1.865.000 ₺", extra: "31.12.2026" },
+      { type: "2+1",      price: "5.250.000 ₺", down: "2.625.000 ₺", monthly: "2.625.000 ₺", extra: "31.12.2026" },
+      { type: "3+1",      price: "6.750.000 ₺", down: "3.375.000 ₺", monthly: "3.375.000 ₺", extra: "31.12.2026" },
+      { type: "2+1 Loft", price: "7.280.000 ₺", down: "3.640.000 ₺", monthly: "3.640.000 ₺", extra: "31.12.2026" },
     ],
-    note: "Küçük başlangıç peşinatıyla daireyi hemen rezerve edin. 13 eşit taksitle konforlu ödeme.",
+    note: "%50 peşin, kalan %50'yi 31.12.2026 tapu tesliminde ödeyin. Teslim öncesi finansal esneklik.",
   },
   {
-    id: "yari",
-    name: "%50 Peşinat",
+    id: "yari_taksit",
+    name: "%50 Peşin + 12 Ay 0 Faiz",
     tagline: "En Esnek Seçenek",
-    icon: null,
     highlight: true,
     color: "bg-gold-500",
+    headers: { down: "%50 Peşin", monthly: "12 Ay Taksit" },
     rows: [
-      { type: "1+1", price: "3.496.000 ₺", down: "1.748.000 ₺", monthly: "1.748.000 ₺", extra: "Tapuda" },
-      { type: "2+1", price: "4.905.000 ₺", down: "2.452.500 ₺", monthly: "2.452.500 ₺", extra: "Tapuda" },
-      { type: "3+1", price: "6.315.000 ₺", down: "3.157.500 ₺", monthly: "3.157.500 ₺", extra: "Tapuda" },
+      { type: "1+1",      price: "3.730.000 ₺", down: "1.865.000 ₺", monthly: "155.417 ₺", extra: "12 ay × 155.417 ₺" },
+      { type: "2+1",      price: "5.250.000 ₺", down: "2.625.000 ₺", monthly: "218.750 ₺", extra: "12 ay × 218.750 ₺" },
+      { type: "3+1",      price: "6.750.000 ₺", down: "3.375.000 ₺", monthly: "281.250 ₺", extra: "12 ay × 281.250 ₺" },
+      { type: "2+1 Loft", price: "7.280.000 ₺", down: "3.640.000 ₺", monthly: "303.333 ₺", extra: "12 ay × 303.333 ₺" },
     ],
-    note: "%50 peşin, kalan %50'yi tapu tesliminde ödeyin. Teslim öncesi finansal esneklik.",
+    note: "%50 peşinat + kalan tutarın 12 ay 0 faiz taksiti. En esnek ödeme planı.",
+  },
+  {
+    id: "taksit",
+    name: "13 Ay Taksit",
+    tagline: "İlk Ay Peşin",
+    color: "bg-navy-700",
+    headers: { down: "İlk Ay Peşin", monthly: "Aylık Taksit" },
+    rows: [
+      { type: "1+1",      price: "3.730.000 ₺", down: "286.920 ₺", monthly: "286.920 ₺", extra: "13 ay × 286.920 ₺" },
+      { type: "2+1",      price: "5.250.000 ₺", down: "403.840 ₺", monthly: "403.840 ₺", extra: "13 ay × 403.840 ₺" },
+      { type: "3+1",      price: "6.750.000 ₺", down: "519.230 ₺", monthly: "519.230 ₺", extra: "13 ay × 519.230 ₺" },
+      { type: "2+1 Loft", price: "7.280.000 ₺", down: "560.000 ₺", monthly: "560.000 ₺", extra: "13 ay × 560.000 ₺" },
+    ],
+    note: "İlk ayı peşinat olarak ödeyin, kalan tutarı 13 eşit taksitle 0 faiz. Hemen rezervasyon.",
   },
   {
     id: "nakit",
     name: "Nakit Alım",
-    tagline: "%10 Özel İskonto",
-    icon: null,
-    highlight: false,
-    color: "bg-navy-700",
+    tagline: "%12,7 Özel İndirim",
+    color: "bg-navy-900",
+    headers: { down: "Nakit Fiyat", monthly: "Tasarruf" },
     rows: [
-      { type: "1+1", price: "3.496.000 ₺", down: "3.146.400 ₺", monthly: "349.600 ₺", extra: "%10 indirim" },
-      { type: "2+1", price: "4.905.000 ₺", down: "4.414.500 ₺", monthly: "490.500 ₺", extra: "%10 indirim" },
-      { type: "3+1", price: "6.315.000 ₺", down: "5.683.500 ₺", monthly: "631.500 ₺", extra: "%10 indirim" },
+      { type: "1+1",      price: "3.730.000 ₺", down: "3.256.290 ₺", monthly: "473.710 ₺", extra: "%12,7 indirim" },
+      { type: "2+1",      price: "5.250.000 ₺", down: "4.583.250 ₺", monthly: "666.750 ₺", extra: "%12,7 indirim" },
+      { type: "3+1",      price: "6.750.000 ₺", down: "5.892.750 ₺", monthly: "857.250 ₺", extra: "%12,7 indirim" },
+      { type: "2+1 Loft", price: "7.280.000 ₺", down: "6.355.440 ₺", monthly: "924.560 ₺", extra: "%12,7 indirim" },
     ],
-    note: "Tamamını nakit ödeyin, %10 özel indirimden faydalanın. En avantajlı ödeme seçeneği.",
+    note: "Tamamını nakit ödeyin, %12,7 özel indirimle en avantajlı fiyatı yakalayın.",
   },
 ];
 
 export default function PricingPlans() {
-  const [active, setActive] = useState("yari");
+  const [active, setActive] = useState("yari_taksit");
 
   const currentPlan = plans.find((p) => p.id === active);
 
@@ -132,33 +147,28 @@ export default function PricingPlans() {
                     <th className="text-left px-8 py-4 text-navy-900/40 text-xs font-bold tracking-[0.2em] uppercase">Daire Tipi</th>
                     <th className="text-right px-4 py-4 text-navy-900/40 text-xs font-bold tracking-[0.2em] uppercase">Liste Fiyatı</th>
                     <th className="text-right px-4 py-4 text-navy-900/40 text-xs font-bold tracking-[0.2em] uppercase">
-                      {currentPlan.id === "nakit" ? "Nakit Fiyat" : "Peşinat"}
+                      {currentPlan.headers.down}
                     </th>
                     <th className="text-right px-8 py-4 text-navy-900/40 text-xs font-bold tracking-[0.2em] uppercase">
-                      {currentPlan.id === "taksit" ? "Taksit" : currentPlan.id === "yari" ? "Tapuda" : "Tasarruf"}
+                      {currentPlan.headers.monthly}
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {currentPlan.rows.map((row, i) => (
+                  {currentPlan.rows.map((row) => (
                     <tr
                       key={row.type}
-                      className={`border-b border-navy-900/5 hover:bg-gold-50 transition-colors ${i === 1 ? "bg-gold-500/3" : ""}`}
+                      className="border-b border-navy-900/5 hover:bg-gold-50 transition-colors"
                     >
                       <td className="px-8 py-5">
-                        <span className={`inline-flex items-center gap-2 font-heading text-2xl font-black ${
-                          i === 1 ? "text-gold-600" : "text-navy-900"
-                        }`}>
+                        <span className="font-heading text-2xl font-black text-navy-900">
                           {row.type}
-                          {i === 1 && <span className="text-xs font-sans font-bold bg-gold-100 text-gold-700 px-2 py-0.5 rounded-full">Popüler</span>}
                         </span>
                       </td>
                       <td className="px-4 py-5 text-right text-navy-700/50 text-sm">{row.price}</td>
                       <td className="px-4 py-5 text-right font-semibold text-navy-900 text-sm">{row.down}</td>
                       <td className="px-8 py-5 text-right">
-                        <span className={`font-bold text-sm ${i === 1 ? "text-gold-600" : "text-navy-900"}`}>
-                          {row.monthly}
-                        </span>
+                        <span className="font-bold text-sm text-navy-900">{row.monthly}</span>
                         <div className="text-xs text-navy-700/40 mt-0.5">{row.extra}</div>
                       </td>
                     </tr>
