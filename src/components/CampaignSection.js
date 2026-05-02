@@ -8,7 +8,7 @@ const SOLD = 9;
 const REMAINING = TOTAL - SOLD;
 
 const CAMPAIGN_OFFERS = [
-  { title: "Peşinatsız Taksitli Ödeme", desc: "Küçük başlangıç peşinatıyla daireyi rezerve edin. 13 eşit taksitle ödeme imkânı.", tag: "0 Faiz" },
+  { title: "İlk Ay Peşin + 12 Ay Taksit", desc: "İlk ayı peşin ödeyin, kalan tutarı 12 ay 0 faiz eşit taksitle. Toplam 13 ödeme.", tag: "0 Faiz" },
   { title: "%50 Peşin, Kalanı Teslimde", desc: "Yarısını şimdi ödeyin, kalan %50'yi anahtar tesliminde ödeme esnekliği.", tag: "Esnek" },
   { title: "Nakit Alımda %10 İskonto", desc: "Tamamını nakit ödeyin, özel indirimle en avantajlı fiyatı yakalayın.", tag: "%10 İndirim" },
   { title: "Size Özel Ödeme Planı", desc: "Seçili alıcılara özel ödeme planı müzakeresi imkânı.", tag: "Ayrıcalık" },

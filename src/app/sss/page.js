@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "Peşinatsız daire alınabilir mi?",
     answer:
-      "Evet. \"13 Ay Taksit\" planı ile ilk ayı peşin, kalan tutarı 13 eşit, 0 faiz taksitle ödeyebilirsiniz: 1+1 → 13 × 286.920 ₺, 2+1 → 13 × 403.840 ₺, 3+1 → 13 × 519.230 ₺, 2+1 Loft → 13 × 560.000 ₺.",
+      "Evet. \"İlk Ay Peşin + 12 Ay Taksit\" planı ile ilk ayı peşin ödeyip kalan tutarı 12 ay 0 faiz eşit taksitle ödeyebilirsiniz (toplam 13 ödeme): 1+1 → 286.920 ₺ peşin + 12 × 286.920 ₺, 2+1 → 403.840 ₺ peşin + 12 × 403.840 ₺, 3+1 → 519.230 ₺ peşin + 12 × 519.230 ₺, 2+1 Loft → 560.000 ₺ peşin + 12 × 560.000 ₺.",
   },
   {
     question: "Nakit alımda indirim var mı?",
@@ -35,7 +35,7 @@ const faqs = [
   {
     question: "Hangi ödeme seçenekleri var?",
     answer:
-      "Dört farklı ödeme seçeneği sunulmaktadır: (1) %50 Peşinat — kalan %50 tapu tesliminde (31.12.2026), (2) %50 Peşin + 12 Ay 0 Faiz — yarısı şimdi, kalanı 12 ay sıfır faiz taksit, (3) 13 Ay Taksit — ilk ay peşin, kalan tutar 13 eşit 0 faiz taksit, (4) Nakit Alım — %12,7 özel indirim.",
+      "Dört farklı ödeme seçeneği sunulmaktadır: (1) %50 Peşinat — kalan %50 tapu tesliminde (31.12.2026), (2) %50 Peşin + 12 Ay 0 Faiz — yarısı şimdi, kalanı 12 ay sıfır faiz taksit, (3) İlk Ay Peşin + 12 Ay Taksit — ilk ay peşin, kalan tutar 12 ay 0 faiz eşit taksit (toplam 13 ödeme), (4) Nakit Alım — %12,7 özel indirim.",
   },
   {
     question: "Göl manzaralı daire var mı?",

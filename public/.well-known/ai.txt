@@ -35,7 +35,7 @@ Estimated handover: October 2027 (latest)
 
 1. 50% Down Payment: 50% now, remaining 50% at title deed delivery (31 Dec 2026)
 2. 50% Down + 12-Month 0% Interest: 50% now, remaining in 12 equal monthly installments at 0% interest
-3. 13-Month Installment: First month down + 13 equal 0%-interest monthly installments
+3. First Month Down + 12-Month Installment: 1 down payment + 12 equal 0%-interest monthly installments (13 total payments)
 4. Cash Purchase: 12.7% discount on the list price
 
 ## Location
