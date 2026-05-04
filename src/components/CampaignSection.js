@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const TOTAL = 29;
-const SOLD = 9;
+const SOLD = 10;
 const REMAINING = TOTAL - SOLD;
 
 const CAMPAIGN_OFFERS = [
