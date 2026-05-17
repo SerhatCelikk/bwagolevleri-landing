@@ -19,11 +19,11 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: {
-    default: "BWA Göl Evleri | Küçükçekmece Göl Manzaralı Konut Projesi | BWA GYO",
+    default: "BWA Göl Evleri | Ispartakule'de Küçükçekmece Göl Manzaralı Konut Projesi | BWA GYO",
     template: "%s | BWA Göl Evleri",
   },
   description:
-    "BWA Göl Evleri, Barsan Winn4 Adproje ortaklığı olan BWA GYO güvencesiyle Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir. 1+1, 2+1, 3+1 ve dubleks daireler. Peşinatsız taksit, %50 peşinat ve nakit iskonto seçenekleriyle lansmana özel kampanya. 0533 475 84 99",
+    "BWA Göl Evleri, Barsan Winn4 Adproje ortaklığı olan BWA GYO güvencesiyle Ispartakule mevkiinde, Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir. 1+1, 2+1, 3+1 ve dubleks daireler. Peşinatsız taksit, %50 peşinat ve nakit iskonto seçenekleriyle lansmana özel kampanya. 0533 475 84 99",
   keywords: [
     "BWA Göl Evleri",
     "BWA Gölevleri",
@@ -49,9 +49,9 @@ export const metadata = {
   metadataBase: new URL("https://bwagyo.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "BWA Göl Evleri | Barsan Winn4 Adproje Ortaklığı | Küçükçekmece",
+    title: "BWA Göl Evleri | Barsan Winn4 Adproje Ortaklığı | Ispartakule Küçükçekmece",
     description:
-      "BWA GYO (Barsan + Winn4 + Adproje) güvencesiyle Küçükçekmece Gölü kıyısında prestijli konut projesi. 64 daireli lansman kampanyası devam ediyor.",
+      "BWA GYO güvencesiyle Ispartakule mevkiinde, Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir. 64 daireli lansman kampanyası devam ediyor.",
     type: "website",
     locale: "tr_TR",
     siteName: "BWA Göl Evleri",
@@ -61,15 +61,15 @@ export const metadata = {
         url: "/images/catalog.jpg",
         width: 1200,
         height: 630,
-        alt: "BWA Göl Evleri - Küçükçekmece Göl Manzaralı Konut Projesi",
+        alt: "BWA Göl Evleri - Ispartakule Küçükçekmece Göl Manzaralı Konut Projesi",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BWA Göl Evleri | Kanal İstanbul & Göl Manzarası",
+    title: "BWA Göl Evleri | Ispartakule Küçükçekmece Göl Manzaralı Konut Projesi",
     description:
-      "BWA GYO (Barsan + Winn4 + Adproje) güvencesiyle Küçükçekmece Gölü kıyısında prestijli konut projesi.",
+      "BWA GYO (Barsan + Winn4 + Adproje) güvencesiyle Ispartakule mevkiinde, Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir.",
     images: ["/images/catalog.jpg"],
   },
   robots: {
