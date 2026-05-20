@@ -15,7 +15,7 @@ const apartments = [
     netArea: "43,05 m²",
     grossArea: "51,42 m²",
     price: "3.924.000 ₺",
-    monthlyNote: "301.850 ₺ × 12 taksit",
+    monthlyNote: "301.850 ₺ × 13 taksit",
     rooms: [
       { name: "Salon + Mutfak", area: "24,39 m²" },
       { name: "Yatak Odası", area: "13,80 m²" },
@@ -30,7 +30,7 @@ const apartments = [
     netArea: "71,00 m²",
     grossArea: "85,50 m²",
     price: "5.507.000 ₺",
-    monthlyNote: "423.615 ₺ × 12 taksit",
+    monthlyNote: "423.615 ₺ × 13 taksit",
     rooms: [
       { name: "Salon", area: "16,90 m²" },
       { name: "Mutfak", area: "9,77 m²" },
@@ -45,7 +45,7 @@ const apartments = [
     netArea: "89,34 m²",
     grossArea: "107,73 m²",
     price: "7.090.000 ₺",
-    monthlyNote: "545.385 ₺ × 12 taksit",
+    monthlyNote: "545.385 ₺ × 13 taksit",
     rooms: [
       { name: "Salon", area: "18,44 m²" },
       { name: "Mutfak", area: "10,95 m²" },
@@ -60,7 +60,7 @@ const apartments = [
     netArea: "83,99 m²",
     grossArea: "101,87 m²",
     price: "7.647.000 ₺",
-    monthlyNote: "588.230 ₺ × 12 taksit",
+    monthlyNote: "588.230 ₺ × 13 taksit",
     rooms: [
       { name: "Alt Kat — Salon + Mutfak", area: "—" },
       { name: "Alt Kat — Balkon", area: "—" },
