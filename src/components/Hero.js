@@ -6,7 +6,7 @@ import Image from "next/image";
 import { trackCTAClick, trackPhoneClick } from "@/lib/analytics";
 
 const TOTAL_UNITS = 29;
-const SOLD_UNITS = 10;
+const SOLD_UNITS = 11;
 const REMAINING = TOTAL_UNITS - SOLD_UNITS;
 
 export default function Hero() {
