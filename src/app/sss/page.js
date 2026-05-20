@@ -20,17 +20,17 @@ const faqs = [
   {
     question: "BWA Göl Evleri daire fiyatları nedir?",
     answer:
-      "Güncel liste fiyatları: 1+1 daireler 3.730.000 ₺, 2+1 daireler 5.250.000 ₺, 3+1 daireler 6.750.000 ₺, 2+1 Loft daireler 7.280.000 ₺'dir. Nakit alımlarda %12,7 özel indirim uygulanmaktadır. Detaylı fiyat ve müsaitlik için 0533 475 84 99 numarasını arayabilirsiniz.",
+      "Güncel liste fiyatları: 1+1 daireler 3.924.000 ₺, 2+1 daireler 5.507.000 ₺, 3+1 daireler 7.090.000 ₺, 2+1 Loft daireler 7.647.000 ₺'dir. Nakit alımlarda %12,7 özel indirim uygulanmaktadır. Detaylı fiyat ve müsaitlik için 0533 475 84 99 numarasını arayabilirsiniz.",
   },
   {
     question: "Peşinatsız daire alınabilir mi?",
     answer:
-      "Evet. \"İlk Ay Peşin + 12 Ay Taksit\" planı ile ilk ayı peşin ödeyip kalan tutarı 12 ay 0 faiz eşit taksitle ödeyebilirsiniz (toplam 13 ödeme): 1+1 → 286.920 ₺ peşin + 12 × 286.920 ₺, 2+1 → 403.840 ₺ peşin + 12 × 403.840 ₺, 3+1 → 519.230 ₺ peşin + 12 × 519.230 ₺, 2+1 Loft → 560.000 ₺ peşin + 12 × 560.000 ₺.",
+      "Evet. \"İlk Ay Peşin + 12 Ay Taksit\" planı ile ilk ayı peşin ödeyip kalan tutarı 12 ay 0 faiz eşit taksitle ödeyebilirsiniz (toplam 13 ödeme, vade farksız): 1+1 → 301.850 ₺ peşin + 12 × 301.850 ₺, 2+1 → 423.615 ₺ peşin + 12 × 423.615 ₺, 3+1 → 545.385 ₺ peşin + 12 × 545.385 ₺, 2+1 Loft → 588.230 ₺ peşin + 12 × 588.230 ₺.",
   },
   {
     question: "Nakit alımda indirim var mı?",
     answer:
-      "Evet, nakit alımlarda %12,7 özel indirim uygulanmaktadır. Nakit fiyatlar: 1+1 → 3.256.290 ₺, 2+1 → 4.583.250 ₺, 3+1 → 5.892.750 ₺, 2+1 Loft → 6.355.440 ₺.",
+      "Evet, nakit alımlarda %12,7 özel indirim uygulanmaktadır. Nakit fiyatlar: 1+1 → 3.426.315 ₺, 2+1 → 4.807.890 ₺, 3+1 → 6.189.470 ₺, 2+1 Loft → 6.675.789 ₺.",
   },
   {
     question: "Hangi ödeme seçenekleri var?",
