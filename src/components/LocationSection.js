@@ -2,19 +2,48 @@
 
 import { motion } from "framer-motion";
 
+/* Lucide-style inline SVGs — Navigation, Building2, Clock, MapPin */
+const ICON = {
+  navigation: (props) => (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <polygon points="3 11 22 2 13 21 11 13 3 11" />
+    </svg>
+  ),
+  building: (props) => (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+      <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+      <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+      <path d="M10 6h4M10 10h4M10 14h4M10 18h4" />
+    </svg>
+  ),
+  clock: (props) => (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  ),
+  pin: (props) => (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  ),
+};
+
 const distances = [
-  { place: "Kanal İstanbul Güzergahı", dist: "Üzerinde", highlight: true, detail: "Köprü bağlantı yolu proje önünden geçiyor" },
-  { place: "Küçükçekmece Gölü", dist: "Kıyısında", highlight: true, detail: "Göl manzaralı cephe" },
-  { place: "Sazlıbosna Köprüsü", dist: "3 dk", highlight: true, detail: "Bağlantı yolu proje önünden geçiyor" },
-  { place: "TEM Otoyolu", dist: "3 dk", detail: "Havalimanı ve kuzey bağlantısı" },
-  { place: "Avcılar Gişeleri", dist: "5 dk", detail: "E-5 ve şehir merkezi" },
-  { place: "Okul", dist: "5 dk", detail: "Yürüme mesafesinde" },
-  { place: "Çam Sakura Hastanesi", dist: "10 dk", detail: "Modern sağlık tesisi" },
-  { place: "Akbatı AVM", dist: "10 dk", detail: "Alışveriş ve eğlence merkezi" },
-  { place: "Olimpiyat Stadyumu", dist: "10 dk", detail: "Spor ve etkinlik merkezi" },
-  { place: "Halkalı Tren Garı", dist: "15 dk", detail: "Banliyö tren hattı bağlantısı" },
-  { place: "İstanbul Havalimanı", dist: "20 dk", detail: "TEM üzerinden direkt bağlantı" },
-  { place: "Metro Hattı", dist: "Yakında", highlight: true, detail: "Planlanan metro hattına erişim" },
+  { place: "Kanal İstanbul Güzergahı", dist: "Üzerinde", highlight: true, icon: "pin",        detail: "Köprü bağlantı yolu proje önünden geçiyor" },
+  { place: "Küçükçekmece Gölü",        dist: "Kıyısında", highlight: true, icon: "pin",        detail: "Göl manzaralı cephe" },
+  { place: "Sazlıbosna Köprüsü",       dist: "3 dk",     highlight: true, icon: "navigation", detail: "Bağlantı yolu proje önünden geçiyor" },
+  { place: "TEM Otoyolu",              dist: "3 dk",                      icon: "navigation", detail: "Havalimanı ve kuzey bağlantısı" },
+  { place: "Avcılar Gişeleri",         dist: "5 dk",                      icon: "navigation", detail: "E-5 ve şehir merkezi" },
+  { place: "Okul",                     dist: "5 dk",                      icon: "pin",        detail: "Yürüme mesafesinde" },
+  { place: "Çam Sakura Hastanesi",     dist: "10 dk",                     icon: "clock",      detail: "Modern sağlık tesisi" },
+  { place: "Akbatı AVM",               dist: "10 dk",                     icon: "building",   detail: "Alışveriş ve eğlence merkezi" },
+  { place: "Olimpiyat Stadyumu",       dist: "10 dk",                     icon: "building",   detail: "Spor ve etkinlik merkezi" },
+  { place: "Halkalı Tren Garı",        dist: "15 dk",                     icon: "clock",      detail: "Banliyö tren hattı bağlantısı" },
+  { place: "İstanbul Havalimanı",      dist: "20 dk",                     icon: "navigation", detail: "TEM üzerinden direkt bağlantı" },
+  { place: "Metro Hattı",              dist: "Yakında",  highlight: true, icon: "navigation", detail: "Planlanan metro hattına erişim" },
 ];
 
 export default function LocationSection() {
@@ -111,8 +140,16 @@ export default function LocationSection() {
                     : "bg-white/4 border border-white/5 hover:bg-white/7"
                 }`}
               >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${d.highlight ? "bg-gold-400" : "bg-white/25"}`} />
+                <div className="flex items-center gap-3 min-w-0">
+                  <span
+                    className={`shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-lg ${
+                      d.highlight
+                        ? "bg-gold-500/20 text-gold-400 border border-gold-500/30"
+                        : "bg-white/5 text-white/50 border border-white/10"
+                    }`}
+                  >
+                    {ICON[d.icon]?.()}
+                  </span>
                   <div className="min-w-0">
                     <div className={`text-xs font-semibold truncate ${d.highlight ? "text-gold-300" : "text-white/70"}`}>
                       {d.place}
