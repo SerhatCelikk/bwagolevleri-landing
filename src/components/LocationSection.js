@@ -60,13 +60,30 @@ export default function LocationSection() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="BWA Göl Evleri Konumu — Küçükçekmece, İstanbul"
+                title="BWA Göl Evleri Konumu — Ispartakule, İstanbul"
               />
               {/* Map overlay badge */}
               <div className="absolute top-4 left-4 glass-dark px-3.5 py-2 rounded-xl pointer-events-none">
                 <div className="text-gold-400 text-xs font-bold tracking-wider">BWA GÖL EVLERİ</div>
-                <div className="text-white/45 text-[10px]">Tahtakale · Avcılar / İstanbul</div>
+                <div className="text-white/45 text-[10px]">Ispartakule · İstanbul</div>
               </div>
+
+              {/* Sales office link */}
+              <a
+                href="https://share.google/K5ml9T4ZZZ1h5zl22"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-4 right-4 glass-dark px-4 py-2.5 rounded-xl flex items-center gap-2 hover:bg-gold-500/15 transition-colors border border-gold-500/25 group"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-gold-400">
+                  <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <div className="text-left">
+                  <div className="text-gold-400 text-[10px] font-bold tracking-wider uppercase">Satış Ofisi</div>
+                  <div className="text-white/60 text-[10px] group-hover:text-white/80 transition-colors">Haritada Aç →</div>
+                </div>
+              </a>
             </div>
           </motion.div>
 
