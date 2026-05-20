@@ -31,7 +31,7 @@ export default function Footer() {
               <div className="flex items-center gap-2.5">
                 <svg className="text-gold-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 <a
-                  href="https://share.google/K5ml9T4ZZZ1h5zl22"
+                  href="https://maps.app.goo.gl/VvfVvC5dziBMdyLY6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gold-400 hover:text-gold-300 font-semibold text-sm transition-colors"

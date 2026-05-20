@@ -70,7 +70,7 @@ export default function LocationSection() {
 
               {/* Sales office link */}
               <a
-                href="https://share.google/K5ml9T4ZZZ1h5zl22"
+                href="https://maps.app.goo.gl/VvfVvC5dziBMdyLY6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute bottom-4 right-4 glass-dark px-4 py-2.5 rounded-xl flex items-center gap-2 hover:bg-gold-500/15 transition-colors border border-gold-500/25 group"
