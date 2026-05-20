@@ -56,7 +56,7 @@ const apartments = [
     headerBg: "from-navy-900 to-navy-700",
   },
   {
-    type: "Dubleks 2+1",
+    type: "2+1 Loft",
     netArea: "83,99 m²",
     brutArea: "101,87 m²",
     badge: "Teras Kullanımlı",
