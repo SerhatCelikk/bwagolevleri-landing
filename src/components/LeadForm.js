@@ -95,10 +95,10 @@ export default function LeadForm() {
             {/* Price list preview */}
             <div className="rounded-2xl overflow-hidden border border-gold-200/60 shadow-xl max-w-[260px]">
               <Image
-                src="/images/fiyat.jpg"
+                src="/images/fiyat.png"
                 alt="BWA Göl Evleri 2026 Güncel Fiyat Listesi"
-                width={893}
-                height={1600}
+                width={1080}
+                height={1920}
                 sizes="260px"
                 className="w-full h-auto"
               />

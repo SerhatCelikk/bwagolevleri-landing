@@ -86,7 +86,7 @@ export default function ProjectOverview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-16 bg-gradient-to-r from-navy-900 via-navy-800 to-lake-700 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden"
+          className="mt-16 bg-gradient-to-r from-navy-900 via-navy-800 to-lake-700 rounded-3xl p-6 sm:p-10 md:p-14 text-center relative overflow-hidden"
         >
           {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-gold-500/5 -translate-y-1/2 translate-x-1/2" />
@@ -96,7 +96,7 @@ export default function ProjectOverview() {
             <span className="inline-block bg-gold-500/20 text-gold-300 text-xs font-bold tracking-[0.3em] uppercase px-4 py-2 rounded-full mb-6 border border-gold-500/30">
               Stratejik Konum Avantajı
             </span>
-            <h3 className="font-heading text-3xl md:text-4xl font-black text-white mb-4">
+            <h3 className="font-heading text-xl sm:text-2xl md:text-4xl font-black text-white mb-4 leading-tight break-words">
               Kanal İstanbul Tamamlandığında
               <br />
               <span className="text-gradient-gold">Bu Lokasyon Altın Değer Taşıyacak</span>
