@@ -92,11 +92,18 @@ export default function LeadForm() {
               ))}
             </div>
 
-            {/* Catalog preview */}
+            {/* Price list preview */}
             <div className="rounded-2xl overflow-hidden border border-gold-200/60 shadow-xl max-w-[260px]">
-              <Image src="/images/catalog.jpg" alt="BWA Göl Evleri Fiyat Listesi" width={260} height={350} className="w-full h-auto" />
+              <Image
+                src="/images/fiyat.jpg"
+                alt="BWA Göl Evleri 2026 Güncel Fiyat Listesi"
+                width={893}
+                height={1600}
+                sizes="260px"
+                className="w-full h-auto"
+              />
               <div className="bg-navy-900 px-4 py-2.5 text-center">
-                <span className="text-gold-400 text-[10px] font-bold tracking-[0.2em] uppercase">2026 Fiyat Listesi</span>
+                <span className="text-gold-400 text-[10px] font-bold tracking-[0.2em] uppercase">2026 Güncel Fiyat Listesi</span>
               </div>
             </div>
           </motion.div>
