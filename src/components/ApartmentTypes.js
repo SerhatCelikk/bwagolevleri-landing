@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { trackPhoneClick, trackCTAClick } from "@/lib/analytics";
+
+// 3D görüntüleyici sadece tarayıcıda (Three.js) — SSR kapalı
+const Apt3DViewer = dynamic(() => import("./Apt3DViewer"), { ssr: false });
+const HAS_3D = ["1+1", "2+1", "3+1"];
 
 const CONTACT_PHONE = "+905334758499";
 const WA_BASE = `https://wa.me/${CONTACT_PHONE.replace("+", "")}`;
@@ -86,7 +91,7 @@ const apartments = [
 ];
 
 export default function ApartmentTypes() {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0); // varsayılan: 1+1
   const unit = apartments[active];
 
   return (
@@ -139,14 +144,24 @@ export default function ApartmentTypes() {
         </motion.div>
 
         {/* Card */}
-        <motion.div
-          key={unit.type}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="overflow-hidden rounded-2xl border border-white/10 bg-[#0f2040]"
-        >
-          <div className="grid md:grid-cols-2">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0f2040]">
+          {/* 3D daire görünümü (viewer kalıcı; tip değişince akıcı güncellenir) */}
+          {HAS_3D.includes(unit.type) ? (
+            <Apt3DViewer type={unit.type} accent={unit.badgeColor} />
+          ) : (
+            <div className="flex h-[220px] w-full flex-col items-center justify-center gap-2 bg-[#0b1220] text-center">
+              <span className="text-3xl">🏗️</span>
+              <span className="text-sm font-semibold text-white/55">{unit.type} için 3D görünüm yakında</span>
+            </div>
+          )}
+
+          <motion.div
+            key={unit.type}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            className="grid border-t border-white/10 md:grid-cols-2"
+          >
             {/* Left: specs */}
             <div className="p-6 lg:p-8">
               {/* Badge + type */}
@@ -246,8 +261,8 @@ export default function ApartmentTypes() {
                 </a>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Garden floor info — bwagyo özel */}
         <motion.div

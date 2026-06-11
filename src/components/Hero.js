@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { trackCTAClick, trackPhoneClick } from "@/lib/analytics";
+import { trackCTAClick } from "@/lib/analytics";
 
 const TOTAL_UNITS = 29;
 const SOLD_UNITS = 11;
@@ -134,16 +134,17 @@ export default function Hero() {
           >
             Hemen Bilgi Alın
           </button>
-          <a
-            href="tel:05334758499"
-            onClick={() => trackPhoneClick("hero")}
+          <button
+            onClick={() => { trackCTAClick("hero_3d_view"); document.querySelector("#daireler")?.scrollIntoView({ behavior: "smooth" }); }}
             className="btn-outline-gold px-9 py-3.5 rounded-lg text-sm font-black tracking-[0.12em] uppercase flex items-center gap-2.5"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.7 11.5 19.79 19.79 0 011.63 2.84 2 2 0 013.6 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round">
+              <path d="M21 7.5 12 2 3 7.5v9L12 22l9-5.5z" />
+              <path d="M3 7.5 12 13l9-5.5" />
+              <path d="M12 13v9" />
             </svg>
-            0533 475 84 99
-          </a>
+            3D Görüntüle
+          </button>
         </motion.div>
 
         {/* Campaign progress bar */}
