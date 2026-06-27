@@ -112,7 +112,7 @@ export default function Footer() {
             <div className="space-y-3.5">
               {[
                 { name: "BARSAN", desc: "İnşaat & Geliştirme", href: "https://www.barsangroup.com/" },
-                { name: "WINN4", desc: "Yatırım & Planlama", href: "https://winn4.com/" },
+                { name: "WINN4", desc: "Yatırım & Planlama", href: "https://winn4insaat.com/" },
                 { name: "ADPROJE", desc: "Mimari & Tasarım", href: "https://www.adproje.com/" },
               ].map((p) => (
                 <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">

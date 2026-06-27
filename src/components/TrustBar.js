@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const partners = [
   { name: "BARSAN", subtitle: "İnşaat & Geliştirme", letter: "B", href: "https://www.barsangroup.com/", display: "barsangroup.com" },
-  { name: "WINN4", subtitle: "Yatırım & Planlama", letter: "W", href: "https://winn4.com/", display: "winn4.com" },
+  { name: "WINN4", subtitle: "Yatırım & Planlama", letter: "W", href: "https://winn4insaat.com/", display: "winn4insaat.com" },
   { name: "ADPROJE", subtitle: "Mimari & Tasarım", letter: "A", href: "https://www.adproje.com/", display: "adproje.com" },
 ];
 

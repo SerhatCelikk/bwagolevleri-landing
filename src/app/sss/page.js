@@ -60,7 +60,7 @@ const faqs = [
   {
     question: "Barsan, Winn4 ve Adproje hangi firmalardır?",
     answer:
-      "Barsan (barsangroup.com), inşaat ve gayrimenkul geliştirme alanında faaliyet gösteren köklü bir firmadır. Winn4 (winn4.com), gayrimenkul yatırım ve planlama konusunda uzmanlaşmıştır. Adproje (adproje.com), mimari tasarım ve proje yönetimi alanında deneyimli bir firmadır. Bu üç firma BWA GYO çatısı altında bir araya gelerek BWA Göl Evleri projesini hayata geçirmektedir.",
+      "Barsan (barsangroup.com), inşaat ve gayrimenkul geliştirme alanında faaliyet gösteren köklü bir firmadır. Winn4 (winn4insaat.com), gayrimenkul yatırım ve planlama konusunda uzmanlaşmıştır. Adproje (adproje.com), mimari tasarım ve proje yönetimi alanında deneyimli bir firmadır. Bu üç firma BWA GYO çatısı altında bir araya gelerek BWA Göl Evleri projesini hayata geçirmektedir.",
   },
   {
     question: "BWA Göl Evleri ile nasıl iletişime geçebilirim?",

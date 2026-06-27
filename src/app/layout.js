@@ -116,7 +116,7 @@ const jsonLd = [
       {
         "@type": "Organization",
         name: "Winn4",
-        url: "https://winn4.com/",
+        url: "https://winn4insaat.com/",
         description: "Yatırım & Planlama",
       },
       {

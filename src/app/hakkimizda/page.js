@@ -42,7 +42,7 @@ const jsonLd = {
     foundingDate: "2024",
     founders: [
       { "@type": "Organization", name: "Barsan", url: "https://www.barsangroup.com/" },
-      { "@type": "Organization", name: "Winn4", url: "https://winn4.com/" },
+      { "@type": "Organization", name: "Winn4", url: "https://winn4insaat.com/" },
       { "@type": "Organization", name: "Adproje", url: "https://www.adproje.com/" },
     ],
     contactPoint: {
@@ -65,7 +65,7 @@ const partners = [
   {
     name: "Winn4",
     role: "Yatırım & Planlama",
-    url: "https://winn4.com/",
+    url: "https://winn4insaat.com/",
     description:
       "Winn4, gayrimenkul yatırım ve planlama konusunda uzmanlaşmış bir firmadır. BWA GYO bünyesinde projenin yatırım stratejisi ve finansal planlamasından sorumludur.",
   },
