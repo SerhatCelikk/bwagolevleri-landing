@@ -6,7 +6,7 @@ import Image from "next/image";
 import { trackCTAClick } from "@/lib/analytics";
 
 const TOTAL_UNITS = 29;
-const SOLD_UNITS = 11;
+const SOLD_UNITS = 12;
 const REMAINING = TOTAL_UNITS - SOLD_UNITS;
 
 export default function Hero() {
@@ -172,7 +172,7 @@ export default function Hero() {
             <p className="text-white/35 text-[11px] tracking-wide">
               <strong className="text-gold-400">{REMAINING} daire</strong> için kampanya fiyatı geçerli
             </p>
-            <span className="text-white/30 text-[11px] tracking-wide">Teslim: <strong className="text-gold-400/70">Haziran 2027</strong></span>
+            <span className="text-white/30 text-[11px] tracking-wide">Teslim: <strong className="text-gold-400/70">Ağustos 2026</strong></span>
           </div>
         </motion.div>
       </div>

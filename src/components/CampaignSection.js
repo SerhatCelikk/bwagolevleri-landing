@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const TOTAL = 29;
-const SOLD = 11;
+const SOLD = 12;
 const REMAINING = TOTAL - SOLD;
 
 const CAMPAIGN_OFFERS = [
@@ -15,7 +15,7 @@ const CAMPAIGN_OFFERS = [
 ];
 
 function useCountdown() {
-  const endDate = new Date("2026-08-01T23:59:59");
+  const endDate = new Date("2026-11-10T23:59:59");
   const [t, setT] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
   useEffect(() => {
     const calc = () => {
