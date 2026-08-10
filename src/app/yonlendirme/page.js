@@ -28,7 +28,7 @@ const links = [
   {
     id: "website",
     label: "Websiteyi Gez",
-    sub: "Fiyatlar, katalog ve konum",
+    sub: "Katalog, daire tipleri ve konum",
     href: SITE,
     icon: <WebIcon />,
     style: "navy",

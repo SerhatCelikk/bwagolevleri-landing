@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 import { trackLeadSubmit, trackPhoneClick } from "@/lib/analytics";
-import Image from "next/image";
 
 const APARTMENT_TYPES = ["1+1", "2+1", "3+1", "Henüz Karar Vermedim"];
 const PAYMENT_PLANS = ["Peşinatsız Taksit", "%50 Peşinat", "Nakit Alım", "Özel Plan İstiyorum"];
@@ -17,19 +16,6 @@ export default function LeadForm() {
   });
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const [priceLightbox, setPriceLightbox] = useState(false);
-
-  useEffect(() => {
-    if (!priceLightbox) return;
-    const onKey = (e) => { if (e.key === "Escape") setPriceLightbox(false); };
-    window.addEventListener("keydown", onKey);
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
-    };
-  }, [priceLightbox]);
 
   const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
@@ -105,37 +91,23 @@ export default function LeadForm() {
               ))}
             </div>
 
-            {/* Price list preview — click to enlarge */}
-            <button
-              type="button"
-              onClick={() => setPriceLightbox(true)}
-              aria-label="Fiyat listesini büyüt"
-              className="group relative block rounded-2xl overflow-hidden border border-gold-200/60 shadow-xl max-w-[260px] hover:shadow-2xl transition-shadow cursor-zoom-in"
-            >
-              <Image
-                src="/images/fiyat.png"
-                alt="BWA Göl Evleri 2026 Güncel Fiyat Listesi"
-                width={1080}
-                height={1920}
-                sizes="260px"
-                className="w-full h-auto transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-              {/* Zoom hint overlay on hover */}
-              <div className="absolute inset-0 bg-navy-950/0 group-hover:bg-navy-950/35 transition-colors flex items-center justify-center pointer-events-none">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-gold-500 text-navy-900 rounded-full px-4 py-2 flex items-center gap-1.5 text-xs font-black tracking-wider uppercase shadow-lg">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    <line x1="11" y1="8" x2="11" y2="14" />
-                    <line x1="8" y1="11" x2="14" y2="11" />
-                  </svg>
-                  Büyüt
-                </div>
-              </div>
-              <div className="bg-navy-900 px-4 py-2.5 text-center">
-                <span className="text-gold-400 text-[10px] font-bold tracking-[0.2em] uppercase">2026 Güncel Fiyat Listesi</span>
-              </div>
-            </button>
+            {/* Current price info — call CTA */}
+            <div className="rounded-2xl border border-gold-200/60 bg-white shadow-xl p-6 max-w-sm">
+              <span className="text-gold-600 text-[10px] font-bold tracking-[0.2em] uppercase block mb-2">Güncel Fiyat Bilgisi</span>
+              <p className="text-navy-700/55 text-sm leading-relaxed mb-4">
+                Fiyat listemiz güncellenmektedir. Size özel güncel fiyat ve ödeme planı için satış ekibimizi arayın.
+              </p>
+              <a
+                href="tel:05334758499"
+                onClick={() => trackPhoneClick("price_info_card")}
+                className="btn-gold px-6 py-3 rounded-lg text-sm font-black tracking-wide uppercase inline-flex items-center gap-2"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.7 11.5 19.79 19.79 0 011.63 2.84 2 2 0 013.6 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                </svg>
+                0533 475 84 99
+              </a>
+            </div>
           </motion.div>
 
           {/* Right — Form */}
@@ -252,59 +224,6 @@ export default function LeadForm() {
         </div>
       </div>
 
-      {/* Price list lightbox */}
-      <AnimatePresence>
-        {priceLightbox && (
-          <motion.div
-            key="price-lightbox"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={() => setPriceLightbox(false)}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Fiyat listesi"
-            className="fixed inset-0 z-[100] bg-navy-950/95 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8 cursor-zoom-out overflow-y-auto"
-          >
-            {/* Close button */}
-            <button
-              type="button"
-              onClick={() => setPriceLightbox(false)}
-              aria-label="Kapat"
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-11 h-11 rounded-full bg-white/10 hover:bg-gold-500 text-white hover:text-navy-900 flex items-center justify-center transition-colors z-10"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-
-            {/* Image — click image itself doesn't close */}
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-[min(90vw,540px)] cursor-default"
-            >
-              <Image
-                src="/images/fiyat.png"
-                alt="BWA Göl Evleri 2026 Güncel Fiyat Listesi"
-                width={1080}
-                height={1920}
-                sizes="(max-width: 640px) 90vw, 540px"
-                priority
-                className="w-full h-auto rounded-xl shadow-2xl"
-              />
-              <p className="text-center text-white/40 text-xs mt-3 tracking-wide">
-                Kapatmak için dışına tıklayın veya ESC tuşuna basın
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

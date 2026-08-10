@@ -12,7 +12,6 @@ const StickyContact   = dynamic(() => import("@/components/StickyContact"));
 const VideoGallery    = dynamic(() => import("@/components/VideoGallery"));
 const PhotoGallery    = dynamic(() => import("@/components/PhotoGallery"));
 const ApartmentTypes  = dynamic(() => import("@/components/ApartmentTypes"));
-const PricingPlans    = dynamic(() => import("@/components/PricingPlans"));
 const LocationSection = dynamic(() => import("@/components/LocationSection"));
 const CatalogViewer   = dynamic(() => import("@/components/CatalogViewer"));
 const LeadForm        = dynamic(() => import("@/components/LeadForm"));
@@ -29,7 +28,6 @@ export default function Home() {
       <VideoGallery />
       <PhotoGallery />
       <ApartmentTypes />
-      <PricingPlans />
       <LocationSection />
       <CatalogViewer />
       <LeadForm />

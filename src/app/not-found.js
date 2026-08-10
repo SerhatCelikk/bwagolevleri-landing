@@ -63,7 +63,6 @@ export default function NotFound() {
           <div className="flex flex-wrap justify-center gap-3">
             {[
               { label: "Daire Tipleri", href: "/#daireler" },
-              { label: "Fiyatlar", href: "/#fiyatlar" },
               { label: "Hakkımızda", href: "/hakkimizda" },
               { label: "SSS", href: "/sss" },
             ].map((link) => (

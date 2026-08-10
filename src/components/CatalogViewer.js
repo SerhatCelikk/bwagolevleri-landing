@@ -314,7 +314,7 @@ export default function CatalogViewer() {
             </h2>
             <div className="section-divider mb-4" />
             <p className="text-white/40 text-sm max-w-xl mx-auto">
-              Sayfaya tıklayın veya sürükleyin. Daire planları, fiyat listesi ve proje detaylarının tamamı burada.
+              Sayfaya tıklayın veya sürükleyin. Daire planları ve proje detaylarının tamamı burada.
             </p>
           </motion.div>
         )}

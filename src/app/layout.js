@@ -153,7 +153,6 @@ const jsonLd = [
       latitude: 41.0082,
       longitude: 28.7806,
     },
-    priceRange: "₺3.426.315 - ₺7.647.000",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: [

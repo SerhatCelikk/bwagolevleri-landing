@@ -69,7 +69,6 @@ export default function Footer() {
               {[
                 { label: "Proje Hakkında", href: "#proje" },
                 { label: "Daire Tipleri", href: "#daireler" },
-                { label: "Fiyat Listesi", href: "#fiyatlar" },
                 { label: "Konum", href: "#konum" },
                 { label: "Kampanya", href: "#kampanya" },
                 { label: "Dijital Katalog", href: "#katalog" },
