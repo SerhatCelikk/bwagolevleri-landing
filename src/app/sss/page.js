@@ -30,12 +30,12 @@ const faqs = [
   {
     question: "Nakit alımda indirim var mı?",
     answer:
-      "Evet, nakit alımlarda özel indirim uygulanmaktadır. Güncel nakit fiyat ve indirim oranı için 0533 475 84 99 numarasını arayabilirsiniz.",
+      "Evet, nakit alımlarda %12,7 özel indirim uygulanmaktadır. Güncel nakit fiyat bilgisi için 0533 475 84 99 numarasını arayabilirsiniz.",
   },
   {
     question: "Hangi ödeme seçenekleri var?",
     answer:
-      "Üç farklı ödeme seçeneği sunulmaktadır: (1) %50 Peşin + 25 Ay Faizsiz Taksit — yarısı peşin, kalan tutar 25 ay faizsiz eşit taksit, (2) Nakit Alım — özel indirim, (3) Size Özel Ödeme Planı — seçili alıcılara özel müzakere imkânı. Güncel tutarlar için satış ekibimizle iletişime geçin.",
+      "Üç farklı ödeme seçeneği sunulmaktadır: (1) %50 Peşin + 25 Ay Faizsiz Taksit — yarısı peşin, kalan tutar 25 ay faizsiz eşit taksit, (2) Nakit Alım — %12,7 özel indirim, (3) Size Özel Ödeme Planı — seçili alıcılara özel müzakere imkânı. Güncel tutarlar için satış ekibimizle iletişime geçin.",
   },
   {
     question: "Göl manzaralı daire var mı?",

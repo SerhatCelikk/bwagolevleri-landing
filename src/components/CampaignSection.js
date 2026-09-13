@@ -9,7 +9,7 @@ const REMAINING = TOTAL - SOLD;
 
 const CAMPAIGN_OFFERS = [
   { title: "%50 Peşin + 25 Ay Faizsiz Taksit", desc: "Yarısını peşin ödeyin, kalan tutarı 25 ay boyunca faizsiz eşit taksitle tamamlayın.", tag: "0 Faiz", featured: true },
-  { title: "Nakit Alımda %10 İskonto", desc: "Tamamını nakit ödeyin, özel indirimle en avantajlı fiyatı yakalayın.", tag: "%10 İndirim" },
+  { title: "Nakit Alımda %12,7 İskonto", desc: "Tamamını nakit ödeyin, özel indirimle en avantajlı fiyatı yakalayın.", tag: "%12,7 İndirim" },
   { title: "Size Özel Ödeme Planı", desc: "Seçili alıcılara özel ödeme planı müzakeresi imkânı.", tag: "Ayrıcalık" },
 ];
 
