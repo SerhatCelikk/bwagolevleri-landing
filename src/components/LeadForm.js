@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase";
 import { trackLeadSubmit, trackPhoneClick } from "@/lib/analytics";
 
 const APARTMENT_TYPES = ["1+1", "2+1", "3+1", "Henüz Karar Vermedim"];
-const PAYMENT_PLANS = ["Peşinatsız Taksit", "%50 Peşinat", "Nakit Alım", "Özel Plan İstiyorum"];
+const PAYMENT_PLANS = ["%50 Peşin + 25 Ay Faizsiz Taksit", "Nakit Alım", "Özel Plan İstiyorum"];
 const HOW_HEARD = ["Instagram", "Google", "WhatsApp", "Tanıdık / Tavsiye", "Diğer"];
 
 export default function LeadForm() {

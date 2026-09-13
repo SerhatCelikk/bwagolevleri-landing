@@ -23,7 +23,7 @@ export const metadata = {
     template: "%s | BWA Göl Evleri",
   },
   description:
-    "BWA Göl Evleri, Barsan Winn4 Adproje ortaklığı olan BWA GYO güvencesiyle Ispartakule mevkiinde, Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir. 1+1, 2+1, 3+1 ve dubleks daireler. Peşinatsız taksit, %50 peşinat ve nakit iskonto seçenekleriyle lansmana özel kampanya. 0533 475 84 99",
+    "BWA Göl Evleri, Barsan Winn4 Adproje ortaklığı olan BWA GYO güvencesiyle Ispartakule mevkiinde, Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir. 1+1, 2+1, 3+1 ve dubleks daireler. %50 peşin + 25 ay faizsiz taksit ve nakit iskonto seçenekleriyle lansmana özel kampanya. 0533 475 84 99",
   keywords: [
     "BWA Göl Evleri",
     "BWA Gölevleri",
@@ -38,7 +38,7 @@ export const metadata = {
     "Küçükçekmece göl manzaralı daire",
     "göl manzaralı konut",
     "İstanbul yatırım konut",
-    "peşinatsız daire",
+    "taksitli daire",
     "Küçükçekmece konut projesi",
     "Kanal İstanbul konut",
     "BWA GYO konut",

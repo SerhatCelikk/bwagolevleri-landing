@@ -8,8 +8,7 @@ const SOLD = 12;
 const REMAINING = TOTAL - SOLD;
 
 const CAMPAIGN_OFFERS = [
-  { title: "İlk Ay Peşin + 12 Ay Taksit", desc: "İlk ayı peşin ödeyin, kalan tutarı 12 ay 0 faiz eşit taksitle. Toplam 13 ödeme.", tag: "0 Faiz" },
-  { title: "%50 Peşin, Kalanı Teslimde", desc: "Yarısını şimdi ödeyin, kalan %50'yi anahtar tesliminde ödeme esnekliği.", tag: "Esnek" },
+  { title: "%50 Peşin + 25 Ay Faizsiz Taksit", desc: "Yarısını peşin ödeyin, kalan tutarı 25 ay boyunca faizsiz eşit taksitle tamamlayın.", tag: "0 Faiz", featured: true },
   { title: "Nakit Alımda %10 İskonto", desc: "Tamamını nakit ödeyin, özel indirimle en avantajlı fiyatı yakalayın.", tag: "%10 İndirim" },
   { title: "Size Özel Ödeme Planı", desc: "Seçili alıcılara özel ödeme planı müzakeresi imkânı.", tag: "Ayrıcalık" },
 ];
@@ -111,7 +110,7 @@ export default function CampaignSection() {
         </motion.div>
 
         {/* Offer cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-14 max-w-5xl mx-auto">
           {CAMPAIGN_OFFERS.map((offer, i) => (
             <motion.div
               key={offer.title}
@@ -119,8 +118,17 @@ export default function CampaignSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="card-hover glass-gold rounded-2xl p-6 relative"
+              className={`card-hover glass-gold rounded-2xl p-6 relative ${
+                offer.featured
+                  ? "border border-gold-500/60 ring-1 ring-gold-500/30 shadow-lg shadow-gold-500/10"
+                  : ""
+              }`}
             >
+              {offer.featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 text-navy-900 text-[9px] font-black px-3 py-1 rounded-full tracking-[0.15em] uppercase whitespace-nowrap shadow-lg">
+                  Öne Çıkan Plan
+                </div>
+              )}
               <div className="absolute top-3 right-3 bg-gold-500 text-navy-900 text-[9px] font-black px-2 py-0.5 rounded-full tracking-wider uppercase">
                 {offer.tag}
               </div>

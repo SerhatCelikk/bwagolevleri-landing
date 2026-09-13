@@ -23,9 +23,9 @@ const faqs = [
       "Fiyat listemiz güncellenmektedir. 1+1, 2+1, 3+1, 2+1 Loft ve dubleks daire seçenekleri için güncel fiyat ve müsaitlik bilgisini 0533 475 84 99 numarasından alabilir veya web sitemizdeki talep formunu doldurabilirsiniz.",
   },
   {
-    question: "Peşinatsız daire alınabilir mi?",
+    question: "Taksitle daire alınabilir mi?",
     answer:
-      "Evet. \"İlk Ay Peşin + 12 Ay Taksit\" planı ile ilk ayı peşin ödeyip kalan tutarı 12 ay 0 faiz eşit taksitle ödeyebilirsiniz (toplam 13 ödeme, vade farksız). Daire tipine göre güncel taksit tutarları için satış ekibimizle iletişime geçin: 0533 475 84 99.",
+      "Evet. \"%50 Peşin + 25 Ay Faizsiz Taksit\" planı ile yarısını peşin ödeyip kalan tutarı 25 ay boyunca faizsiz eşit taksitle ödeyebilirsiniz. Daire tipine göre güncel taksit tutarları için satış ekibimizle iletişime geçin: 0533 475 84 99.",
   },
   {
     question: "Nakit alımda indirim var mı?",
@@ -35,7 +35,7 @@ const faqs = [
   {
     question: "Hangi ödeme seçenekleri var?",
     answer:
-      "Dört farklı ödeme seçeneği sunulmaktadır: (1) %50 Peşinat — kalan %50 tapu tesliminde, (2) %50 Peşin + 12 Ay 0 Faiz — yarısı şimdi, kalanı 12 ay sıfır faiz taksit, (3) İlk Ay Peşin + 12 Ay Taksit — ilk ay peşin, kalan tutar 12 ay 0 faiz eşit taksit (toplam 13 ödeme), (4) Nakit Alım — özel indirim. Güncel tutarlar için satış ekibimizle iletişime geçin.",
+      "Üç farklı ödeme seçeneği sunulmaktadır: (1) %50 Peşin + 25 Ay Faizsiz Taksit — yarısı peşin, kalan tutar 25 ay faizsiz eşit taksit, (2) Nakit Alım — özel indirim, (3) Size Özel Ödeme Planı — seçili alıcılara özel müzakere imkânı. Güncel tutarlar için satış ekibimizle iletişime geçin.",
   },
   {
     question: "Göl manzaralı daire var mı?",
@@ -81,14 +81,14 @@ export const metadata = {
     "Küçükçekmece daire fiyatları",
     "Kanal İstanbul daire fiyat",
     "BWA Göl Evleri ödeme planı",
-    "peşinatsız daire İstanbul",
+    "taksitli daire İstanbul",
     "Barsan Winn4 Adproje nedir",
   ],
   alternates: { canonical: "/sss" },
   openGraph: {
     title: "Sıkça Sorulan Sorular | BWA Göl Evleri",
     description:
-      "BWA GYO nedir? Daire fiyatları ne kadar? Peşinatsız alınabilir mi? Tüm sorularınızın yanıtları.",
+      "BWA GYO nedir? Daire fiyatları ne kadar? Taksit imkânı var mı? Tüm sorularınızın yanıtları.",
     images: ["/images/catalog.jpg"],
   },
 };
