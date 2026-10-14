@@ -172,7 +172,7 @@ export default function Hero() {
             <p className="text-white/35 text-[11px] tracking-wide">
               <strong className="text-gold-400">{REMAINING} daire</strong> için kampanya fiyatı geçerli
             </p>
-            <span className="text-white/30 text-[11px] tracking-wide">Teslim: <strong className="text-gold-400/70">Ağustos 2027</strong></span>
+            <span className="text-white/30 text-[11px] tracking-wide">Teslim: <strong className="text-gold-400/70">Eylül – Ekim 2027</strong></span>
           </div>
         </motion.div>
       </div>
