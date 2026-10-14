@@ -19,8 +19,8 @@ const apartments = [
     badgeColor: "#c9a84c",
     netArea: "43,05 m²",
     grossArea: "51,42 m²",
-    price: null,
-    monthlyNote: null,
+    price: "4.350.000 ₺",
+    monthlyNote: "%50 peşin · 36 ay vade · aylık 40.000 ₺",
     rooms: [
       { name: "Salon + Mutfak", area: "24,39 m²" },
       { name: "Yatak Odası", area: "13,80 m²" },
@@ -34,8 +34,8 @@ const apartments = [
     badgeColor: "#2e8fd4",
     netArea: "71,00 m²",
     grossArea: "85,50 m²",
-    price: null,
-    monthlyNote: null,
+    price: "6.780.000 ₺",
+    monthlyNote: "%50 peşin · 36 ay vade · aylık 55.000 ₺",
     rooms: [
       { name: "Salon", area: "16,90 m²" },
       { name: "Mutfak", area: "9,77 m²" },
@@ -49,8 +49,8 @@ const apartments = [
     badgeColor: "#a78bfa",
     netArea: "89,34 m²",
     grossArea: "107,73 m²",
-    price: null,
-    monthlyNote: null,
+    price: "7.850.000 ₺",
+    monthlyNote: "%50 peşin · 36 ay vade · aylık 70.000 ₺",
     rooms: [
       { name: "Salon", area: "18,44 m²" },
       { name: "Mutfak", area: "10,95 m²" },
@@ -220,11 +220,11 @@ export default function ApartmentTypes() {
                     <p className="font-heading text-3xl lg:text-4xl font-black text-white">{unit.price}</p>
                     {unit.monthlyNote && (
                       <p className="mt-2 text-sm" style={{ color: unit.badgeColor }}>
-                        veya {unit.monthlyNote}
+                        {unit.monthlyNote}
                       </p>
                     )}
                     <p className="mt-1 text-xs text-white/30">
-                      * Fiyatlar kata ve cepheye göre değişkenlik gösterebilir
+                      * Taksitler her 6 ayda bir %20 artar
                     </p>
                   </>
                 ) : (
@@ -292,7 +292,7 @@ export default function ApartmentTypes() {
           viewport={{ once: true }}
           className="text-center text-white/25 text-xs mt-6 tracking-wide"
         >
-          Güncel fiyat ve ödeme planı bilgisi için satış ekibimizle iletişime geçin.
+          Kampanya fiyatları yalnızca 3 daire için geçerlidir. Taksitler her 6 ayda bir %20 artar. Detaylı bilgi için satış ekibimizle iletişime geçin.
         </motion.p>
       </div>
     </section>

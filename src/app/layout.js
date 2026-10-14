@@ -23,7 +23,7 @@ export const metadata = {
     template: "%s | BWA Göl Evleri",
   },
   description:
-    "BWA Göl Evleri, Barsan Winn4 Adproje ortaklığı olan BWA GYO güvencesiyle Ispartakule mevkiinde, Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir. 1+1, 2+1, 3+1 ve dubleks daireler. %50 peşin + 25 ay faizsiz taksit ve nakit iskonto seçenekleriyle lansmana özel kampanya. 0533 475 84 99",
+    "BWA Göl Evleri, Barsan Winn4 Adproje ortaklığı olan BWA GYO güvencesiyle Ispartakule mevkiinde, Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir. 1+1, 2+1, 3+1 ve dubleks daireler. %50 peşinat + 36 ay vade ve nakit iskonto seçenekleriyle lansmana özel kampanya. 0533 475 84 99",
   keywords: [
     "BWA Göl Evleri",
     "BWA Gölevleri",
@@ -58,9 +58,9 @@ export const metadata = {
     url: "https://bwagyo.com",
     images: [
       {
-        url: "/images/catalog.jpg",
-        width: 1200,
-        height: 630,
+        url: "/images/2.jpg",
+        width: 2048,
+        height: 2048,
         alt: "BWA Göl Evleri - Ispartakule Küçükçekmece Göl Manzaralı Konut Projesi",
       },
     ],
@@ -70,7 +70,7 @@ export const metadata = {
     title: "BWA Göl Evleri | Ispartakule Küçükçekmece Göl Manzaralı Konut Projesi",
     description:
       "BWA GYO (Barsan + Winn4 + Adproje) güvencesiyle Ispartakule mevkiinde, Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen prestijli konut projesidir.",
-    images: ["/images/catalog.jpg"],
+    images: ["/images/2.jpg"],
   },
   robots: {
     index: true,
@@ -138,7 +138,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     name: "BWA Göl Evleri Satış Ofisi",
-    image: "https://bwagyo.com/images/catalog.jpg",
+    image: "https://bwagyo.com/images/2.jpg",
     url: "https://bwagyo.com",
     telephone: "+90-533-475-84-99",
     email: "iletisim@bwagyo.com",
@@ -153,6 +153,7 @@ const jsonLd = [
       latitude: 41.0082,
       longitude: 28.7806,
     },
+    priceRange: "₺4.350.000 - ₺7.850.000",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: [
@@ -176,7 +177,7 @@ const jsonLd = [
     description:
       "BWA GYO (Barsan + Winn4 + Adproje ortaklığı) tarafından Küçükçekmece Gölü kıyısında, Kanal İstanbul güzergahında inşa edilen 64 daireli prestijli konut projesi. 1+1, 2+1, 3+1 ve dubleks daire seçenekleri.",
     url: "https://bwagyo.com",
-    image: "https://bwagyo.com/images/catalog.jpg",
+    image: "https://bwagyo.com/images/2.jpg",
     numberOfAvailableAccommodationUnits: 17,
     numberOfAccommodationUnits: 64,
     address: {

@@ -20,12 +20,12 @@ const faqs = [
   {
     question: "BWA Göl Evleri daire fiyatları nedir?",
     answer:
-      "Fiyat listemiz güncellenmektedir. 1+1, 2+1, 3+1, 2+1 Loft ve dubleks daire seçenekleri için güncel fiyat ve müsaitlik bilgisini 0533 475 84 99 numarasından alabilir veya web sitemizdeki talep formunu doldurabilirsiniz.",
+      "Güncel liste fiyatları: 1+1 daireler 4.350.000 ₺, 2+1 daireler 6.780.000 ₺, 3+1 daireler 7.850.000 ₺'dir. Bu kampanya fiyatları yalnızca 3 daire için geçerlidir. 2+1 Loft ve dubleks daireler için güncel fiyat bilgisini 0533 475 84 99 numarasından alabilirsiniz.",
   },
   {
     question: "Taksitle daire alınabilir mi?",
     answer:
-      "Evet. \"%50 Peşin + 25 Ay Faizsiz Taksit\" planı ile yarısını peşin ödeyip kalan tutarı 25 ay boyunca faizsiz eşit taksitle ödeyebilirsiniz. Daire tipine göre güncel taksit tutarları için satış ekibimizle iletişime geçin: 0533 475 84 99.",
+      "Evet. \"%50 Peşinat + 36 Ay Vade\" planı ile yarısını peşin ödeyip kalanını 36 ay vadeyle ödeyebilirsiniz. Aylık taksitler: 1+1 → 40.000 ₺, 2+1 → 55.000 ₺, 3+1 → 70.000 ₺ (taksitler her 6 ayda bir %20 artar). Detaylı bilgi için: 0533 475 84 99.",
   },
   {
     question: "Nakit alımda indirim var mı?",
@@ -35,7 +35,7 @@ const faqs = [
   {
     question: "Hangi ödeme seçenekleri var?",
     answer:
-      "Üç farklı ödeme seçeneği sunulmaktadır: (1) %50 Peşin + 25 Ay Faizsiz Taksit — yarısı peşin, kalan tutar 25 ay faizsiz eşit taksit, (2) Nakit Alım — %12,7 özel indirim, (3) Size Özel Ödeme Planı — seçili alıcılara özel müzakere imkânı. Güncel tutarlar için satış ekibimizle iletişime geçin.",
+      "Üç farklı ödeme seçeneği sunulmaktadır: (1) %50 Peşinat + 36 Ay Vade — yarısı peşin, kalanı 36 ay vadeli taksit (taksitler her 6 ayda bir %20 artar), (2) Nakit Alım — %12,7 özel indirim, (3) Size Özel Ödeme Planı — seçili alıcılara özel müzakere imkânı. Güncel tutarlar için satış ekibimizle iletişime geçin.",
   },
   {
     question: "Göl manzaralı daire var mı?",
@@ -89,7 +89,7 @@ export const metadata = {
     title: "Sıkça Sorulan Sorular | BWA Göl Evleri",
     description:
       "BWA GYO nedir? Daire fiyatları ne kadar? Taksit imkânı var mı? Tüm sorularınızın yanıtları.",
-    images: ["/images/catalog.jpg"],
+    images: ["/images/2.jpg"],
   },
 };
 

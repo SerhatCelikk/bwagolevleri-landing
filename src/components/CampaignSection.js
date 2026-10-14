@@ -8,7 +8,7 @@ const SOLD = 12;
 const REMAINING = TOTAL - SOLD;
 
 const CAMPAIGN_OFFERS = [
-  { title: "%50 Peşin + 25 Ay Faizsiz Taksit", desc: "Yarısını peşin ödeyin, kalan tutarı 25 ay boyunca faizsiz eşit taksitle tamamlayın.", tag: "0 Faiz", featured: true },
+  { title: "%50 Peşinat + 36 Ay Vade", desc: "Yarısını peşin ödeyin, kalanını 36 ay vadeyle tamamlayın. Aylık 40.000 ₺'den başlayan taksitler.*", tag: "36 Ay Vade", featured: true },
   { title: "Nakit Alımda %12,7 İskonto", desc: "Tamamını nakit ödeyin, özel indirimle en avantajlı fiyatı yakalayın.", tag: "%12,7 İndirim" },
   { title: "Size Özel Ödeme Planı", desc: "Seçili alıcılara özel ödeme planı müzakeresi imkânı.", tag: "Ayrıcalık" },
 ];
@@ -138,6 +138,10 @@ export default function CampaignSection() {
             </motion.div>
           ))}
         </div>
+
+        <p className="text-center text-white/30 text-xs -mt-8 mb-14 tracking-wide">
+          * Taksitler her 6 ayda bir %20 artar. Kampanya fiyatları yalnızca 3 daire için geçerlidir.
+        </p>
 
         {/* CTA */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center">

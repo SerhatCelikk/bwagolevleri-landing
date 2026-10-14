@@ -21,7 +21,7 @@ export const metadata = {
     title: "BWA GYO Hakkında | Barsan + Winn4 + Adproje Ortaklığı",
     description:
       "BWA GYO, Barsan, Winn4 ve Adproje ortaklığıyla kurulan güvenilir gayrimenkul yatırım şirketidir.",
-    images: ["/images/catalog.jpg"],
+    images: ["/images/2.jpg"],
   },
 };
 
